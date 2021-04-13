@@ -4,14 +4,14 @@
     "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser\\TrackAnalyser.csproj": {}
   },
   "projects": {
-    "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser\\TrackAnalyser.csproj": {
+    "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser.Models\\TrackAnalyser.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser\\TrackAnalyser.csproj",
-        "projectName": "TrackAnalyser",
-        "projectPath": "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser\\TrackAnalyser.csproj",
+        "projectUniqueName": "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser.Models\\TrackAnalyser.Models.csproj",
+        "projectName": "TrackAnalyser.Models",
+        "projectPath": "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser.Models\\TrackAnalyser.Models.csproj",
         "packagesPath": "C:\\Users\\reosk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser\\obj\\",
+        "outputPath": "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -43,6 +43,84 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.VisualStudio.Web.BrowserLink": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser\\TrackAnalyser.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser\\TrackAnalyser.csproj",
+        "projectName": "TrackAnalyser",
+        "projectPath": "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser\\TrackAnalyser.csproj",
+        "packagesPath": "C:\\Users\\reosk\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\reosk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser.Models\\TrackAnalyser.Models.csproj": {
+                "projectPath": "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser.Models\\TrackAnalyser.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
+              "target": "Package",
+              "version": "[5.0.5, )"
+            },
+            "Microsoft.VisualStudio.Web.BrowserLink": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

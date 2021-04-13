@@ -1,0 +1,9 @@
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\bin\Debug\netcoreapp3.1\TrackAnalyser.Models.deps.json
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\bin\Debug\netcoreapp3.1\TrackAnalyser.Models.dll
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\bin\Debug\netcoreapp3.1\TrackAnalyser.Models.pdb
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\obj\Debug\netcoreapp3.1\TrackAnalyser.Models.csprojAssemblyReference.cache
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\obj\Debug\netcoreapp3.1\TrackAnalyser.Models.AssemblyInfoInputs.cache
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\obj\Debug\netcoreapp3.1\TrackAnalyser.Models.AssemblyInfo.cs
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\obj\Debug\netcoreapp3.1\TrackAnalyser.Models.csproj.CoreCompileInputs.cache
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\obj\Debug\netcoreapp3.1\TrackAnalyser.Models.dll
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\obj\Debug\netcoreapp3.1\TrackAnalyser.Models.pdb

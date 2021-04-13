@@ -1,8 +1,23 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<div>
+    <br />
+    <br />
+    <div class="text-center">
+        <h3>Sign in or <a asp-action="">Sign up</a> to use Track Analyser</h3>
+    </div>
+    <br />
+    <br />
+    <form>
+        <div class="form-group col-md-5">
+            <label>Email address</label>
+            <input type="email" class="form-control" placeholder="Enter email">
+        </div>
+        <div class="form-group col-md-5">
+            <label>Password</label>
+            <input type="password" class="form-control" placeholder="Password">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </form>
 </div>
