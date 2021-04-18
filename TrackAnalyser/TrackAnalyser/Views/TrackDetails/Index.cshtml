@@ -1,14 +1,19 @@
-﻿<br />
+﻿@model TrackAnalyser.Models.ViewModels.TrackDetailsViewModel 
+<br />
 <br />
 <div class="col">
-    <div class="col-md-5 offset-md-1"><p>Author: Jan Kowalski the DJ</p></div>
-    <div class="col-md-5 offset-md-1"><p>Duration: 5:13min</p></div>
-    <div class="col-md-5 offset-md-1"><p>Description: When the dj kowalski has become the most popular dj, this wast the first track whose makes him famous</p></div>
-    <div class="col-md-5 offset-md-1"><p>begin at 12.07.2021 12:34</p></div>
-    <div class="col-md-5 offset-md-1"><p>canal Radio-Zet</p></div>
+    <div class="col-md-5 offset-md-1"><p>Author: @Model.Author</p></div>
+    <div class="col-md-5 offset-md-1"><p>Duration: @Model.Duration</p></div>
+    <div class="col-md-5 offset-md-1"><p>Description: @Model.Description</p></div>
+    <div class="col-md-5 offset-md-1"><p>Begin at: @Model.Begin </p></div>
+    <div class="col-md-5 offset-md-1"><p>Canal: @Model.CurrentCanal</p></div>
 </div>
 <br />
 <br />
+<div hidden>
+    @Model.LastPlayedWeek
+    @Model.Canals
+</div>
 <div class="col-lg-6 offset-lg-3">
     <canvas id="barChart"></canvas>
 </div>

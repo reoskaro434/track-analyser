@@ -10,10 +10,12 @@ namespace TrackAnalyser.Models.ViewModels
     {
         public string Author { get; set; }
         public Canal CurrentCanal { get; set; }
-        public int Duration { get; set; }
+        public string Duration { get; set; }
         public string Description { get; set; }
         public DateTime Begin { get; set; }
-        public IEnumerable<int> LastPlayedWeek { get; set; }
-        public IEnumerable<Canal> Canals { get; set; }
+        //public IEnumerable<int> LastPlayedWeek { get; set; }
+        public string LastPlayedWeek { get; set; }
+        //public IEnumerable<Canal> Canals { get; set; }
+        public string Canals { get; set; }
     }
 }

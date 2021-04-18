@@ -8,5 +8,6 @@ namespace TrackAnalyser.Models
 {
     public class Canal
     {
+        public string Name { get; set; }
     }
 }
