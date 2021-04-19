@@ -19,7 +19,7 @@ namespace TrackAnalyser.Controllers
             TrackDetailsViewModel model = new TrackDetailsViewModel() {
                 Author = "Johny Silverhand",
                 Begin = DateTime.Now, 
-                CurrentCanal = new Models.CanalModel() { Name = "Radio-Zet" },
+                CurrentCanal = new Models.Canal() { Name = "Radio-Zet" },
                 Description = "This is simple description about track which is being showed to user",
                 LastPlayedWeek = "JSON JSON",
                 Canals = "JSON JSON",

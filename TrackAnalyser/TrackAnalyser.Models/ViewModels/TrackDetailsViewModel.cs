@@ -9,7 +9,7 @@ namespace TrackAnalyser.Models.ViewModels
     public class TrackDetailsViewModel
     {
         public string Author { get; set; }
-        public CanalModel CurrentCanal { get; set; }
+        public Canal CurrentCanal { get; set; }
         public string Duration { get; set; }
         public string Description { get; set; }
         public DateTime Begin { get; set; }
