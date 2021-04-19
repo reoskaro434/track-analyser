@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser.Models\\TrackAnalyser.Models.csproj": {}
+    "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser.DataAccess\\TrackAnalyser.DataAccess.csproj": {}
   },
   "projects": {
-    "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser.Models\\TrackAnalyser.Models.csproj": {
+    "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser.DataAccess\\TrackAnalyser.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser.Models\\TrackAnalyser.Models.csproj",
-        "projectName": "TrackAnalyser.Models",
-        "projectPath": "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser.Models\\TrackAnalyser.Models.csproj",
+        "projectUniqueName": "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser.DataAccess\\TrackAnalyser.DataAccess.csproj",
+        "projectName": "TrackAnalyser.DataAccess",
+        "projectPath": "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser.DataAccess\\TrackAnalyser.DataAccess.csproj",
         "packagesPath": "C:\\Users\\reosk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser.Models\\obj\\",
+        "outputPath": "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -47,14 +47,6 @@
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.5, )"
-            },
-            "Microsoft.VisualStudio.Web.BrowserLink": {
-              "target": "Package",
-              "version": "[2.2.0, )"
-            },
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[13.0.1, )"
             }
           },
           "imports": [
