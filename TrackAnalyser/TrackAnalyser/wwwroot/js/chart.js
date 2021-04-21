@@ -1,52 +1,44 @@
-﻿/*********** Global ***********/
-//Chart.defaults.global.defaultFontColor = 'black';
-//Chart.defaults.global.defaultFontSize = 16;
-
-/*********** Context ***********/
+﻿//getting from page BAR/PIE
 var barContext = document.getElementById('barChart').getContext('2d');
 var pieContext = document.getElementById("pieChart").getContext('2d');
 
-/*********** Data ***********/
+//handling data BAR/PIE
+var barRawData = document.getElementById('barChartData').innerHTML;
+var barDataObj = JSON.parse(barRawData);
+
+var pieRawData = document.getElementById('pieChartData').innerHTML;
+var pieDataObj = JSON.parse(pieRawData);
+
+
+//########## BAR CHART ###########
+
+//preparing arrays for bar chart
+var number = barDataObj.BarDateCounts.Count;
+var barLabels = new Array(number);
+var barLabelsData = new Array(number);
+var barBackgroundColor = new Array(number);
+
+//loop for bar chart
+barDataObj.BarDateCounts.forEach(function (element, i) {
+    barLabels[i] = element.Date;
+    barLabelsData[i] = element.Count;
+
+    if (i % 2 == 0) 
+        barBackgroundColor[i] = "rgb(240,128,128)";
+      
+    else
+        barBackgroundColor[i] = "rgb(205,92,92)";
+});
+//main data for bar chart
 var barData = {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: barLabels,
     datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-        ],
-        borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-        ],
-        borderWidth: 1
+        label: 'Last Played',
+        data: barLabelsData,
+        backgroundColor: barBackgroundColor,
     }]
 };
-var pieData = {
-    labels: ["She returns it ", "She keeps it"],
-    datasets: [
-        {
-            fill: true,
-            backgroundColor: [
-                'black',
-                'white'],
-            data: [5, 95],
-            borderColor: ['black', 'black'],
-            borderWidth: [2, 2]
-        }
-    ]
-};
-
-/*********** Option ***********/
+//options for bar chart
 var barOptions = {
     scales: {
         y: {
@@ -54,21 +46,47 @@ var barOptions = {
         }
     }
 }
-var pieOptions = {
-    title: {
-        display: true,
-        text: 'What happens when you lend your favorite t-shirt to a girl ?',
-        position: 'top'
-    },
-    rotation: -0.7 * Math.PI
-};
-
-/*********** Chart ***********/
+//bar chart
 var barChart = new Chart(barContext, {
     type: 'bar',
     data: barData,
     options: barOptions
 });
+
+//########## PIE CHART ###########
+
+//preparing arrays for pie chart
+var number = pieDataObj.PieNameCounts.Count;
+var pieLabels = new Array(number);
+var pieLabelsData = new Array(number);
+var pieBackgroundColor = new Array(number);
+//loop for pie chart
+pieDataObj.PieNameCounts.forEach(function (element, i) {
+    pieLabels[i] = element.Name;
+    pieLabelsData[i] = element.Count;
+    pieBackgroundColor[i] = "rgb(240,128,128)";
+
+});
+//main data for pie chart
+var pieData = {
+    labels: pieLabels,
+    datasets: [
+        {
+            fill: true,
+            backgroundColor: pieBackgroundColor,
+            data: pieLabelsData
+        }
+    ]
+};
+//options for pie chart
+var pieOptions = {
+    title: {
+        display: true,
+        position: 'top'
+    },
+    rotation: -0.7 * Math.PI
+};
+//pie chart
 var pieChart = new Chart(pieContext, {
     type: 'pie',
     data: pieData,

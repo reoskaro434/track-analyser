@@ -1,0 +1,5 @@
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Utilities\obj\Debug\net5.0\TrackAnalyser.Utilities.csprojAssemblyReference.cache
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Utilities\obj\Debug\net5.0\TrackAnalyser.Utilities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Utilities\obj\Debug\net5.0\TrackAnalyser.Utilities.AssemblyInfoInputs.cache
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Utilities\obj\Debug\net5.0\TrackAnalyser.Utilities.AssemblyInfo.cs
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Utilities\obj\Debug\net5.0\TrackAnalyser.Utilities.csproj.CoreCompileInputs.cache

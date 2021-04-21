@@ -1,4 +1,4 @@
-﻿@model TrackAnalyser.Models.ViewModels.TrackDetailsViewModel 
+﻿@model TrackAnalyser.Models.ViewModels.TrackDetailsViewModel
 <br />
 <br />
 <div class="col">
@@ -10,10 +10,6 @@
 </div>
 <br />
 <br />
-<div hidden>
-    @Model.LastPlayedWeek
-    @Model.Canals
-</div>
 <div class="col-lg-6 offset-lg-3">
     <canvas id="barChart"></canvas>
 </div>
@@ -22,6 +18,15 @@
 <div class="col-lg-6 offset-lg-3">
     <canvas id="pieChart"></canvas>
 </div>
+
+@* data for charts creating *@
+
+<p hidden id="barChartData">
+    @Model.LastPlayedWeek
+</p>
+<p hidden id="pieChartData">
+    @Model.Canals
+</p>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="~/js/chart.js"></script>
