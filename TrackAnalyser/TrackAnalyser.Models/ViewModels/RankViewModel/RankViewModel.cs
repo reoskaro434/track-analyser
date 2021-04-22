@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace TrackAnalyser.Models.ViewModels
 {
-    class RankViewModel
+    public class RankViewModel
     {
+        public IEnumerable<RankElementViewModel> RankElements { get; set; }
     }
 }

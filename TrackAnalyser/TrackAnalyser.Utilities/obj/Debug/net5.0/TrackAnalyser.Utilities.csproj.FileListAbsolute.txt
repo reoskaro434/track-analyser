@@ -3,3 +3,10 @@ C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\Track
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Utilities\obj\Debug\net5.0\TrackAnalyser.Utilities.AssemblyInfoInputs.cache
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Utilities\obj\Debug\net5.0\TrackAnalyser.Utilities.AssemblyInfo.cs
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Utilities\obj\Debug\net5.0\TrackAnalyser.Utilities.csproj.CoreCompileInputs.cache
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Utilities\bin\Debug\net5.0\TrackAnalyser.Utilities.deps.json
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Utilities\bin\Debug\net5.0\TrackAnalyser.Utilities.dll
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Utilities\bin\Debug\net5.0\ref\TrackAnalyser.Utilities.dll
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Utilities\bin\Debug\net5.0\TrackAnalyser.Utilities.pdb
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Utilities\obj\Debug\net5.0\TrackAnalyser.Utilities.dll
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Utilities\obj\Debug\net5.0\ref\TrackAnalyser.Utilities.dll
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Utilities\obj\Debug\net5.0\TrackAnalyser.Utilities.pdb

@@ -1,4 +1,6 @@
-﻿<div>
+﻿@model TrackAnalyser.Models.ViewModels.RankViewModel 
+
+<div>
     <br />
     <br />
     <div class="text-center">
@@ -15,38 +17,16 @@
                     <th scope="col">Author</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Despacito</td>
-                    <td>Luis Fonsi</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Save My Night</td>
-                    <td>Armin van Buuren</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Tickle</td>
-                    <td>Savant</td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Despacito</td>
-                    <td>Luis Fonsi</td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>Save My Night</td>
-                    <td>Armin van Buuren</td>
-                </tr>
-                <tr>
-                    <th scope="row">6</th>
-                    <td>Tickle</td>
-                    <td>Savant</td>
-                </tr>
-
+            <tbody> 
+                @foreach (var element in Model.RankElements.Select((value, index) => (value, index)))
+                {
+                    int no = element.index + 1;
+                    <tr>
+                        <th scope="row">@no</th>
+                        <td>@element.value.TrackName</td>
+                        <td>@element.value.TrackArtist</td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>

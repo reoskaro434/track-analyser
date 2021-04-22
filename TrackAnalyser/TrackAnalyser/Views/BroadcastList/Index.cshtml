@@ -1,4 +1,6 @@
-﻿<div>
+﻿@model TrackAnalyser.Models.ViewModels.BroadcastListViewModel
+
+<div>
     <br />
     <br />
     <div class="row">
@@ -28,101 +30,24 @@
     </div>
         <br />
         <div class="list-group">
-            <a asp-action="Index" asp-controller="TrackDetails" class="list-group-item list-group-item-action">
-                <div class="d-flex flex-row mb-1 mt-1">
-                    <div>
-                        <picture>
-                            <img src="~/pictures/poison__the_parish.jpg" class="rounded img-fluid" style="width:auto;">
-                        </picture>
+            @foreach (var element in Model.TrackEmissions)
+            {
+                <a asp-action="Index" asp-controller="TrackDetails" asp-route-id="@element.TrackId" class="list-group-item list-group-item-action">
+                    <div class="d-flex flex-row mb-1 mt-1">
+                        <div>
+                            <picture>
+                                <img src=@element.TrackPicturePath class="rounded img-fluid" style="width:auto;">
+                            </picture>
+                        </div>
+                        <div class="row ml-1 flex-fill">
+                            <div class="col-md-4"><p>@element.TrackDescription</p></div>
+                            <div class="col-md-3"><p>begin at @element.EmissionDate</p></div>
+                            <div class="col-md-3"><p>canal @element.CanalName</p></div>
+                            <div class="col-md-2"><p>duration @element.EmissionTime</p></div>
+                        </div>
                     </div>
-                    <div class="row ml-1 flex-fill">
-                        <div class="col-md-4">This track is really awesome... warning! causing parish poisoning.</div>
-                        <div class="col-md-3">begin at 12.07.2021 12:34</div>
-                        <div class="col-md-3">canal Radio-Zet</div>
-                        <div class="col-md-2">duration 4:32 min</div>
-                    </div>
-                </div>
-
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex flex-row mb-1 mt-1">
-                    <div>
-                        <picture>
-                            <img src="~/pictures/poison__the_parish.jpg" class="rounded img-fluid" style="width:auto;">
-                        </picture>
-                    </div>
-                    <div class="row ml-1 flex-fill">
-                        <div class="col-md-4">This track is really awesome... warning! causing parish poisoning.</div>
-                        <div class="col-md-3">begin at 12.07.2021 12:34</div>
-                        <div class="col-md-3">canal Radio-Zet</div>
-                        <div class="col-md-2">duration 4:32 min</div>
-                    </div>
-                </div>
-
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex flex-row mb-1 mt-1">
-                    <div>
-                        <picture>
-                            <img src="~/pictures/poison__the_parish.jpg" class="rounded img-fluid" style="width:auto;">
-                        </picture>
-                    </div>
-                    <div class="row ml-1 flex-fill">
-                        <div class="col-md-4">This track is really awesome... warning! causing parish poisoning.</div>
-                        <div class="col-md-3">begin at 12.07.2021 12:34</div>
-                        <div class="col-md-3">canal Radio-Zet</div>
-                        <div class="col-md-2">duration 4:32 min</div>
-                    </div>
-                </div>
-
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex flex-row mb-1 mt-1">
-                    <div>
-                        <picture>
-                            <img src="~/pictures/poison__the_parish.jpg" class="rounded img-fluid" style="width:auto;">
-                        </picture>
-                    </div>
-                    <div class="row ml-1 flex-fill">
-                        <div class="col-md-4">This track is really awesome... warning! causing parish poisoning.</div>
-                        <div class="col-md-3">begin at 12.07.2021 12:34</div>
-                        <div class="col-md-3">canal Radio-Zet</div>
-                        <div class="col-md-2">duration 4:32 min</div>
-                    </div>
-                </div>
-
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex flex-row mb-1 mt-1">
-                    <div>
-                        <picture>
-                            <img src="~/pictures/poison__the_parish.jpg" class="rounded img-fluid" style="width:auto;">
-                        </picture>
-                    </div>
-                    <div class="row ml-1 flex-fill">
-                        <div class="col-md-4">This track is really awesome... warning! causing parish poisoning.</div>
-                        <div class="col-md-3">begin at 12.07.2021 12:34</div>
-                        <div class="col-md-3">canal Radio-Zet</div>
-                        <div class="col-md-2">duration 4:32 min</div>
-                    </div>
-                </div>
-
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex flex-row mb-1 mt-1">
-                    <div>
-                        <picture>
-                            <img src="~/pictures/poison__the_parish.jpg" class="rounded img-fluid" style="width:auto;">
-                        </picture>
-                    </div>
-                    <div class="row ml-1 flex-fill">
-                        <div class="col-md-4">This track is really awesome... warning! causing parish poisoning.</div>
-                        <div class="col-md-3">begin at 12.07.2021 12:34</div>
-                        <div class="col-md-3">canal Radio-Zet</div>
-                        <div class="col-md-2">duration 4:32 min</div>
-                    </div>
-                </div>
-
-            </a>
+                </a>
+            }
+          
         </div>
     </div>

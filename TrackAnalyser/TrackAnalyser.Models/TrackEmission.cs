@@ -12,5 +12,6 @@ namespace TrackAnalyser.Models
         public DateTime BeginDateTime { get; set; }
         public DateTime EmissionTime { get; set; }
         public Canal Canal { get; set; }
+        public Track Track { get; set; }
     }
 }

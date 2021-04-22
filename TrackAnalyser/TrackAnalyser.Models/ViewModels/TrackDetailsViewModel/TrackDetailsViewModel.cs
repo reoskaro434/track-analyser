@@ -14,9 +14,7 @@ namespace TrackAnalyser.Models.ViewModels
         public string Duration { get; set; }
         public string Description { get; set; }
         public DateTime Begin { get; set; }
-        //public IEnumerable<int> LastPlayedWeek { get; set; }
         public string LastPlayedWeek { get; set; }
-        //public IEnumerable<Canal> Canals { get; set; }
         public string Canals { get; set; }
     }
 }

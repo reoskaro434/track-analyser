@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace TrackAnalyser.Models.ViewModels
 {
-    class BroadcastListViewModel
+    public class RankElementViewModel
     {
+        public string TrackName { get; set; }
+        public string TrackArtist { get; set; }
     }
 }
