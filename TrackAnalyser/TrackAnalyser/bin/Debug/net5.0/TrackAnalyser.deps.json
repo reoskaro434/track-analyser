@@ -33,6 +33,7 @@
           "Newtonsoft.Json": "13.0.1",
           "TrackAnalyser.DataAccess": "1.0.0",
           "TrackAnalyser.Models": "1.0.0",
+          "TrackAnalyser.Utilities": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "5.0.0.0",
@@ -1580,6 +1581,18 @@
         },
         "compile": {
           "TrackAnalyser.Models.dll": {}
+        }
+      },
+      "TrackAnalyser.Utilities/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1",
+          "TrackAnalyser.DataAccess": "1.0.0"
+        },
+        "runtime": {
+          "TrackAnalyser.Utilities.dll": {}
+        },
+        "compile": {
+          "TrackAnalyser.Utilities.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/5.0.0.0": {
@@ -4112,6 +4125,11 @@
       "sha512": ""
     },
     "TrackAnalyser.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TrackAnalyser.Utilities/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

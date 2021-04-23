@@ -19,10 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\TrackAnalyser.DataAccess\TrackAnalyser.DataAccess.csproj" />
     <ProjectReference Include="..\TrackAnalyser.Models\TrackAnalyser.Models.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\pictures\" />
+    <ProjectReference Include="..\TrackAnalyser.Utilities\TrackAnalyser.Utilities.csproj" />
   </ItemGroup>
 
 </Project>

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace TrackAnalyser.Models
 {
-    public class TrackStatistic
+    public class DayStatistic
     {
         public int Id { get; set; }
-        public Track Track { get; set; }
-        public IEnumerable<DayStatistic> DayStatistics { get; set; }
+        public DateTime Day { get; set; }
+        public int PlayedTimes { get; set; }
     }
 }

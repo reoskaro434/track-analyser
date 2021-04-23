@@ -393,3 +393,5 @@ C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\Track
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\bin\Debug\net5.0\TrackAnalyser.DataAccess.dll
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\bin\Debug\net5.0\TrackAnalyser.DataAccess.pdb
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\obj\Debug\net5.0\TrackAnalyser.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\bin\Debug\net5.0\TrackAnalyser.Utilities.dll
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\bin\Debug\net5.0\TrackAnalyser.Utilities.pdb

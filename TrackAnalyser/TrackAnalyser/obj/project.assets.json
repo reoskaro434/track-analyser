@@ -1868,6 +1868,20 @@
         "runtime": {
           "bin/placeholder/TrackAnalyser.Models.dll": {}
         }
+      },
+      "TrackAnalyser.Utilities/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1",
+          "TrackAnalyser.DataAccess": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/TrackAnalyser.Utilities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TrackAnalyser.Utilities.dll": {}
+        }
       }
     }
   },
@@ -6521,6 +6535,11 @@
       "type": "project",
       "path": "../TrackAnalyser.Models/TrackAnalyser.Models.csproj",
       "msbuildProject": "../TrackAnalyser.Models/TrackAnalyser.Models.csproj"
+    },
+    "TrackAnalyser.Utilities/1.0.0": {
+      "type": "project",
+      "path": "../TrackAnalyser.Utilities/TrackAnalyser.Utilities.csproj",
+      "msbuildProject": "../TrackAnalyser.Utilities/TrackAnalyser.Utilities.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6532,7 +6551,8 @@
       "Microsoft.VisualStudio.Web.BrowserLink >= 2.2.0",
       "Newtonsoft.Json >= 13.0.1",
       "TrackAnalyser.DataAccess >= 1.0.0",
-      "TrackAnalyser.Models >= 1.0.0"
+      "TrackAnalyser.Models >= 1.0.0",
+      "TrackAnalyser.Utilities >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -6572,6 +6592,9 @@
             },
             "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser.Models\\TrackAnalyser.Models.csproj": {
               "projectPath": "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser.Models\\TrackAnalyser.Models.csproj"
+            },
+            "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser.Utilities\\TrackAnalyser.Utilities.csproj": {
+              "projectPath": "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser.Utilities\\TrackAnalyser.Utilities.csproj"
             }
           }
         }
