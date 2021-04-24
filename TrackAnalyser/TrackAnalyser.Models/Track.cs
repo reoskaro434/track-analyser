@@ -18,5 +18,6 @@ namespace TrackAnalyser.Models
         public string Version { get; set; }
         public string Description { get; set; }
         public string CoverPicturePath { get; set; }
+        public IEnumerable<CanalTrack> Canals { get; set; }
     }
 }

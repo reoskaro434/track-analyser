@@ -23,7 +23,7 @@ namespace TrackAnalyser.Controllers
         }
         private string GetBarChartData(int trackId)
         {
-            IEnumerable<Canal> canals = _unitOfWork.Canals.Find(p => p.TrackStatistics == trackId);
+         //   IEnumerable<Canal> canals = _unitOfWork.Canals.Find(p => p.TrackStatistics == trackId);
             TrackStatistic trackStatistic = _unitOfWork.TrackStatistics.Find(p => p.TrackId == trackId).FirstOrDefault();
             List<BarDateCount> barDateCountList = new List<BarDateCount>();
 

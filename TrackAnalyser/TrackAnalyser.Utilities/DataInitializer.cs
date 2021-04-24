@@ -132,17 +132,40 @@ namespace TrackAnalyser.Utilities
 
             #region Canals
 
+         
+
             unitOfWork.Canals.Add(new Canal()
             {
                 Name = "RadioS",
+                Tracks = new List<CanalTrack>() {
+                    new CanalTrack() { Track= savant1 } ,
+                   new CanalTrack() { Track= savant2 },
+                    new CanalTrack() { Track= savant3 },
+                    new CanalTrack() { Track= ironmaiden1 } ,
+                     new CanalTrack() { Track= infectedmuschroom1 },
+                    new CanalTrack() { Track= blindguardian1 } }
             });
             unitOfWork.Canals.Add(new Canal()
             {
                 Name = "AntRadio",
+                Tracks = new List<CanalTrack>() {
+                    new CanalTrack() { Track= savant1 } ,
+                   new CanalTrack() { Track= savant2 },
+                    new CanalTrack() { Track= savant3 },
+                    new CanalTrack() { Track= ironmaiden1 } ,
+                     new CanalTrack() { Track= infectedmuschroom1 },
+                    new CanalTrack() { Track= blindguardian1 } }
             });
             unitOfWork.Canals.Add(new Canal()
             {
                 Name = "XYZMusic",
+                Tracks = new List<CanalTrack>() {
+                    new CanalTrack() { Track= savant1 } ,
+                   new CanalTrack() { Track= savant2 },
+                    new CanalTrack() { Track= savant3 },
+                    new CanalTrack() { Track= ironmaiden1 } ,
+                     new CanalTrack() { Track= infectedmuschroom1 },
+                    new CanalTrack() { Track= blindguardian1 } }
             });
 
             unitOfWork.Save();
@@ -209,6 +232,33 @@ namespace TrackAnalyser.Utilities
             Canal canal1 = unitOfWork.Canals.Find(predicate => predicate.Name == "RadioS").FirstOrDefault();
             Canal canal2 = unitOfWork.Canals.Find(predicate => predicate.Name == "AntRadio").FirstOrDefault();
             Canal canal3 = unitOfWork.Canals.Find(predicate => predicate.Name == "XYZMusic").FirstOrDefault();
+
+            savant1.Canals = new List<CanalTrack>() {
+                    new CanalTrack() { Canal = canal1 } ,
+                  new CanalTrack() { Canal = canal2} ,
+                   new CanalTrack() { Canal = canal3 } };
+          
+            savant2.Canals = new List<CanalTrack>() {
+                    new CanalTrack() { Canal = canal1 } ,
+                  new CanalTrack() { Canal = canal2} ,
+                   new CanalTrack() { Canal = canal3 } };
+            savant3.Canals = new List<CanalTrack>() {
+                    new CanalTrack() { Canal = canal1 } ,
+                  new CanalTrack() { Canal = canal2} ,
+                   new CanalTrack() { Canal = canal3 } };
+            infectedmuschroom1.Canals = new List<CanalTrack>() {
+                    new CanalTrack() { Canal = canal1 } ,
+                  new CanalTrack() { Canal = canal2} ,
+                   new CanalTrack() { Canal = canal3 } };
+            ironmaiden1.Canals = new List<CanalTrack>() {
+                    new CanalTrack() { Canal = canal1 } ,
+                  new CanalTrack() { Canal = canal2} ,
+                   new CanalTrack() { Canal = canal3 } };
+            blindguardian1.Canals = new List<CanalTrack>() {
+                    new CanalTrack() { Canal = canal1 } ,
+                  new CanalTrack() { Canal = canal2} ,
+                   new CanalTrack() { Canal = canal3 } };
+
             canal1.TrackStatistics = new List<TrackStatistic> { trackStatistic1, trackStatistic2 };
             canal2.TrackStatistics = new List<TrackStatistic> { trackStatistic3, trackStatistic4 };
             canal3.TrackStatistics = new List<TrackStatistic> { trackStatistic5, trackStatistic6 };
