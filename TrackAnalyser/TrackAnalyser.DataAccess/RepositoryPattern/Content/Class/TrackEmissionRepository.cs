@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,10 @@ namespace TrackAnalyser.DataAccess.RepositoryPattern.Content.Class
         public TrackEmissionRepository(ApplicationDbContext db) : base(db)
         {
 
+        }
+        public IEnumerable<TrackEmission> GetEagerAll()
+        {
+            return _db.TrackEmissions.Include(p => p.Track).Include(p => p.Canal).ToList();
         }
     }
 }

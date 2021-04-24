@@ -10,16 +10,59 @@ using TrackAnalyser.Models.ChartModel;
 using Newtonsoft.Json;
 using TrackAnalyser.Models.ChartModel.BarModel;
 using TrackAnalyser.Models.ChartModel.PieModel;
+using TrackAnalyser.DataAccess.RepositoryPattern;
 
 namespace TrackAnalyser.Controllers
 {
     public class TrackDetailsController : Controller
     {
-        public IActionResult Index()
+        IUnitOfWork _unitOfWork;
+        public TrackDetailsController(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+        private string GetBarChartData(int trackId)
+        {
+            IEnumerable<Canal> canals = _unitOfWork.Canals.Find(p => p.TrackStatistics == trackId);
+            TrackStatistic trackStatistic = _unitOfWork.TrackStatistics.Find(p => p.TrackId == trackId).FirstOrDefault();
+            List<BarDateCount> barDateCountList = new List<BarDateCount>();
+
+            foreach (var element in trackStatistic.DayStatistics)
+            {
+                barDateCountList.Add(new BarDateCount() {Date = element.Day.ToString("dd / MM / yyyy"), Count = element.PlayedTimes});
+            }
+
+            return JsonConvert.SerializeObject(new BarChartModel() { BarDateCounts = barDateCountList.ToArray() });
+        }
+        private string GetPieChartData(int trackId)
+        {
+            TrackStatistic trackStatistic = _unitOfWork.TrackStatistics.Find(p => p.TrackId == trackId).FirstOrDefault();
+            PieNameCount[] pieChartCounts = new PieNameCount[3];
+            PieChartModel pieChartModel = new PieChartModel()
+            {
+                PieNameCounts = pieChartCounts
+            };
+            return JsonConvert.SerializeObject(pieChartModel);
+        }
+        private TrackDetailsViewModel GetModel(int trackId)
+        {
+            Track track = _unitOfWork.Tracks.Find(p => p.Id == trackId).FirstOrDefault();
+            
+            return new TrackDetailsViewModel()
+            {
+                Author = track.Artist.Name,
+                Description = track.Description,
+                Version = track.Version,
+                LastPlayedWeek = GetBarChartData(trackId),
+                Canals = GetPieChartData(trackId),
+                Duration = track.Duration.ToString("mm/ss")
+           };
+        }
+        public IActionResult Index(int? trackId)
         {
             //TEST
-
-            BarDateCount barDateCount0 = new BarDateCount() { Date = DateTime.Now.ToString("dd/MM/yyyy"), Count = 12 };
+            
+/*            BarDateCount barDateCount0 = new BarDateCount() { Date = DateTime.Now.ToString("dd/MM/yyyy"), Count = 12 };
             BarDateCount barDateCount1 = new BarDateCount() { Date = DateTime.Now.ToString("dd/MM/yyyy"), Count = 51 };
             BarDateCount barDateCount2 = new BarDateCount() { Date = DateTime.Now.ToString("dd/MM/yyyy"), Count = 31 };
             BarDateCount barDateCount3 = new BarDateCount() { Date = DateTime.Now.ToString("dd/MM/yyyy"), Count = 44 };
@@ -58,8 +101,14 @@ namespace TrackAnalyser.Controllers
                 Canals = JsonConvert.SerializeObject(pieChartModel),
                 Duration = DateTime.Now.ToLongTimeString()
         };
-            return View(model);
+            return View(model);*/
 
+
+
+            if (trackId != null)
+                return View(GetModel((int)trackId));
+            else
+                return View(new ErrorViewModel());
         }
     }
 }

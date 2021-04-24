@@ -13,9 +13,9 @@ namespace TrackAnalyser.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        private BroadcastListViewModel getModel()
+        private BroadcastListViewModel GetModel()
         {
-            IEnumerable<TrackEmission> trackEmissions = _unitOfWork.TrackEmissions.GetAll();
+            IEnumerable<TrackEmission> trackEmissions = _unitOfWork.TrackEmissions.GetEagerAll();
             List<TrackEmissionViewModel> viewModelList = new List<TrackEmissionViewModel>();
 
             foreach (var element in trackEmissions)
@@ -25,7 +25,7 @@ namespace TrackAnalyser.Controllers
                     CanalName = element.Canal.Name,
                     TrackPicturePath = element.Track.CoverPicturePath,
                     TrackDescription = element.Track.Description,
-                    EmissionDate = element.BeginDateTime.ToString("dd/MM/yyyy"),
+                    EmissionDate = element.BeginDateTime.ToString("dd/MM/yyyy HH:mm:ss"),
                     EmissionTime = element.EmissionTime.ToString("mm:ss"),
                     TrackId = element.Track.Id
                 });
@@ -41,27 +41,11 @@ namespace TrackAnalyser.Controllers
 
         public IActionResult Index()
         {
-            //Test
-/*            List<TrackEmissionViewModel> trackEmissionList = new List<TrackEmissionViewModel>();
-            TrackEmissionViewModel trackEmission = new TrackEmissionViewModel()
-            {
-                CanalName = "Radio-Zet",
-                TrackPicturePath = "/pictures/poison__the_parish.jpg",
-                TrackDescription = "description description description description description",
-                EmissionDate = "10.06.2021",
-                EmissionTime = "5:32",
-                TrackId = 13
-            };
-            trackEmissionList.Add(trackEmission);
-            BroadcastListViewModel model = new BroadcastListViewModel()
-            {
-                TrackEmissions = trackEmissionList
-            };
-            return View(model);*/
+        //uncomment for setting up DB
 
             TrackAnalyser.Utilities.DataInitializer.SetDatabase(_unitOfWork);
 
-            return View(getModel());
+            return View(GetModel());
         }
     }
 }
