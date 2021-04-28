@@ -15,11 +15,12 @@ namespace TrackAnalyser.Utilities
             if (unitOfWork.Tracks.GetAll().ToList().Count > 0)
                 return;
 
+            #region Names of Artists
             unitOfWork.Artists.Add(new Artist()
             {
                 Name = "Savant",
             });
-            unitOfWork.Artists.Add(new Artist()
+          /*  unitOfWork.Artists.Add(new Artist()
             {
                 Name = "Infected Mushroom",
             });
@@ -31,13 +32,17 @@ namespace TrackAnalyser.Utilities
             {
                 Name = "Blind Guardian",
             });
-
+*/
             unitOfWork.Save();
+           
 
             Artist savant = unitOfWork.Artists.Find(predicate => predicate.Name == "Savant").FirstOrDefault();
-            Artist infectedMuschroom = unitOfWork.Artists.Find(predicate => predicate.Name == "Infected Mushroom").FirstOrDefault();
+       /*   Artist infectedMuschroom = unitOfWork.Artists.Find(predicate => predicate.Name == "Infected Mushroom").FirstOrDefault();
             Artist ironMaiden = unitOfWork.Artists.Find(predicate => predicate.Name == "Iron Maiden").FirstOrDefault();
-            Artist blindGuardian = unitOfWork.Artists.Find(predicate => predicate.Name == "Blind Guardian").FirstOrDefault();
+            Artist blindGuardian = unitOfWork.Artists.Find(predicate => predicate.Name == "Blind Guardian").FirstOrDefault();*/
+            #endregion
+
+            #region Tracks
 
             unitOfWork.Tracks.Add(new Track()
             {
@@ -74,7 +79,7 @@ namespace TrackAnalyser.Utilities
                 Version = "Original Mix",
                 Artist = savant
             });
-            unitOfWork.Tracks.Add(new Track()
+        /*    unitOfWork.Tracks.Add(new Track()
             {
                 CoverPicturePath = "/pictures/infected_mushroom_army_of_mushrooms.jpg",
                 Duration = new DateTime(1, 1, 1, 0, 6, 6),
@@ -106,279 +111,276 @@ namespace TrackAnalyser.Utilities
                 Title = "Nightfall",
                 Version = "Radio Version",
                 Artist = blindGuardian
-            });
+            });*/
 
             unitOfWork.Save();
        
 
-            Track savant1 = unitOfWork.Tracks.Find(predicate => predicate.Title == "Desert Eagle").FirstOrDefault();
-            Track savant2 = unitOfWork.Tracks.Find(predicate => predicate.Title == "Apocalypse").FirstOrDefault();
-            Track savant3 = unitOfWork.Tracks.Find(predicate => predicate.Title == "The Beginning Is Near").FirstOrDefault();
-            Track ironmaiden1 = unitOfWork.Tracks.Find(predicate => predicate.Title == "Aces High").FirstOrDefault();
+            Track savantDesEag = unitOfWork.Tracks.Find(predicate => predicate.Title == "Desert Eagle").FirstOrDefault();
+            Track savantApoc = unitOfWork.Tracks.Find(predicate => predicate.Title == "Apocalypse").FirstOrDefault();
+            Track savantBegNear = unitOfWork.Tracks.Find(predicate => predicate.Title == "The Beginning Is Near").FirstOrDefault();
+       /*     Track ironmaiden1 = unitOfWork.Tracks.Find(predicate => predicate.Title == "Aces High").FirstOrDefault();
             Track infectedmuschroom1 = unitOfWork.Tracks.Find(predicate => predicate.Title == "Never Mind").FirstOrDefault();
-            Track blindguardian1 = unitOfWork.Tracks.Find(predicate => predicate.Title == "Nightfall").FirstOrDefault();
+            Track blindguardian1 = unitOfWork.Tracks.Find(predicate => predicate.Title == "Nightfall").FirstOrDefault();*/
 
+            #endregion
+
+            #region Assigning Tracks to Artists
             savant = unitOfWork.Artists.Find(predicate => predicate.Name == "Savant").FirstOrDefault();
-            infectedMuschroom = unitOfWork.Artists.Find(predicate => predicate.Name == "Infected Mushroom").FirstOrDefault();
+    /*        infectedMuschroom = unitOfWork.Artists.Find(predicate => predicate.Name == "Infected Mushroom").FirstOrDefault();
             ironMaiden = unitOfWork.Artists.Find(predicate => predicate.Name == "Iron Maiden").FirstOrDefault();
-            blindGuardian = unitOfWork.Artists.Find(predicate => predicate.Name == "Blind Guardian").FirstOrDefault();
+            blindGuardian = unitOfWork.Artists.Find(predicate => predicate.Name == "Blind Guardian").FirstOrDefault();*/
 
-            savant.Tracks = new List<Track>() { savant1 , savant2 , savant3 };
-            infectedMuschroom.Tracks = new List<Track>() { infectedmuschroom1 };
+            savant.Tracks = new List<Track>() { savantDesEag , savantApoc , savantBegNear };
+       /*     infectedMuschroom.Tracks = new List<Track>() { infectedmuschroom1 };
             ironMaiden.Tracks = new List<Track>() { ironmaiden1 };
-            blindGuardian.Tracks = new List<Track>() { blindguardian1 };
+            blindGuardian.Tracks = new List<Track>() { blindguardian1 };*/
 
             unitOfWork.Save();
 
-            #region Canals
+            #endregion
 
-         
+            #region Adding Track to Canals
 
             unitOfWork.Canals.Add(new Canal()
             {
                 Name = "RadioS",
                 Tracks = new List<CanalTrack>() {
-                    new CanalTrack() { Track= savant1 } ,
-                   new CanalTrack() { Track= savant2 },
-                    new CanalTrack() { Track= savant3 },
-                    new CanalTrack() { Track= ironmaiden1 } ,
-                     new CanalTrack() { Track= infectedmuschroom1 },
-                    new CanalTrack() { Track= blindguardian1 } }
+                   new CanalTrack() { Track= savantApoc },
+                    new CanalTrack() { Track= savantBegNear },
+            }
             });
             unitOfWork.Canals.Add(new Canal()
             {
                 Name = "AntRadio",
                 Tracks = new List<CanalTrack>() {
-                    new CanalTrack() { Track= savant1 } ,
-                   new CanalTrack() { Track= savant2 },
-                    new CanalTrack() { Track= savant3 },
-                    new CanalTrack() { Track= ironmaiden1 } ,
-                     new CanalTrack() { Track= infectedmuschroom1 },
-                    new CanalTrack() { Track= blindguardian1 } }
+                   new CanalTrack() { Track= savantApoc },
+            }
             });
             unitOfWork.Canals.Add(new Canal()
             {
                 Name = "XYZMusic",
                 Tracks = new List<CanalTrack>() {
-                    new CanalTrack() { Track= savant1 } ,
-                   new CanalTrack() { Track= savant2 },
-                    new CanalTrack() { Track= savant3 },
-                    new CanalTrack() { Track= ironmaiden1 } ,
-                     new CanalTrack() { Track= infectedmuschroom1 },
-                    new CanalTrack() { Track= blindguardian1 } }
+                    new CanalTrack() { Track= savantDesEag } ,
+                   new CanalTrack() { Track= savantApoc },
+             }
             });
 
             unitOfWork.Save();
             #endregion
 
-            #region TracksStatstics
+            #region TracksStatstics and DayStatistics
 
-
-            DayStatistic dayStatistic1 = new DayStatistic() { Day = new DateTime(2020, 6, 10, 0, 0, 0), PlayedTimes = 432 };
-            DayStatistic dayStatistic2 = new DayStatistic() { Day = new DateTime(2020, 6, 10, 0, 0, 0), PlayedTimes = 32 };
-            DayStatistic dayStatistic3 = new DayStatistic() { Day = new DateTime(2020, 6, 10, 0, 0, 0), PlayedTimes = 212 };
-            DayStatistic dayStatistic4 = new DayStatistic() { Day = new DateTime(2020, 6, 11, 0, 0, 0), PlayedTimes = 152 };
-            DayStatistic dayStatistic5 = new DayStatistic() { Day = new DateTime(2020, 6, 11, 0, 0, 0), PlayedTimes = 713 };
-            DayStatistic dayStatistic6 = new DayStatistic() { Day = new DateTime(2020, 6, 11, 0, 0, 0), PlayedTimes = 512 };
-            DayStatistic dayStatistic7 = new DayStatistic() { Day = new DateTime(2020, 6, 12, 0, 0, 0), PlayedTimes = 96 };
-            DayStatistic dayStatistic8 = new DayStatistic() { Day = new DateTime(2020, 6, 12, 0, 0, 0), PlayedTimes = 993 };
-            DayStatistic dayStatistic9 = new DayStatistic() { Day = new DateTime(2020, 6, 12, 0, 0, 0), PlayedTimes = 34 };
-            DayStatistic dayStatistic10 = new DayStatistic() { Day = new DateTime(2020, 6, 12, 0, 0, 0), PlayedTimes = 122 };
-            DayStatistic dayStatistic11 = new DayStatistic() { Day = new DateTime(2020, 6, 13, 0, 0, 0), PlayedTimes = 531 };
-            DayStatistic dayStatistic12 = new DayStatistic() { Day = new DateTime(2020, 6, 13, 0, 0, 0), PlayedTimes = 442 };
-            DayStatistic dayStatistic13 = new DayStatistic() { Day = new DateTime(2020, 6, 13, 0, 0, 0), PlayedTimes = 13 };
-            DayStatistic dayStatistic14 = new DayStatistic() { Day = new DateTime(2020, 6, 13, 0, 0, 0), PlayedTimes = 52 };
-            DayStatistic dayStatistic15 = new DayStatistic() { Day = new DateTime(2020, 6, 15, 0, 0, 0), PlayedTimes = 82 };
-            DayStatistic dayStatistic16 = new DayStatistic() { Day = new DateTime(2020, 6, 15, 0, 0, 0), PlayedTimes = 82 };
-            DayStatistic dayStatistic17 = new DayStatistic() { Day = new DateTime(2020, 6, 15, 0, 0, 0), PlayedTimes = 82 };
-            DayStatistic dayStatistic18 = new DayStatistic() { Day = new DateTime(2020, 6, 15, 0, 0, 0), PlayedTimes = 82 };
-            DayStatistic dayStatistic19 = new DayStatistic() { Day = new DateTime(2020, 6, 15, 0, 0, 0), PlayedTimes = 82 };
-            DayStatistic dayStatistic20 = new DayStatistic() { Day = new DateTime(2020, 6, 15, 0, 0, 0), PlayedTimes = 82 };
-
-            TrackStatistic trackStatistic1 = new TrackStatistic()
+            TrackStatistic radioSSavBegNear = new TrackStatistic()
             {
-                DayStatistics = new List<DayStatistic>() { dayStatistic1, dayStatistic2, dayStatistic3, dayStatistic4, dayStatistic5 },
-                Track = savant1
+                DayStatistics = new List<DayStatistic>() {
+                  new DayStatistic() { Day = new DateTime(2020, 6, 22, 0, 0, 0), PlayedTimes = 22 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 23, 0, 0, 0), PlayedTimes = 12 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 24, 0, 0, 0), PlayedTimes = 42 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 25, 0, 0, 0), PlayedTimes = 52 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 26, 0, 0, 0), PlayedTimes = 72 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 27, 0, 0, 0), PlayedTimes = 47 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 28, 0, 0, 0), PlayedTimes = 13 }
+                },
+                Track = savantBegNear
             };
-            TrackStatistic trackStatistic2 = new TrackStatistic()
+            TrackStatistic radioSSavApoc = new TrackStatistic()
             {
-                DayStatistics = new List<DayStatistic>() { dayStatistic6, dayStatistic7, dayStatistic8 },
-                Track = savant2
+                DayStatistics = new List<DayStatistic>() {
+                  new DayStatistic() { Day = new DateTime(2020, 6, 22, 0, 0, 0), PlayedTimes = 12 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 23, 0, 0, 0), PlayedTimes = 122 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 24, 0, 0, 0), PlayedTimes = 12 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 25, 0, 0, 0), PlayedTimes = 512 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 26, 0, 0, 0), PlayedTimes = 12 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 27, 0, 0, 0), PlayedTimes = 45 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 28, 0, 0, 0), PlayedTimes = 66 }
+                },
+                Track = savantApoc
             };
-            TrackStatistic trackStatistic3 = new TrackStatistic()
+            TrackStatistic antRadioSavApoc = new TrackStatistic()
             {
-                DayStatistics = new List<DayStatistic>() { dayStatistic9, dayStatistic10, dayStatistic11 },
-                Track = savant3
+                DayStatistics = new List<DayStatistic>() {
+                  new DayStatistic() { Day = new DateTime(2020, 6, 22, 0, 0, 0), PlayedTimes = 51 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 23, 0, 0, 0), PlayedTimes = 65 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 24, 0, 0, 0), PlayedTimes = 13 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 25, 0, 0, 0), PlayedTimes = 21},
+                  new DayStatistic() { Day = new DateTime(2020, 6, 26, 0, 0, 0), PlayedTimes = 44 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 27, 0, 0, 0), PlayedTimes = 61 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 28, 0, 0, 0), PlayedTimes = 9 }
+                },
+                Track = savantApoc
             };
-            TrackStatistic trackStatistic4 = new TrackStatistic()
+            TrackStatistic xyzMusicSavApoc = new TrackStatistic()
             {
-                DayStatistics = new List<DayStatistic>() { dayStatistic12, dayStatistic13, dayStatistic14 },
-                Track = infectedmuschroom1
+                DayStatistics = new List<DayStatistic>() {
+                  new DayStatistic() { Day = new DateTime(2020, 6, 22, 0, 0, 0), PlayedTimes = 11 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 23, 0, 0, 0), PlayedTimes = 52 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 24, 0, 0, 0), PlayedTimes = 11 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 25, 0, 0, 0), PlayedTimes = 51},
+                  new DayStatistic() { Day = new DateTime(2020, 6, 26, 0, 0, 0), PlayedTimes = 42 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 27, 0, 0, 0), PlayedTimes = 81 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 28, 0, 0, 0), PlayedTimes = 82 }
+                },
+                Track = savantApoc
             };
-            TrackStatistic trackStatistic5 = new TrackStatistic()
+            TrackStatistic xyzMusicSavDesEag = new TrackStatistic()
             {
-                DayStatistics = new List<DayStatistic>() { dayStatistic15, dayStatistic16, dayStatistic17 },
-                Track = ironmaiden1
+                DayStatistics = new List<DayStatistic>() {
+                  new DayStatistic() { Day = new DateTime(2020, 6, 22, 0, 0, 0), PlayedTimes = 11 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 23, 0, 0, 0), PlayedTimes = 115 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 24, 0, 0, 0), PlayedTimes = 6 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 25, 0, 0, 0), PlayedTimes = 61},
+                  new DayStatistic() { Day = new DateTime(2020, 6, 26, 0, 0, 0), PlayedTimes = 92 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 27, 0, 0, 0), PlayedTimes = 2 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 28, 0, 0, 0), PlayedTimes = 11 }
+                },
+                Track = savantDesEag
             };
-            TrackStatistic trackStatistic6 = new TrackStatistic()
-            {
-                DayStatistics = new List<DayStatistic>() { dayStatistic18, dayStatistic19, dayStatistic20 },
-                Track = blindguardian1
-            };
+ 
             #endregion
 
-            #region TrackEmission
+            #region TrackEmissions
 
-            Canal canal1 = unitOfWork.Canals.Find(predicate => predicate.Name == "RadioS").FirstOrDefault();
-            Canal canal2 = unitOfWork.Canals.Find(predicate => predicate.Name == "AntRadio").FirstOrDefault();
-            Canal canal3 = unitOfWork.Canals.Find(predicate => predicate.Name == "XYZMusic").FirstOrDefault();
+            Canal radioS = unitOfWork.Canals.Find(predicate => predicate.Name == "RadioS").FirstOrDefault();
+            Canal antRadio = unitOfWork.Canals.Find(predicate => predicate.Name == "AntRadio").FirstOrDefault();
+            Canal xyzMusic = unitOfWork.Canals.Find(predicate => predicate.Name == "XYZMusic").FirstOrDefault();
 
-            savant1.Canals = new List<CanalTrack>() {
-                    new CanalTrack() { Canal = canal1 } ,
-                  new CanalTrack() { Canal = canal2} ,
-                   new CanalTrack() { Canal = canal3 } };
+            savantDesEag.Canals = new List<CanalTrack>() {
+                    new CanalTrack() { Canal = xyzMusic } ,
+            };
           
-            savant2.Canals = new List<CanalTrack>() {
-                    new CanalTrack() { Canal = canal1 } ,
-                  new CanalTrack() { Canal = canal2} ,
-                   new CanalTrack() { Canal = canal3 } };
-            savant3.Canals = new List<CanalTrack>() {
-                    new CanalTrack() { Canal = canal1 } ,
-                  new CanalTrack() { Canal = canal2} ,
-                   new CanalTrack() { Canal = canal3 } };
-            infectedmuschroom1.Canals = new List<CanalTrack>() {
-                    new CanalTrack() { Canal = canal1 } ,
-                  new CanalTrack() { Canal = canal2} ,
-                   new CanalTrack() { Canal = canal3 } };
-            ironmaiden1.Canals = new List<CanalTrack>() {
-                    new CanalTrack() { Canal = canal1 } ,
-                  new CanalTrack() { Canal = canal2} ,
-                   new CanalTrack() { Canal = canal3 } };
-            blindguardian1.Canals = new List<CanalTrack>() {
-                    new CanalTrack() { Canal = canal1 } ,
-                  new CanalTrack() { Canal = canal2} ,
-                   new CanalTrack() { Canal = canal3 } };
+            savantApoc.Canals = new List<CanalTrack>() {
+                    new CanalTrack() { Canal = antRadio} ,
+                    new CanalTrack() { Canal = radioS} ,
+                    new CanalTrack() { Canal = xyzMusic} ,
+             };
 
-            canal1.TrackStatistics = new List<TrackStatistic> { trackStatistic1, trackStatistic2 };
-            canal2.TrackStatistics = new List<TrackStatistic> { trackStatistic3, trackStatistic4 };
-            canal3.TrackStatistics = new List<TrackStatistic> { trackStatistic5, trackStatistic6 };
+            savantBegNear.Canals = new List<CanalTrack>() {
+                    new CanalTrack() { Canal = radioS } ,
+             
+            };
 
-            unitOfWork.Canals.Update(canal1);
-            unitOfWork.Canals.Update(canal2);
-            unitOfWork.Canals.Update(canal3);
+            radioS.TrackStatistics = new List<TrackStatistic> { radioSSavApoc, radioSSavBegNear };
+            antRadio.TrackStatistics = new List<TrackStatistic> { antRadioSavApoc };
+            xyzMusic.TrackStatistics = new List<TrackStatistic> { xyzMusicSavApoc,xyzMusicSavDesEag};
+
+            unitOfWork.Canals.Update(radioS);
+            unitOfWork.Canals.Update(antRadio);
+            unitOfWork.Canals.Update(xyzMusic);
+
 
             unitOfWork.TrackEmissions.Add(new TrackEmission()
             {
-                Track = savant1,
-                Canal = canal1,
-                BeginDateTime = new DateTime(2020, 7, 13, 22, 13, 4),
-                EmissionTime = savant1.Duration
+                Track = savantDesEag,
+                Canal = radioS,
+                BeginDateTime = new DateTime(2020, 7,1, 22, 13, 4),
+                EmissionTime = savantDesEag.Duration
             });
             unitOfWork.TrackEmissions.Add(new TrackEmission()
             {
-                Track = savant1,
-                Canal = canal1,
-                BeginDateTime = new DateTime(2020, 7, 14, 22, 13, 4),
-                EmissionTime = savant1.Duration
+                Track = savantDesEag,
+                Canal = radioS,
+                BeginDateTime = new DateTime(2020, 7, 2, 22, 13, 4),
+                EmissionTime = savantDesEag.Duration
             });
             unitOfWork.TrackEmissions.Add(new TrackEmission()
             {
-                Track = savant2,
-                Canal = canal2,
+                Track = savantApoc,
+                Canal = antRadio,
                 BeginDateTime = new DateTime(2020, 7, 15, 22, 13, 4),
-                EmissionTime = savant2.Duration
+                EmissionTime = savantApoc.Duration
             });
             unitOfWork.TrackEmissions.Add(new TrackEmission()
             {
-                Track = savant2,
-                Canal = canal1,
+                Track = savantApoc,
+                Canal = radioS,
                 BeginDateTime = new DateTime(2020, 7, 15, 22, 13, 4),
-                EmissionTime = savant2.Duration
+                EmissionTime = savantApoc.Duration
             });
             unitOfWork.TrackEmissions.Add(new TrackEmission()
             {
-                Track = savant3,
-                Canal = canal3,
+                Track = savantBegNear,
+                Canal = xyzMusic,
                 BeginDateTime = new DateTime(2020, 7, 15, 20, 13, 4),
-                EmissionTime = savant3.Duration
+                EmissionTime = savantBegNear.Duration
             });
-            unitOfWork.TrackEmissions.Add(new TrackEmission()
+          /*  unitOfWork.TrackEmissions.Add(new TrackEmission()
             {
                 Track = ironmaiden1,
-                Canal = canal1,
+                Canal = radioS,
                 BeginDateTime = new DateTime(2020, 7, 18, 16, 0, 0),
                 EmissionTime = ironmaiden1.Duration
             });
             unitOfWork.TrackEmissions.Add(new TrackEmission()
             {
                 Track = ironmaiden1,
-                Canal = canal1,
+                Canal = radioS,
                 BeginDateTime = new DateTime(2020, 7, 18, 18, 0, 0),
                 EmissionTime = ironmaiden1.Duration
             });
             unitOfWork.TrackEmissions.Add(new TrackEmission()
             {
                 Track = ironmaiden1,
-                Canal = canal2,
+                Canal = antRadio,
                 BeginDateTime = new DateTime(2020, 7, 17, 17, 0, 0),
                 EmissionTime = ironmaiden1.Duration
             });
             unitOfWork.TrackEmissions.Add(new TrackEmission()
             {
                 Track = ironmaiden1,
-                Canal = canal2,
+                Canal = antRadio,
                 BeginDateTime = new DateTime(2020, 7, 17, 19, 0, 0),
                 EmissionTime = ironmaiden1.Duration
             });
             unitOfWork.TrackEmissions.Add(new TrackEmission()
             {
                 Track = infectedmuschroom1,
-                Canal = canal3,
+                Canal = xyzMusic,
                 BeginDateTime = new DateTime(2020, 7, 15, 15, 11, 0),
                 EmissionTime = infectedmuschroom1.Duration
             });
             unitOfWork.TrackEmissions.Add(new TrackEmission()
             {
                 Track = infectedmuschroom1,
-                Canal = canal3,
+                Canal = xyzMusic,
                 BeginDateTime = new DateTime(2020, 7, 15, 13, 41, 0),
                 EmissionTime = infectedmuschroom1.Duration
             });
             unitOfWork.TrackEmissions.Add(new TrackEmission()
             {
                 Track = infectedmuschroom1,
-                Canal = canal3,
+                Canal = xyzMusic,
                 BeginDateTime = new DateTime(2020, 7, 15, 12, 33, 0),
                 EmissionTime = infectedmuschroom1.Duration
             });
             unitOfWork.TrackEmissions.Add(new TrackEmission()
             {
                 Track = blindguardian1,
-                Canal = canal1,
+                Canal = radioS,
                 BeginDateTime = new DateTime(2020, 7, 16, 14, 43, 0),
                 EmissionTime = blindguardian1.Duration
             });
             unitOfWork.TrackEmissions.Add(new TrackEmission()
             {
                 Track = blindguardian1,
-                Canal = canal1,
+                Canal = radioS,
                 BeginDateTime = new DateTime(2020, 7, 16, 13, 43, 0),
                 EmissionTime = blindguardian1.Duration
             });
             unitOfWork.TrackEmissions.Add(new TrackEmission()
             {
                 Track = blindguardian1,
-                Canal = canal1,
+                Canal = radioS,
                 BeginDateTime = new DateTime(2020, 7, 16, 12, 11, 0),
                 EmissionTime = blindguardian1.Duration
             }); unitOfWork.TrackEmissions.Add(new TrackEmission()
             {
                 Track = blindguardian1,
-                Canal = canal1,
+                Canal = radioS,
                 BeginDateTime = new DateTime(2020, 7, 16, 11, 31, 0),
                 EmissionTime = blindguardian1.Duration
             });
-
+*/
             #endregion
 
             unitOfWork.Save();

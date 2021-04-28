@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +14,7 @@ using TrackAnalyser.DataAccess.RepositoryPattern;
 
 namespace TrackAnalyser.Controllers
 {
+   
     public class TrackDetailsController : Controller
     {
         IUnitOfWork _unitOfWork;
@@ -23,30 +24,74 @@ namespace TrackAnalyser.Controllers
         }
         private string GetBarChartData(int trackId)
         {
-         //   IEnumerable<Canal> canals = _unitOfWork.Canals.Find(p => p.TrackStatistics == trackId);
-            TrackStatistic trackStatistic = _unitOfWork.TrackStatistics.Find(p => p.TrackId == trackId).FirstOrDefault();
-            List<BarDateCount> barDateCountList = new List<BarDateCount>();
+            IEnumerable<TrackStatistic> trackStatistics = _unitOfWork.TrackStatistics.Find(p => p.TrackId == trackId);
 
-            foreach (var element in trackStatistic.DayStatistics)
+            SortedList<string,BarDateCount> barDateCountList = new SortedList<string,BarDateCount>();
+
+            foreach (var trackStat in trackStatistics)
             {
-                barDateCountList.Add(new BarDateCount() {Date = element.Day.ToString("dd / MM / yyyy"), Count = element.PlayedTimes});
-            }
+                IEnumerable<DayStatistic> dayStatistics = new List<DayStatistic>(
+                    _unitOfWork.DayStatistics.Find(p => p.TrackStatisticId == trackStat.Id));
 
-            return JsonConvert.SerializeObject(new BarChartModel() { BarDateCounts = barDateCountList.ToArray() });
+                foreach (var dayStat in dayStatistics)
+                {
+                    var newBarDateCount = new BarDateCount()
+                    {
+                        Date = dayStat.Day.ToString("dd / MM / yyyy"),
+                        Count = dayStat.PlayedTimes
+                    };
+              
+                    var oldBarDateCount = barDateCountList.Where(p=>p.Key==newBarDateCount.Date);
+
+                    if (oldBarDateCount.FirstOrDefault().Key == null)
+                        barDateCountList.Add(newBarDateCount.Date, newBarDateCount);
+                    else
+                        barDateCountList[oldBarDateCount.FirstOrDefault().Key].Count =
+                            oldBarDateCount.FirstOrDefault().Value.Count + newBarDateCount.Count;
+                }
+            }
+                
+            return JsonConvert.SerializeObject(new BarChartModel() { BarDateCounts = barDateCountList.Values.ToArray() });
         }
         private string GetPieChartData(int trackId)
         {
-            TrackStatistic trackStatistic = _unitOfWork.TrackStatistics.Find(p => p.TrackId == trackId).FirstOrDefault();
+            IEnumerable<CanalTrack> canalTracks = _unitOfWork.Tracks.FindEager(trackId).Canals;
+            IEnumerable<TrackStatistic> trackStatistics = _unitOfWork.TrackStatistics.Find(p => p.TrackId == trackId);
+            List<PieNameCount> pieNameCountList = new List<PieNameCount>();
+
+            foreach (var trackStatistic in trackStatistics)
+            {
+                Canal canal = _unitOfWork.Canals.Find(p => p.Id == trackStatistic.CanalId).FirstOrDefault();
+                IEnumerable<DayStatistic> dayStatistics = new List<DayStatistic>(
+                    _unitOfWork.DayStatistics.Find(p1 => p1.TrackStatisticId == trackStatistic.Id));
+
+                int sum = 0;
+                foreach(var dayStat in dayStatistics)
+                  sum+= dayStat.PlayedTimes;
+
+                pieNameCountList.Add(new PieNameCount() {Name=canal.Name,Count=sum});
+            }
+
+            return JsonConvert.SerializeObject(new PieChartModel() { PieNameCounts = pieNameCountList.ToArray() });
+            /*PieNameCount pieNameCount0 = new PieNameCount() { Name = "Radio-Zet", Count = 32 };
+            PieNameCount pieNameCount1 = new PieNameCount() { Name = "Radio-Eska", Count = 15 };
+            PieNameCount pieNameCount2 = new PieNameCount() { Name = "RMF-FM", Count = 4 };
             PieNameCount[] pieChartCounts = new PieNameCount[3];
+
+            pieChartCounts[0] = pieNameCount0;
+            pieChartCounts[1] = pieNameCount1;
+            pieChartCounts[2] = pieNameCount2;
+
             PieChartModel pieChartModel = new PieChartModel()
             {
                 PieNameCounts = pieChartCounts
             };
-            return JsonConvert.SerializeObject(pieChartModel);
+
+            return JsonConvert.SerializeObject(pieChartModel);*/
         }
         private TrackDetailsViewModel GetModel(int trackId)
         {
-            Track track = _unitOfWork.Tracks.Find(p => p.Id == trackId).FirstOrDefault();
+            Track track = _unitOfWork.Tracks.FindEager(trackId);
             
             return new TrackDetailsViewModel()
             {
@@ -60,51 +105,6 @@ namespace TrackAnalyser.Controllers
         }
         public IActionResult Index(int? trackId)
         {
-            //TEST
-            
-/*            BarDateCount barDateCount0 = new BarDateCount() { Date = DateTime.Now.ToString("dd/MM/yyyy"), Count = 12 };
-            BarDateCount barDateCount1 = new BarDateCount() { Date = DateTime.Now.ToString("dd/MM/yyyy"), Count = 51 };
-            BarDateCount barDateCount2 = new BarDateCount() { Date = DateTime.Now.ToString("dd/MM/yyyy"), Count = 31 };
-            BarDateCount barDateCount3 = new BarDateCount() { Date = DateTime.Now.ToString("dd/MM/yyyy"), Count = 44 };
-            BarDateCount barDateCount4 = new BarDateCount() { Date = DateTime.Now.ToString("dd/MM/yyyy"), Count = 114 };
-      
-            BarDateCount[] barDateCounts = new BarDateCount[5];
-            barDateCounts[0] = barDateCount0;
-            barDateCounts[1] = barDateCount1;
-            barDateCounts[2] = barDateCount2;
-            barDateCounts[3] = barDateCount3;
-            barDateCounts[4] = barDateCount4;
-
-            BarChartModel barChartModel = new BarChartModel() {
-                BarDateCounts = barDateCounts 
-            };
-
-            PieNameCount pieNameCount0 = new PieNameCount() { Name = "Radio-Zet", Count = 32 };
-            PieNameCount pieNameCount1 = new PieNameCount() { Name = "Radio-Eska", Count = 15 };
-            PieNameCount pieNameCount2 = new PieNameCount() { Name = "RMF-FM", Count = 4 };
-            PieNameCount[] pieChartCounts = new PieNameCount[3];
-
-            pieChartCounts[0] = pieNameCount0;
-            pieChartCounts[1] = pieNameCount1;
-            pieChartCounts[2] = pieNameCount2;
-
-            PieChartModel pieChartModel = new PieChartModel() {
-                PieNameCounts = pieChartCounts
-            };
-
-            TrackDetailsViewModel model = new TrackDetailsViewModel() {
-                Author = "Johny Silverhand",
-                Begin = DateTime.Now, 
-                CurrentCanal = new Canal() { Name = "Radio-Zet" },
-                Description = "This is simple description about track which is being showed to user",
-                LastPlayedWeek = JsonConvert.SerializeObject(barChartModel),
-                Canals = JsonConvert.SerializeObject(pieChartModel),
-                Duration = DateTime.Now.ToLongTimeString()
-        };
-            return View(model);*/
-
-
-
             if (trackId != null)
                 return View(GetModel((int)trackId));
             else

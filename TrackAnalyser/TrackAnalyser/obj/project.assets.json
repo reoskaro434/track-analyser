@@ -857,7 +857,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Collections.dll": {}
         }
       },
       "System.Collections.Concurrent/4.3.0": {
@@ -901,7 +901,7 @@
           "System.Threading": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Collections.NonGeneric.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Collections.NonGeneric.dll": {}
@@ -1072,7 +1072,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Globalization.dll": {}
         }
       },
       "System.Globalization.Extensions/4.3.0": {
@@ -1392,7 +1392,7 @@
           "Microsoft.NETCore.Targets": "1.1.0"
         },
         "compile": {
-          "ref/netstandard1.5/_._": {}
+          "ref/netstandard1.5/System.Runtime.dll": {}
         }
       },
       "System.Runtime.Caching/4.7.0": {
@@ -6550,6 +6550,8 @@
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.5",
       "Microsoft.VisualStudio.Web.BrowserLink >= 2.2.0",
       "Newtonsoft.Json >= 13.0.1",
+      "System.Collections >= 4.3.0",
+      "System.Collections.NonGeneric >= 4.3.0",
       "TrackAnalyser.DataAccess >= 1.0.0",
       "TrackAnalyser.Models >= 1.0.0",
       "TrackAnalyser.Utilities >= 1.0.0"
@@ -6634,6 +6636,14 @@
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.1, )"
+          },
+          "System.Collections": {
+            "target": "Package",
+            "version": "[4.3.0, )"
+          },
+          "System.Collections.NonGeneric": {
+            "target": "Package",
+            "version": "[4.3.0, )"
           }
         },
         "imports": [
