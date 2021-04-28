@@ -20,6 +20,8 @@ namespace TrackAnalyser.Controllers
 
             foreach (var element in trackEmissions)
             {
+
+               Track track = _unitOfWork.Tracks.FindEager(element.TrackId);
                 viewModelList.Add(new TrackEmissionViewModel()
                 {
                     CanalName = element.Canal.Name,
@@ -27,7 +29,9 @@ namespace TrackAnalyser.Controllers
                     TrackDescription = element.Track.Description,
                     EmissionDate = element.BeginDateTime.ToString("dd/MM/yyyy HH:mm:ss"),
                     EmissionTime = element.EmissionTime.ToString("mm:ss"),
-                    TrackId = element.Track.Id
+                    TrackId = element.Track.Id,
+                    ArtistName = track.Artist.Name,
+                    TrackName = track.Title
                 });
             }
 

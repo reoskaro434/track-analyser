@@ -27,7 +27,8 @@ a {
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
+   
 }
 @media (min-width: 768px) {
   html {
@@ -73,4 +74,11 @@ body {
 .responsive {
     width: 100%;
     height: auto;
+}
+
+p {
+    font-family: 'Mukta', sans-serif;
+
+    font-size: large;
+    color:black;
 }

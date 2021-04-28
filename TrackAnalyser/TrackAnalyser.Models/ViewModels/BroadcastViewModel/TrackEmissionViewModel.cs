@@ -14,5 +14,7 @@ namespace TrackAnalyser.Models.ViewModels
         public string CanalName { get; set; }
         public string EmissionDate { get; set; }
         public string EmissionTime { get; set; }
+        public string TrackName { get; set; }
+        public string ArtistName { get; set; }
     }
 }

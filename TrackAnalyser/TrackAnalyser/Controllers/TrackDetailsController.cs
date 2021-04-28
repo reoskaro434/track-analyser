@@ -73,21 +73,6 @@ namespace TrackAnalyser.Controllers
             }
 
             return JsonConvert.SerializeObject(new PieChartModel() { PieNameCounts = pieNameCountList.ToArray() });
-            /*PieNameCount pieNameCount0 = new PieNameCount() { Name = "Radio-Zet", Count = 32 };
-            PieNameCount pieNameCount1 = new PieNameCount() { Name = "Radio-Eska", Count = 15 };
-            PieNameCount pieNameCount2 = new PieNameCount() { Name = "RMF-FM", Count = 4 };
-            PieNameCount[] pieChartCounts = new PieNameCount[3];
-
-            pieChartCounts[0] = pieNameCount0;
-            pieChartCounts[1] = pieNameCount1;
-            pieChartCounts[2] = pieNameCount2;
-
-            PieChartModel pieChartModel = new PieChartModel()
-            {
-                PieNameCounts = pieChartCounts
-            };
-
-            return JsonConvert.SerializeObject(pieChartModel);*/
         }
         private TrackDetailsViewModel GetModel(int trackId)
         {
