@@ -18,9 +18,9 @@ namespace TrackAnalyser.DataAccess.RepositoryPattern.Content.Class
 
         }
 
-        public Track FindEager(int trackId)
+        public async Task<Track> FindEager(int trackId)
         {
-            return _db.Tracks.Include(p => p.Artist).Include(p => p.Canals).FirstOrDefault(p=>p.Id == trackId);
+            return await _db.Tracks.Include(p => p.Artist).Include(p => p.Canals).FirstOrDefaultAsync(p=>p.Id == trackId);
         }
     }
 }

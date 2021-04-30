@@ -16,19 +16,19 @@ namespace TrackAnalyser.DataAccess.RepositoryPattern
         {
             _db = db;
         }
-        public void Add(TEntity entity)
+        public async void AddAsync(TEntity entity)
         {
-            _db.Add(entity);
+            await _db.AddAsync(entity);
         }
 
-        public void AddRange(IEnumerable<TEntity> entities)
+        public async void AddRangeAsync(IEnumerable<TEntity> entities)
         {
-            _db.AddRange(entities);
+            await _db.AddRangeAsync(entities);
         }
 
-        public void Reload(TEntity entity)
+        public async void ReloadAsync(TEntity entity)
         {
-            _db.Entry(entity).GetDatabaseValues();
+            await _db.Entry(entity).GetDatabaseValuesAsync();
         }
 
         public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
@@ -36,9 +36,9 @@ namespace TrackAnalyser.DataAccess.RepositoryPattern
             return _db.Set<TEntity>().Where(predicate);
         }
 
-        public TEntity Get(int id)
+        public async Task<TEntity> GetAsync(int id)
         {
-            return _db.Set<TEntity>().Find(id);
+            return await _db.Set<TEntity>().FindAsync(id);
         }
 
         public IEnumerable<TEntity> GetAll()

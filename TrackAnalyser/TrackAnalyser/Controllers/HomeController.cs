@@ -24,9 +24,6 @@ namespace TrackAnalyser.Controllers
 
         public IActionResult Index()
         {
-            //init data
-         //   DataInitializer dataInitializer = new DataInitializer();
-         //   dataInitializer.SetDatabase(_unitOfWork);
             return View();
         }
 

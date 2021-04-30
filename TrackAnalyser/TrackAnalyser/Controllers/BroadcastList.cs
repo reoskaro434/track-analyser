@@ -13,7 +13,7 @@ namespace TrackAnalyser.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        private BroadcastListViewModel GetModel()
+        private async Task<BroadcastListViewModel> GetModelAsync()
         {
             IEnumerable<TrackEmission> trackEmissions = _unitOfWork.TrackEmissions.GetEagerAll();
             List<TrackEmissionViewModel> viewModelList = new List<TrackEmissionViewModel>();
@@ -21,7 +21,7 @@ namespace TrackAnalyser.Controllers
             foreach (var element in trackEmissions)
             {
 
-               Track track = _unitOfWork.Tracks.FindEager(element.TrackId);
+               Track track = await _unitOfWork.Tracks.FindEager(element.TrackId);
                 viewModelList.Add(new TrackEmissionViewModel()
                 {
                     CanalName = element.Canal.Name,
@@ -43,16 +43,16 @@ namespace TrackAnalyser.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            TrackAnalyser.Utilities.DataInitializer.SetDatabase(_unitOfWork);
+           // TrackAnalyser.Utilities.DataInitializer.SetDatabase(_unitOfWork);
 
-            return View(GetModel());
+            return View(await GetModelAsync());
         }
 
-        public IActionResult SortByDuration()
+        public async Task<IActionResult> SortByDuration()
         {
-            BroadcastListViewModel model = GetModel();
+            BroadcastListViewModel model = await GetModelAsync();
             model.TrackEmissions.OrderBy(o => o.EmissionTime);
             model.TrackEmissions = model.TrackEmissions.OrderBy(o => o.EmissionTime).ToList();
             return PartialView( "_ShowTracks",model);

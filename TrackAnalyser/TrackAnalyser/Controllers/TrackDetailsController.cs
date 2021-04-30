@@ -18,6 +18,7 @@ namespace TrackAnalyser.Controllers
     public class TrackDetailsController : Controller
     {
         IUnitOfWork _unitOfWork;
+
         public TrackDetailsController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -53,9 +54,10 @@ namespace TrackAnalyser.Controllers
                 
             return JsonConvert.SerializeObject(new BarChartModel() { BarDateCounts = barDateCountList.Values.ToArray() });
         }
-        private string GetPieChartData(int trackId)
+        private async Task<string> GetPieChartDataAsync(int trackId)
         {
-            IEnumerable<CanalTrack> canalTracks = _unitOfWork.Tracks.FindEager(trackId).Canals;
+            Track track = await _unitOfWork.Tracks.FindEager(trackId);
+            IEnumerable<CanalTrack> canalTracks = track.Canals;
             IEnumerable<TrackStatistic> trackStatistics = _unitOfWork.TrackStatistics.Find(p => p.TrackId == trackId);
             List<PieNameCount> pieNameCountList = new List<PieNameCount>();
 
@@ -74,9 +76,9 @@ namespace TrackAnalyser.Controllers
 
             return JsonConvert.SerializeObject(new PieChartModel() { PieNameCounts = pieNameCountList.ToArray() });
         }
-        private TrackDetailsViewModel GetModel(int trackId)
+        private async Task<TrackDetailsViewModel> GetModel(int trackId)
         {
-            Track track = _unitOfWork.Tracks.FindEager(trackId);
+            Track track = await _unitOfWork.Tracks.FindEager(trackId);
             
             return new TrackDetailsViewModel()
             {
@@ -84,14 +86,14 @@ namespace TrackAnalyser.Controllers
                 Description = track.Description,
                 Version = track.Version,
                 LastPlayedWeek = GetBarChartData(trackId),
-                Canals = GetPieChartData(trackId),
+                Canals = GetPieChartDataAsync(trackId).Result,
                 Duration = track.Duration.ToString("mm/ss")
            };
         }
-        public IActionResult Index(int? trackId)
+        public async Task<IActionResult> Index(int? trackId)
         {
             if (trackId != null)
-                return View(GetModel((int)trackId));
+                return View(await GetModel((int)trackId));
             else
                 return View(new ErrorViewModel());
         }

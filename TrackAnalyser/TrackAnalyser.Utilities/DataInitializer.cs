@@ -16,7 +16,7 @@ namespace TrackAnalyser.Utilities
                 return;
 
             #region Names of Artists
-            unitOfWork.Artists.Add(new Artist()
+            unitOfWork.Artists.AddAsync(new Artist()
             {
                 Name = "Savant",
             });
@@ -44,7 +44,7 @@ namespace TrackAnalyser.Utilities
 
             #region Tracks
 
-            unitOfWork.Tracks.Add(new Track()
+            unitOfWork.Tracks.AddAsync(new Track()
             {
                 CoverPicturePath = "/pictures/savant_zion.png",
                 Duration = new DateTime(1, 1, 1, 0, 3, 34),
@@ -56,7 +56,7 @@ namespace TrackAnalyser.Utilities
                 Version = "Radio Version",
                 Artist = savant
             });
-            unitOfWork.Tracks.Add(new Track()
+            unitOfWork.Tracks.AddAsync(new Track()
             {
                 CoverPicturePath = "/pictures/savant_zion.png",
                 Duration = new DateTime(1, 1, 1, 0, 7, 12),
@@ -68,7 +68,7 @@ namespace TrackAnalyser.Utilities
                 Version = "Radio Version",
                 Artist = savant
             });
-            unitOfWork.Tracks.Add(new Track()
+            unitOfWork.Tracks.AddAsync(new Track()
             {
                 CoverPicturePath = "/pictures/savant_alchemist.jpg",
                 Duration = new DateTime(1, 1, 1, 0, 4, 16),
@@ -142,7 +142,7 @@ namespace TrackAnalyser.Utilities
 
             #region Adding Track to Canals
 
-            unitOfWork.Canals.Add(new Canal()
+            unitOfWork.Canals.AddAsync(new Canal()
             {
                 Name = "RadioS",
                 Tracks = new List<CanalTrack>() {
@@ -150,14 +150,14 @@ namespace TrackAnalyser.Utilities
                     new CanalTrack() { Track= savantBegNear },
             }
             });
-            unitOfWork.Canals.Add(new Canal()
+            unitOfWork.Canals.AddAsync(new Canal()
             {
                 Name = "AntRadio",
                 Tracks = new List<CanalTrack>() {
                    new CanalTrack() { Track= savantApoc },
             }
             });
-            unitOfWork.Canals.Add(new Canal()
+            unitOfWork.Canals.AddAsync(new Canal()
             {
                 Name = "XYZMusic",
                 Tracks = new List<CanalTrack>() {
@@ -269,35 +269,35 @@ namespace TrackAnalyser.Utilities
             unitOfWork.Canals.Update(xyzMusic);
 
 
-            unitOfWork.TrackEmissions.Add(new TrackEmission()
+            unitOfWork.TrackEmissions.AddAsync(new TrackEmission()
             {
                 Track = savantDesEag,
                 Canal = radioS,
                 BeginDateTime = new DateTime(2020, 7,1, 22, 13, 4),
                 EmissionTime = savantDesEag.Duration
             });
-            unitOfWork.TrackEmissions.Add(new TrackEmission()
+            unitOfWork.TrackEmissions.AddAsync(new TrackEmission()
             {
                 Track = savantDesEag,
                 Canal = radioS,
                 BeginDateTime = new DateTime(2020, 7, 2, 22, 13, 4),
                 EmissionTime = savantDesEag.Duration
             });
-            unitOfWork.TrackEmissions.Add(new TrackEmission()
+            unitOfWork.TrackEmissions.AddAsync(new TrackEmission()
             {
                 Track = savantApoc,
                 Canal = antRadio,
                 BeginDateTime = new DateTime(2020, 7, 15, 22, 13, 4),
                 EmissionTime = savantApoc.Duration
             });
-            unitOfWork.TrackEmissions.Add(new TrackEmission()
+            unitOfWork.TrackEmissions.AddAsync(new TrackEmission()
             {
                 Track = savantApoc,
                 Canal = radioS,
                 BeginDateTime = new DateTime(2020, 7, 15, 22, 13, 4),
                 EmissionTime = savantApoc.Duration
             });
-            unitOfWork.TrackEmissions.Add(new TrackEmission()
+            unitOfWork.TrackEmissions.AddAsync(new TrackEmission()
             {
                 Track = savantBegNear,
                 Canal = xyzMusic,
