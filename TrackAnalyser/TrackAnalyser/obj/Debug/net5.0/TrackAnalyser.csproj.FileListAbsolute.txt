@@ -395,3 +395,4 @@ C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\Track
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\obj\Debug\net5.0\ref\TrackAnalyser.dll
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\obj\Debug\net5.0\TrackAnalyser.pdb
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\obj\Debug\net5.0\TrackAnalyser.genruntimeconfig.cache
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\obj\Debug\net5.0\Razor\Views\Shared\_ShowTracks.cshtml.g.cs

@@ -1,34 +1,49 @@
 ﻿@model TrackAnalyser.Models.ViewModels.BroadcastListViewModel
-    <div>
-        <br />
-        <br />
-        <div class="row">
-            <div class="col-md-5 mt-1">
-                <input type="text" class="form-control" placeholder="Find the track you are looking for...">
-            </div>
-            <div class="col-md-2">
-                <a class="btn btn-light btn-block mt-1" asp-action="" asp-route-id="" type="submit">search</a>
-            </div>
+<div>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-md-5 mt-1">
+            <input type="text" class="form-control" placeholder="Find the track you are looking for...">
         </div>
-        <br />
-        <br />
-        <br />
-        <div class="row d-flex">
-            <div class="col-md-2 m-1 d-flex">
-                <button class="btn btn-light flex-fill">emision</button>
-            </div>
-            <div class="col-md-2  m-1 d-flex">
-                <button class="btn btn-light flex-fill">canal</button>
-            </div>
-            <div class="col-md-2  m-1 d-flex">
-                <button class="btn btn-light flex-fill">duration</button>
-            </div>
-            <div class="col-md-2  m-1 d-flex">
-                <button class="btn btn-light flex-fill">information</button>
-            </div>
+        <div class="col-md-2">
+            <a class="btn btn-light btn-block mt-1" asp-action="" asp-route-id="" type="submit">search</a>
         </div>
-        <br />
-        <div class="list-group">
+    </div>
+    <br />
+    <br />
+    <br />
+    @* <div>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="1">emision</option>
+                <option value="2">canal</option>
+                <option value="3">duration</option>
+                <option value="4">information</option>
+            </select>
+        </div>*@
+    <br />
+    <br />
+    <br />
+    <div class="row d-flex">
+        <div class="col-md-2 m-1 d-flex">
+            <button class="btn btn-light flex-fill">emision</button>
+        </div>
+        <div class="col-md-2  m-1 d-flex">
+            <button class="btn btn-light flex-fill">canal</button>
+        </div>
+        <div id="duration" class="col-md-2  m-1 d-flex">
+            <button class="btn btn-light flex-fill">duration</button>
+        </div>
+        <div class="col-md-2  m-1 d-flex">
+            <button class="btn btn-light flex-fill">information</button>
+        </div>
+    </div>
+    <br />
+    <div id="showTrack">
+        @await Html.PartialAsync("_ShowTracks", Model)
+    </div>
+    @* <div class="list-group">
             @foreach (var element in Model.TrackEmissions)
             {
                 <a asp-action="Index" asp-controller="TrackDetails" asp-route-trackId="@element.TrackId" class="list-group-item list-group-item-action">
@@ -51,6 +66,7 @@
                     </div>
                 </a>
             }
-
-        </div>
-    </div>
+        </div>*@
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/showTracks.js"></script>

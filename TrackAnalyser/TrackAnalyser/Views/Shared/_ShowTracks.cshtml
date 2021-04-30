@@ -1,0 +1,26 @@
+﻿@model TrackAnalyser.Models.ViewModels.BroadcastListViewModel
+
+<div class="list-group">
+    @foreach (var element in Model.TrackEmissions)
+    {
+        <a asp-action="Index" asp-controller="TrackDetails" asp-route-trackId="@element.TrackId" class="list-group-item list-group-item-action">
+            <div class="d-flex flex-row mb-1 mt-1">
+                <div class="col-md-4">
+                    <picture>
+                        <img src=@element.TrackPicturePath class="rounded img-fluid img-thumbnail" style="max-width:100%">
+                    </picture>
+                </div>
+                <div class="row ml-1 flex-fill">
+                    <div class="col-md-5"><p>@element.TrackDescription</p></div>
+                    <div class="col-md-7">
+                        <div class="col"><p>Track: @element.TrackName</p></div>
+                        <div class="col"><p>Artist: @element.ArtistName</p></div>
+                        <div class="col"><p>Start at: @element.EmissionDate</p></div>
+                        <div class="col"><p>Canal: @element.CanalName</p></div>
+                        <div class="col"><p>Duration: @element.EmissionTime</p></div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    }
+</div>

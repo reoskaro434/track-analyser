@@ -45,11 +45,17 @@ namespace TrackAnalyser.Controllers
 
         public IActionResult Index()
         {
-        //uncomment for setting up DB
-
             TrackAnalyser.Utilities.DataInitializer.SetDatabase(_unitOfWork);
 
             return View(GetModel());
+        }
+
+        public IActionResult SortByDuration()
+        {
+            BroadcastListViewModel model = GetModel();
+            model.TrackEmissions.OrderBy(o => o.EmissionTime);
+            model.TrackEmissions = model.TrackEmissions.OrderBy(o => o.EmissionTime).ToList();
+            return PartialView( "_ShowTracks",model);
         }
     }
 }
