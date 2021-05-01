@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using TrackAnalyser.Models;
 using TrackAnalyser.DataAccess.RepositoryPattern;
 using TrackAnalyser.Utilities.SortStrategy;
+using TrackAnalyser.Utilities;
 
 namespace TrackAnalyser.Controllers
 {
@@ -14,9 +15,12 @@ namespace TrackAnalyser.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly SortStrategyContext _sortStrategyContext;
-        private async Task<BroadcastListViewModel> GetModelAsync()
+        private async Task<BroadcastListViewModel> GetModelAsync(string text = "")
         {
-            IEnumerable<TrackEmission> trackEmissions = _unitOfWork.TrackEmissions.GetEagerAll();
+            IEnumerable<TrackEmission> trackEmissions = _unitOfWork.
+                TrackEmissions.GetEagerAll().
+                Where(x => x.Track.Title.Contains(text,StringComparison.OrdinalIgnoreCase));
+
             List<TrackEmissionViewModel> viewModelList = new List<TrackEmissionViewModel>();
 
             foreach (var element in trackEmissions)
@@ -28,8 +32,8 @@ namespace TrackAnalyser.Controllers
                     CanalName = element.Canal.Name,
                     TrackPicturePath = element.Track.CoverPicturePath,
                     TrackDescription = element.Track.Description,
-                    EmissionDate = element.BeginDateTime.ToString("dd/MM/yyyy HH:mm:ss"),
-                    EmissionTime = element.EmissionTime.ToString("mm:ss"),
+                    EmissionDate = element.BeginDateTime.ToString(StaticDetails.DATE_TIME_FORMAT),
+                    EmissionTime = element.EmissionTime.ToString(StaticDetails.TIME_FORMAT),
                     TrackId = element.Track.Id,
                     ArtistName = track.Artist.Name,
                     TrackName = track.Title
@@ -52,10 +56,15 @@ namespace TrackAnalyser.Controllers
             return View(await GetModelAsync());
         }
 
-        public async Task<IActionResult> SortByDuration(int sortNumber, int sortType)
+        public async Task<IActionResult> UpdateEmissionList(int sortNumber, int sortType, string text)
         {
-            return  PartialView(
-                "_ShowTracks", _sortStrategyContext.Sort(await GetModelAsync(), sortNumber,sortType));
+            if (text == null)
+                text = "";
+
+            return PartialView(
+                "_ShowTracks",
+                _sortStrategyContext.Sort(await GetModelAsync(text), sortNumber, sortType));
         }
+
     }
 }

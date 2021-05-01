@@ -17,5 +17,9 @@ namespace TrackAnalyser.Utilities
         public const int SORT_DESCENDING = 1;
 
         public const int RANK_MAX_TRACKS_AMOUNT = 100;
+
+        public const string DATE_TIME_FORMAT = "dd/MM/yyyy HH:mm:ss";
+        public const string TIME_FORMAT = "mm:ss";
+        public const string DATE_FORMAT = "dd/MM/yyyy";
     }
 }

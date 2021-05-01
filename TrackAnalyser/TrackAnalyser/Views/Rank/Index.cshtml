@@ -1,10 +1,11 @@
-﻿@model TrackAnalyser.Models.ViewModels.RankViewModel 
+﻿@model TrackAnalyser.Models.ViewModels.RankViewModel
+@using TrackAnalyser.Utilities
 
 <div>
     <br />
     <br />
     <div class="text-center">
-        <p style="font-size:xx-large">This is the top 100 tracks </p>
+        <p style="font-size:xx-large">This is the top @StaticDetails.RANK_MAX_TRACKS_AMOUNT tracks </p>
     </div>
     <br />
     <br />
@@ -18,7 +19,7 @@
                     <th scope="col">Number of Plays</th>
                 </tr>
             </thead>
-            <tbody> 
+            <tbody>
                 @foreach (var element in Model.RankElements.Select((value, index) => (value, index)))
                 {
                     int no = element.index + 1;

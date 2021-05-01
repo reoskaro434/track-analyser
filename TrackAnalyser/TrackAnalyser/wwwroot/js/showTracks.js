@@ -1,11 +1,12 @@
 ﻿$(document).ready(function () {
-    $("#sort").on('change',function () {
+    $("#filter").on('change keyup', function () {
         $.ajax({
             type: "GET",
-            url: '/BroadcastList/SortByDuration',
+            url: '/BroadcastList/UpdateEmissionList',
             data: {
                 sortNumber: $("#sortBy").prop('selectedIndex'),
-                sortType: $("#sortType").prop('selectedIndex')
+                sortType: $("#sortType").prop('selectedIndex'),
+                text: $("#search").val()
             },
             success: function (result) {
                 $("#showTrack").html(result)

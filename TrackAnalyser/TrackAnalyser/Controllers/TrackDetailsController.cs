@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using TrackAnalyser.Models.ChartModel.BarModel;
 using TrackAnalyser.Models.ChartModel.PieModel;
 using TrackAnalyser.DataAccess.RepositoryPattern;
+using TrackAnalyser.Utilities;
 
 namespace TrackAnalyser.Controllers
 {
@@ -38,7 +39,7 @@ namespace TrackAnalyser.Controllers
                 {
                     var newBarDateCount = new BarDateCount()
                     {
-                        Date = dayStat.Day.ToString("dd / MM / yyyy"),
+                        Date = dayStat.Day.ToString(StaticDetails.DATE_FORMAT),
                         Count = dayStat.PlayedTimes
                     };
               
@@ -87,7 +88,7 @@ namespace TrackAnalyser.Controllers
                 Version = track.Version,
                 LastPlayedWeek = GetBarChartData(trackId),
                 Canals = GetPieChartDataAsync(trackId).Result,
-                Duration = track.Duration.ToString("mm/ss")
+                Duration = track.Duration.ToString(StaticDetails.TIME_FORMAT)
            };
         }
         public async Task<IActionResult> Index(int? trackId)
