@@ -38,30 +38,6 @@ namespace TrackAnalyser.Controllers
 
             return new BroadcastListViewModel() {TrackEmissions = viewModelList};
         }
-/*        private BroadcastListViewModel GetModel()
-        {
-            IEnumerable<TrackEmission> trackEmissions = _unitOfWork.TrackEmissions.GetEagerAll();
-            List<TrackEmissionViewModel> viewModelList = new List<TrackEmissionViewModel>();
-
-            foreach (var element in trackEmissions)
-            {
-
-                Track track =  _unitOfWork.Tracks.FindEager(element.TrackId);
-                viewModelList.Add(new TrackEmissionViewModel()
-                {
-                    CanalName = element.Canal.Name,
-                    TrackPicturePath = element.Track.CoverPicturePath,
-                    TrackDescription = element.Track.Description,
-                    EmissionDate = element.BeginDateTime.ToString("dd/MM/yyyy HH:mm:ss"),
-                    EmissionTime = element.EmissionTime.ToString("mm:ss"),
-                    TrackId = element.Track.Id,
-                    ArtistName = track.Artist.Name,
-                    TrackName = track.Title
-                });
-            }
-
-            return new BroadcastListViewModel() { TrackEmissions = viewModelList };
-        }*/
 
         public BroadcastList(IUnitOfWork unitOfWork)
         {

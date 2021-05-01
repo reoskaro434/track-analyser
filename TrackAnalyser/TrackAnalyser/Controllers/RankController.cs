@@ -3,25 +3,58 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TrackAnalyser.DataAccess.RepositoryPattern;
+using TrackAnalyser.Models;
 using TrackAnalyser.Models.ViewModels;
+using TrackAnalyser.Utilities;
 
 namespace TrackAnalyser.Controllers
 {
     public class RankController : Controller
     {
-        public IActionResult Index()
+        IUnitOfWork _unitOfWork;
+        public RankController(IUnitOfWork unitOfWork)
         {
+             _unitOfWork = unitOfWork;
+        }
+        private RankViewModel GetRank()
+        {
+            IEnumerable<Track> tracks = _unitOfWork.Tracks.GetAll();
             List<RankElementViewModel> rankElements = new List<RankElementViewModel>();
 
-            rankElements.Add(new RankElementViewModel() {TrackArtist = "Armin Van Buuren",TrackName = "Save My Night" });
-            rankElements.Add(new RankElementViewModel() {TrackArtist = "Savant",TrackName = "Slasher" });
-            rankElements.Add(new RankElementViewModel() {TrackArtist = "Infected Mushrooms", TrackName = " Becoming Insane" });
-            rankElements.Add(new RankElementViewModel() {TrackArtist = "Mark Forster", TrackName= "Kogon" });
-            rankElements.Add(new RankElementViewModel() {TrackArtist = "Five Finger Death Punch", TrackName = "I Apologize" });
-            RankViewModel rankViewModel = new RankViewModel() { 
-                RankElements = rankElements
-            };
-            return View(rankViewModel);
+            foreach (var track in tracks)
+            {
+                IEnumerable<TrackStatistic> trackStatistics = _unitOfWork.TrackStatistics.Find(p => p.TrackId == track.Id);
+                Artist artist = _unitOfWork.Artists.Find(p => p.Id == track.ArtistId).FirstOrDefault();
+                int trackStatisticsSum = 0;
+                foreach (var trackStatistic in trackStatistics)
+                {
+                    IEnumerable<DayStatistic> dayStatistics = _unitOfWork.DayStatistics.Find(p => p.TrackStatisticId == trackStatistic.Id);
+                    int dayStatisticsSum = 0;
+                    foreach (var day in dayStatistics)
+                    {
+                        dayStatisticsSum+=day.PlayedTimes;
+                    }
+                    trackStatisticsSum += dayStatisticsSum;
+                }
+             
+                rankElements.Add(new RankElementViewModel()
+                {
+                    TrackArtist = artist.Name,
+                    TrackName = track.Title,
+                    TotalPlayback = trackStatisticsSum
+                });
+            }
+            return new RankViewModel() { 
+                RankElements = rankElements.
+                OrderBy(prop => prop.TotalPlayback).
+                Reverse().
+                Take(StaticDetails.RANK_MAX_TRACKS_AMOUNT) };
+        }
+       
+        public IActionResult Index()
+        {
+            return View(GetRank());
         }
     }
 }

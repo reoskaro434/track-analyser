@@ -15,5 +15,7 @@ namespace TrackAnalyser.Utilities
         
         public const int SORT_ASCENDING = 0;
         public const int SORT_DESCENDING = 1;
+
+        public const int RANK_MAX_TRACKS_AMOUNT = 100;
     }
 }
