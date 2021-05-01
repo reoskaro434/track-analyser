@@ -20,26 +20,26 @@ namespace TrackAnalyser.Utilities
             {
                 Name = "Savant",
             });
-          /*  unitOfWork.Artists.Add(new Artist()
+            unitOfWork.Artists.AddAsync(new Artist()
             {
                 Name = "Infected Mushroom",
             });
-            unitOfWork.Artists.Add(new Artist()
+            unitOfWork.Artists.AddAsync(new Artist()
             {
                 Name = "Iron Maiden",
             });
-            unitOfWork.Artists.Add(new Artist()
+            unitOfWork.Artists.AddAsync(new Artist()
             {
                 Name = "Blind Guardian",
             });
-*/
+
             unitOfWork.Save();
            
 
             Artist savant = unitOfWork.Artists.Find(predicate => predicate.Name == "Savant").FirstOrDefault();
-       /*   Artist infectedMuschroom = unitOfWork.Artists.Find(predicate => predicate.Name == "Infected Mushroom").FirstOrDefault();
+            Artist infectedMuschroom = unitOfWork.Artists.Find(predicate => predicate.Name == "Infected Mushroom").FirstOrDefault();    
             Artist ironMaiden = unitOfWork.Artists.Find(predicate => predicate.Name == "Iron Maiden").FirstOrDefault();
-            Artist blindGuardian = unitOfWork.Artists.Find(predicate => predicate.Name == "Blind Guardian").FirstOrDefault();*/
+            Artist blindGuardian = unitOfWork.Artists.Find(predicate => predicate.Name == "Blind Guardian").FirstOrDefault();
             #endregion
 
             #region Tracks
@@ -79,7 +79,7 @@ namespace TrackAnalyser.Utilities
                 Version = "Original Mix",
                 Artist = savant
             });
-        /*    unitOfWork.Tracks.Add(new Track()
+            unitOfWork.Tracks.AddAsync(new Track()
             {
                 CoverPicturePath = "/pictures/infected_mushroom_army_of_mushrooms.jpg",
                 Duration = new DateTime(1, 1, 1, 0, 6, 6),
@@ -92,7 +92,7 @@ namespace TrackAnalyser.Utilities
                 Artist = infectedMuschroom
             });
 
-            unitOfWork.Tracks.Add(new Track()
+            unitOfWork.Tracks.AddAsync(new Track()
             {
                 CoverPicturePath = "/pictures/iron_maiden_powerslave.jpg",
                 Duration = new DateTime(1, 1, 1, 0, 4, 32),
@@ -101,7 +101,7 @@ namespace TrackAnalyser.Utilities
                 Version = "Remaster Version",
                 Artist = ironMaiden
             });
-            unitOfWork.Tracks.Add(new Track()
+            unitOfWork.Tracks.AddAsync(new Track()
             {
                 CoverPicturePath = "/pictures/blind_guardian_nightfall_in_middle-earth.jpg",
                 Duration = new DateTime(1, 1, 1, 0, 5, 34),
@@ -111,7 +111,7 @@ namespace TrackAnalyser.Utilities
                 Title = "Nightfall",
                 Version = "Radio Version",
                 Artist = blindGuardian
-            });*/
+            });
 
             unitOfWork.Save();
        
@@ -119,22 +119,22 @@ namespace TrackAnalyser.Utilities
             Track savantDesEag = unitOfWork.Tracks.Find(predicate => predicate.Title == "Desert Eagle").FirstOrDefault();
             Track savantApoc = unitOfWork.Tracks.Find(predicate => predicate.Title == "Apocalypse").FirstOrDefault();
             Track savantBegNear = unitOfWork.Tracks.Find(predicate => predicate.Title == "The Beginning Is Near").FirstOrDefault();
-       /*     Track ironmaiden1 = unitOfWork.Tracks.Find(predicate => predicate.Title == "Aces High").FirstOrDefault();
-            Track infectedmuschroom1 = unitOfWork.Tracks.Find(predicate => predicate.Title == "Never Mind").FirstOrDefault();
-            Track blindguardian1 = unitOfWork.Tracks.Find(predicate => predicate.Title == "Nightfall").FirstOrDefault();*/
+            Track infectedmuschroomNevMind = unitOfWork.Tracks.Find(predicate => predicate.Title == "Never Mind").FirstOrDefault();
+            Track ironmaidenAcesHigh = unitOfWork.Tracks.Find(predicate => predicate.Title == "Aces High").FirstOrDefault();
+            Track blindguardianNightfall = unitOfWork.Tracks.Find(predicate => predicate.Title == "Nightfall").FirstOrDefault();
 
             #endregion
 
             #region Assigning Tracks to Artists
             savant = unitOfWork.Artists.Find(predicate => predicate.Name == "Savant").FirstOrDefault();
-    /*        infectedMuschroom = unitOfWork.Artists.Find(predicate => predicate.Name == "Infected Mushroom").FirstOrDefault();
+            infectedMuschroom = unitOfWork.Artists.Find(predicate => predicate.Name == "Infected Mushroom").FirstOrDefault();      
             ironMaiden = unitOfWork.Artists.Find(predicate => predicate.Name == "Iron Maiden").FirstOrDefault();
-            blindGuardian = unitOfWork.Artists.Find(predicate => predicate.Name == "Blind Guardian").FirstOrDefault();*/
+            blindGuardian = unitOfWork.Artists.Find(predicate => predicate.Name == "Blind Guardian").FirstOrDefault();
 
             savant.Tracks = new List<Track>() { savantDesEag , savantApoc , savantBegNear };
-       /*     infectedMuschroom.Tracks = new List<Track>() { infectedmuschroom1 };
-            ironMaiden.Tracks = new List<Track>() { ironmaiden1 };
-            blindGuardian.Tracks = new List<Track>() { blindguardian1 };*/
+            infectedMuschroom.Tracks = new List<Track>() { infectedmuschroomNevMind };
+            ironMaiden.Tracks = new List<Track>() { ironmaidenAcesHigh };
+            blindGuardian.Tracks = new List<Track>() { blindguardianNightfall };
 
             unitOfWork.Save();
 
@@ -148,6 +148,7 @@ namespace TrackAnalyser.Utilities
                 Tracks = new List<CanalTrack>() {
                    new CanalTrack() { Track= savantApoc },
                     new CanalTrack() { Track= savantBegNear },
+                    new CanalTrack() { Track= ironmaidenAcesHigh },
             }
             });
             unitOfWork.Canals.AddAsync(new Canal()
@@ -155,6 +156,8 @@ namespace TrackAnalyser.Utilities
                 Name = "AntRadio",
                 Tracks = new List<CanalTrack>() {
                    new CanalTrack() { Track= savantApoc },
+                   new CanalTrack() { Track= ironmaidenAcesHigh },
+                   new CanalTrack() { Track= blindguardianNightfall },
             }
             });
             unitOfWork.Canals.AddAsync(new Canal()
@@ -163,6 +166,7 @@ namespace TrackAnalyser.Utilities
                 Tracks = new List<CanalTrack>() {
                     new CanalTrack() { Track= savantDesEag } ,
                    new CanalTrack() { Track= savantApoc },
+                   new CanalTrack() { Track= infectedmuschroomNevMind },
              }
             });
 
@@ -197,6 +201,19 @@ namespace TrackAnalyser.Utilities
                 },
                 Track = savantApoc
             };
+            TrackStatistic radioSIronMaidAcesHigh = new TrackStatistic()
+            {
+                DayStatistics = new List<DayStatistic>() {
+                  new DayStatistic() { Day = new DateTime(2020, 6, 22, 0, 0, 0), PlayedTimes = 241 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 23, 0, 0, 0), PlayedTimes = 661 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 24, 0, 0, 0), PlayedTimes = 115 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 25, 0, 0, 0), PlayedTimes = 99 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 26, 0, 0, 0), PlayedTimes = 72 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 27, 0, 0, 0), PlayedTimes = 46 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 28, 0, 0, 0), PlayedTimes = 36 }
+                },
+                Track = ironmaidenAcesHigh
+            };
             TrackStatistic antRadioSavApoc = new TrackStatistic()
             {
                 DayStatistics = new List<DayStatistic>() {
@@ -209,6 +226,32 @@ namespace TrackAnalyser.Utilities
                   new DayStatistic() { Day = new DateTime(2020, 6, 28, 0, 0, 0), PlayedTimes = 9 }
                 },
                 Track = savantApoc
+            };
+            TrackStatistic antRadioIronMaidAcesHigh = new TrackStatistic()
+            {
+                DayStatistics = new List<DayStatistic>() {
+                  new DayStatistic() { Day = new DateTime(2020, 6, 22, 0, 0, 0), PlayedTimes = 15 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 23, 0, 0, 0), PlayedTimes = 71 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 24, 0, 0, 0), PlayedTimes = 135 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 25, 0, 0, 0), PlayedTimes = 21},
+                  new DayStatistic() { Day = new DateTime(2020, 6, 26, 0, 0, 0), PlayedTimes = 61 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 27, 0, 0, 0), PlayedTimes = 355 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 28, 0, 0, 0), PlayedTimes = 55 }
+                },
+                Track = ironmaidenAcesHigh
+            };
+            TrackStatistic antRadioBlGuarNightfall = new TrackStatistic()
+            {
+                DayStatistics = new List<DayStatistic>() {
+                  new DayStatistic() { Day = new DateTime(2020, 6, 22, 0, 0, 0), PlayedTimes = 145 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 23, 0, 0, 0), PlayedTimes = 162 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 24, 0, 0, 0), PlayedTimes = 35 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 25, 0, 0, 0), PlayedTimes = 211},
+                  new DayStatistic() { Day = new DateTime(2020, 6, 26, 0, 0, 0), PlayedTimes = 511 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 27, 0, 0, 0), PlayedTimes = 11 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 28, 0, 0, 0), PlayedTimes = 71 }
+                },
+                Track = blindguardianNightfall
             };
             TrackStatistic xyzMusicSavApoc = new TrackStatistic()
             {
@@ -236,7 +279,19 @@ namespace TrackAnalyser.Utilities
                 },
                 Track = savantDesEag
             };
- 
+            TrackStatistic xyzMusicIMNevMind = new TrackStatistic()
+            {
+                DayStatistics = new List<DayStatistic>() {
+                  new DayStatistic() { Day = new DateTime(2020, 6, 22, 0, 0, 0), PlayedTimes = 11 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 23, 0, 0, 0), PlayedTimes = 45 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 24, 0, 0, 0), PlayedTimes = 52 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 25, 0, 0, 0), PlayedTimes = 88},
+                  new DayStatistic() { Day = new DateTime(2020, 6, 26, 0, 0, 0), PlayedTimes = 95 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 27, 0, 0, 0), PlayedTimes = 55 },
+                  new DayStatistic() { Day = new DateTime(2020, 6, 28, 0, 0, 0), PlayedTimes = 1 }
+                },
+                Track = infectedmuschroomNevMind
+            };
             #endregion
 
             #region TrackEmissions
@@ -260,9 +315,24 @@ namespace TrackAnalyser.Utilities
              
             };
 
-            radioS.TrackStatistics = new List<TrackStatistic> { radioSSavApoc, radioSSavBegNear };
-            antRadio.TrackStatistics = new List<TrackStatistic> { antRadioSavApoc };
-            xyzMusic.TrackStatistics = new List<TrackStatistic> { xyzMusicSavApoc,xyzMusicSavDesEag};
+            infectedmuschroomNevMind.Canals = new List<CanalTrack>()
+            {
+                new CanalTrack() { Canal = xyzMusic } ,
+            };
+
+            blindguardianNightfall.Canals = new List<CanalTrack>()
+            {
+                new CanalTrack() { Canal = antRadio } ,
+            };
+
+            ironmaidenAcesHigh.Canals = new List<CanalTrack>()
+            {
+                new CanalTrack() { Canal = radioS } ,
+                new CanalTrack() { Canal = antRadio } ,
+            };
+            radioS.TrackStatistics = new List<TrackStatistic> { radioSSavApoc, radioSSavBegNear,radioSIronMaidAcesHigh };
+            antRadio.TrackStatistics = new List<TrackStatistic> { antRadioSavApoc,antRadioIronMaidAcesHigh,antRadioBlGuarNightfall };
+            xyzMusic.TrackStatistics = new List<TrackStatistic> { xyzMusicSavApoc,xyzMusicSavDesEag,xyzMusicIMNevMind};
 
             unitOfWork.Canals.Update(radioS);
             unitOfWork.Canals.Update(antRadio);
@@ -278,17 +348,10 @@ namespace TrackAnalyser.Utilities
             });
             unitOfWork.TrackEmissions.AddAsync(new TrackEmission()
             {
-                Track = savantDesEag,
+                Track = ironmaidenAcesHigh,
                 Canal = radioS,
-                BeginDateTime = new DateTime(2020, 7, 2, 22, 13, 4),
-                EmissionTime = savantDesEag.Duration
-            });
-            unitOfWork.TrackEmissions.AddAsync(new TrackEmission()
-            {
-                Track = savantApoc,
-                Canal = antRadio,
-                BeginDateTime = new DateTime(2020, 7, 15, 22, 13, 4),
-                EmissionTime = savantApoc.Duration
+                BeginDateTime = new DateTime(2020, 7, 14, 2, 21, 15),
+                EmissionTime = ironmaidenAcesHigh.Duration
             });
             unitOfWork.TrackEmissions.AddAsync(new TrackEmission()
             {
@@ -296,6 +359,20 @@ namespace TrackAnalyser.Utilities
                 Canal = radioS,
                 BeginDateTime = new DateTime(2020, 7, 15, 22, 13, 4),
                 EmissionTime = savantApoc.Duration
+            });
+            unitOfWork.TrackEmissions.AddAsync(new TrackEmission()
+            {
+                Track = ironmaidenAcesHigh,
+                Canal = radioS,
+                BeginDateTime = new DateTime(2020, 7, 15, 2, 22, 50),
+                EmissionTime = ironmaidenAcesHigh.Duration
+            });
+            unitOfWork.TrackEmissions.AddAsync(new TrackEmission()
+            {
+                Track = infectedmuschroomNevMind,
+                Canal = xyzMusic,
+                BeginDateTime = new DateTime(2020, 7, 17, 2, 13, 15),
+                EmissionTime = infectedmuschroomNevMind.Duration
             });
             unitOfWork.TrackEmissions.AddAsync(new TrackEmission()
             {
@@ -304,83 +381,73 @@ namespace TrackAnalyser.Utilities
                 BeginDateTime = new DateTime(2020, 7, 15, 20, 13, 4),
                 EmissionTime = savantBegNear.Duration
             });
-          /*  unitOfWork.TrackEmissions.Add(new TrackEmission()
+            unitOfWork.TrackEmissions.AddAsync(new TrackEmission()
             {
-                Track = ironmaiden1,
-                Canal = radioS,
-                BeginDateTime = new DateTime(2020, 7, 18, 16, 0, 0),
-                EmissionTime = ironmaiden1.Duration
+                Track = infectedmuschroomNevMind,
+                Canal = xyzMusic,
+                BeginDateTime = new DateTime(2020, 7, 16, 1, 13, 15),
+                EmissionTime = infectedmuschroomNevMind.Duration
             });
-            unitOfWork.TrackEmissions.Add(new TrackEmission()
+            unitOfWork.TrackEmissions.AddAsync(new TrackEmission()
             {
-                Track = ironmaiden1,
-                Canal = radioS,
-                BeginDateTime = new DateTime(2020, 7, 18, 18, 0, 0),
-                EmissionTime = ironmaiden1.Duration
-            });
-            unitOfWork.TrackEmissions.Add(new TrackEmission()
-            {
-                Track = ironmaiden1,
+                Track = blindguardianNightfall,
                 Canal = antRadio,
-                BeginDateTime = new DateTime(2020, 7, 17, 17, 0, 0),
-                EmissionTime = ironmaiden1.Duration
+                BeginDateTime = new DateTime(2020, 7, 21, 4, 40, 40),
+                EmissionTime = blindguardianNightfall.Duration
             });
-            unitOfWork.TrackEmissions.Add(new TrackEmission()
+            unitOfWork.TrackEmissions.AddAsync(new TrackEmission()
             {
-                Track = ironmaiden1,
+                Track = savantApoc,
                 Canal = antRadio,
-                BeginDateTime = new DateTime(2020, 7, 17, 19, 0, 0),
-                EmissionTime = ironmaiden1.Duration
+                BeginDateTime = new DateTime(2020, 7, 15, 22, 13, 4),
+                EmissionTime = savantApoc.Duration
             });
-            unitOfWork.TrackEmissions.Add(new TrackEmission()
+            unitOfWork.TrackEmissions.AddAsync(new TrackEmission()
             {
-                Track = infectedmuschroom1,
-                Canal = xyzMusic,
-                BeginDateTime = new DateTime(2020, 7, 15, 15, 11, 0),
-                EmissionTime = infectedmuschroom1.Duration
+                Track = blindguardianNightfall,
+                Canal = antRadio,
+                BeginDateTime = new DateTime(2020, 7, 20, 12, 10, 20),
+                EmissionTime = blindguardianNightfall.Duration
             });
-            unitOfWork.TrackEmissions.Add(new TrackEmission()
+            unitOfWork.TrackEmissions.AddAsync(new TrackEmission()
             {
-                Track = infectedmuschroom1,
-                Canal = xyzMusic,
-                BeginDateTime = new DateTime(2020, 7, 15, 13, 41, 0),
-                EmissionTime = infectedmuschroom1.Duration
-            });
-            unitOfWork.TrackEmissions.Add(new TrackEmission()
-            {
-                Track = infectedmuschroom1,
-                Canal = xyzMusic,
-                BeginDateTime = new DateTime(2020, 7, 15, 12, 33, 0),
-                EmissionTime = infectedmuschroom1.Duration
-            });
-            unitOfWork.TrackEmissions.Add(new TrackEmission()
-            {
-                Track = blindguardian1,
+                Track = savantDesEag,
                 Canal = radioS,
-                BeginDateTime = new DateTime(2020, 7, 16, 14, 43, 0),
-                EmissionTime = blindguardian1.Duration
+                BeginDateTime = new DateTime(2020, 7, 2, 22, 13, 4),
+                EmissionTime = savantDesEag.Duration
             });
-            unitOfWork.TrackEmissions.Add(new TrackEmission()
+         
+            unitOfWork.TrackEmissions.AddAsync(new TrackEmission()
             {
-                Track = blindguardian1,
+                Track = ironmaidenAcesHigh,
                 Canal = radioS,
-                BeginDateTime = new DateTime(2020, 7, 16, 13, 43, 0),
-                EmissionTime = blindguardian1.Duration
+                BeginDateTime = new DateTime(2020, 7, 19, 2, 20, 20),
+                EmissionTime = ironmaidenAcesHigh.Duration
             });
-            unitOfWork.TrackEmissions.Add(new TrackEmission()
+          
+            unitOfWork.TrackEmissions.AddAsync(new TrackEmission()
             {
-                Track = blindguardian1,
-                Canal = radioS,
-                BeginDateTime = new DateTime(2020, 7, 16, 12, 11, 0),
-                EmissionTime = blindguardian1.Duration
-            }); unitOfWork.TrackEmissions.Add(new TrackEmission()
-            {
-                Track = blindguardian1,
-                Canal = radioS,
-                BeginDateTime = new DateTime(2020, 7, 16, 11, 31, 0),
-                EmissionTime = blindguardian1.Duration
+                Track = ironmaidenAcesHigh,
+                Canal = antRadio,
+                BeginDateTime = new DateTime(2020, 7, 20, 2, 12, 30),
+                EmissionTime = ironmaidenAcesHigh.Duration
             });
-*/
+          
+            unitOfWork.TrackEmissions.AddAsync(new TrackEmission()
+            {
+                Track = blindguardianNightfall,
+                Canal = antRadio,
+                BeginDateTime = new DateTime(2020, 7, 22, 12, 12, 12),
+                EmissionTime = blindguardianNightfall.Duration
+            });
+            unitOfWork.TrackEmissions.AddAsync(new TrackEmission()
+            {
+                Track = ironmaidenAcesHigh,
+                Canal = antRadio,
+                BeginDateTime = new DateTime(2020, 7, 20, 2, 10, 30),
+                EmissionTime = ironmaidenAcesHigh.Duration
+            });
+
             #endregion
 
             unitOfWork.Save();
