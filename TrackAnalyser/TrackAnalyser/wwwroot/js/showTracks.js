@@ -1,8 +1,12 @@
 ﻿$(document).ready(function () {
-    $("#duration").click(function () {
+    $("#sort").on('change',function () {
         $.ajax({
             type: "GET",
-            url: '/BroadcastList/SortByDuration',       
+            url: '/BroadcastList/SortByDuration',
+            data: {
+                sortNumber: $("#sortBy").prop('selectedIndex'),
+                sortType: $("#sortType").prop('selectedIndex')
+            },
             success: function (result) {
                 $("#showTrack").html(result)
             }

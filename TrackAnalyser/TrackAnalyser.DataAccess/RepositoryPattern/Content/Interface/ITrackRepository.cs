@@ -10,6 +10,7 @@ namespace TrackAnalyser.DataAccess.RepositoryPattern.Content.Interface
 {
     public interface ITrackRepository : IRepository<Track>
     {
-        public Task<Track> FindEager(int trackId);
+        public Task<Track> FindEagerAsync(int trackId);
+     //   public Track FindEager(int trackId);
     }
 }

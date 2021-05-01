@@ -56,7 +56,7 @@ namespace TrackAnalyser.Controllers
         }
         private async Task<string> GetPieChartDataAsync(int trackId)
         {
-            Track track = await _unitOfWork.Tracks.FindEager(trackId);
+            Track track = await _unitOfWork.Tracks.FindEagerAsync(trackId);
             IEnumerable<CanalTrack> canalTracks = track.Canals;
             IEnumerable<TrackStatistic> trackStatistics = _unitOfWork.TrackStatistics.Find(p => p.TrackId == trackId);
             List<PieNameCount> pieNameCountList = new List<PieNameCount>();
@@ -78,7 +78,7 @@ namespace TrackAnalyser.Controllers
         }
         private async Task<TrackDetailsViewModel> GetModel(int trackId)
         {
-            Track track = await _unitOfWork.Tracks.FindEager(trackId);
+            Track track = await _unitOfWork.Tracks.FindEagerAsync(trackId);
             
             return new TrackDetailsViewModel()
             {
