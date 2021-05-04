@@ -28,6 +28,7 @@ namespace TrackAnalyser.DataAccess.Data
         {
             base.OnModelCreating(builder);
 
+            //many to many relation
             builder.Entity<CanalTrack>()
                 .HasKey(ct => new { ct.CanalId, ct.TrackId });
             builder.Entity<CanalTrack>()
