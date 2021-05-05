@@ -19,7 +19,14 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Track Analyser</a>
+                @if (User.IsInRole(StaticDetails.ROLE_USER) || User.IsInRole(StaticDetails.ROLE_ADMIN))
+                {
+                    <a class="navbar-brand" asp-area="" asp-controller="BroadcastList" asp-action="Index">Track Analyser</a>
+                }
+                else
+                {
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Track Analyser</a>
+                }
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -28,14 +35,18 @@
                     <ul class="navbar-nav flex-grow-1">
                         @if (User.IsInRole(StaticDetails.ROLE_USER) || User.IsInRole(StaticDetails.ROLE_ADMIN))
                         {
-                            @*if user is logged*@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Rank" asp-action="Index">Rank</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="BroadcastList" asp-action="Index">Broadcast List</a>
                             </li>
-                            @*end if user is logged*@
+                        } 
+                        @if (User.IsInRole(StaticDetails.ROLE_ADMIN))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="UserManagement" asp-action="Index">User Management</a>
+                            </li>
                         }
                         </ul>
                 </div>

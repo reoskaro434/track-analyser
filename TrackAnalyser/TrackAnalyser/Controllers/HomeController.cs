@@ -49,7 +49,7 @@ namespace TrackAnalyser.Controllers
                     return View("Index");
                 }
             }
-            return View("Index",model);
+            return View("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
