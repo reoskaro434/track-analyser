@@ -19,6 +19,7 @@ namespace TrackAnalyser.DataAccess.Data
         public DbSet<TrackStatistic> TrackStatistics { get; set; } 
         public DbSet<DayStatistic> DayStatistics { get; set; } 
         public DbSet<CanalTrack> CanalTracks { get; set; } 
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; } 
         
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
            : base(options)

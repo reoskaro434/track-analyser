@@ -1,6 +1,4 @@
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\bin\Debug\net5.0\TrackAnalyser.Models.deps.json
-C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\bin\Debug\net5.0\TrackAnalyser.Models.runtimeconfig.json
-C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\bin\Debug\net5.0\TrackAnalyser.Models.runtimeconfig.dev.json
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\bin\Debug\net5.0\TrackAnalyser.Models.dll
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\bin\Debug\net5.0\ref\TrackAnalyser.Models.dll
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\bin\Debug\net5.0\TrackAnalyser.Models.pdb
@@ -12,4 +10,6 @@ C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\Track
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\obj\Debug\net5.0\TrackAnalyser.Models.dll
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\obj\Debug\net5.0\ref\TrackAnalyser.Models.dll
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\obj\Debug\net5.0\TrackAnalyser.Models.pdb
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\bin\Debug\net5.0\TrackAnalyser.Models.runtimeconfig.json
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\bin\Debug\net5.0\TrackAnalyser.Models.runtimeconfig.dev.json
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\obj\Debug\net5.0\TrackAnalyser.Models.genruntimeconfig.cache

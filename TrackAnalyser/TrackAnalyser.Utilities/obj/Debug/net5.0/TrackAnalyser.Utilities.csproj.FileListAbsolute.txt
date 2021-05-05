@@ -15,3 +15,6 @@ C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\Track
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Utilities\obj\Debug\net5.0\TrackAnalyser.Utilities.dll
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Utilities\obj\Debug\net5.0\ref\TrackAnalyser.Utilities.dll
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Utilities\obj\Debug\net5.0\TrackAnalyser.Utilities.pdb
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Utilities\bin\Debug\net5.0\TrackAnalyser.Utilities.runtimeconfig.json
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Utilities\bin\Debug\net5.0\TrackAnalyser.Utilities.runtimeconfig.dev.json
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Utilities\obj\Debug\net5.0\TrackAnalyser.Utilities.genruntimeconfig.cache

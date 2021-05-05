@@ -21,5 +21,8 @@ namespace TrackAnalyser.Utilities
         public const string DATE_TIME_FORMAT = "dd/MM/yyyy HH:mm:ss";
         public const string TIME_FORMAT = "mm:ss";
         public const string DATE_FORMAT = "dd/MM/yyyy";
+
+        public const string ROLE_ADMIN = "Admin";
+        public const string ROLE_USER = "User";
     }
 }

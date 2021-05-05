@@ -1,6 +1,4 @@
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.DataAccess\bin\Debug\net5.0\TrackAnalyser.DataAccess.deps.json
-C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.DataAccess\bin\Debug\net5.0\TrackAnalyser.DataAccess.runtimeconfig.json
-C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.DataAccess\bin\Debug\net5.0\TrackAnalyser.DataAccess.runtimeconfig.dev.json
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.DataAccess\bin\Debug\net5.0\TrackAnalyser.DataAccess.dll
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.DataAccess\bin\Debug\net5.0\ref\TrackAnalyser.DataAccess.dll
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.DataAccess\bin\Debug\net5.0\TrackAnalyser.DataAccess.pdb
@@ -15,4 +13,6 @@ C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\Track
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.DataAccess\obj\Debug\net5.0\TrackAnalyser.DataAccess.dll
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.DataAccess\obj\Debug\net5.0\ref\TrackAnalyser.DataAccess.dll
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.DataAccess\obj\Debug\net5.0\TrackAnalyser.DataAccess.pdb
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.DataAccess\bin\Debug\net5.0\TrackAnalyser.DataAccess.runtimeconfig.json
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.DataAccess\bin\Debug\net5.0\TrackAnalyser.DataAccess.runtimeconfig.dev.json
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.DataAccess\obj\Debug\net5.0\TrackAnalyser.DataAccess.genruntimeconfig.cache

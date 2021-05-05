@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using TrackAnalyser.DataAccess.RepositoryPattern;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
+using TrackAnalyser.Models;
 
 namespace TrackAnalyser
 {
@@ -32,7 +33,7 @@ namespace TrackAnalyser
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();

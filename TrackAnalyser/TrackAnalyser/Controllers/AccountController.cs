@@ -4,27 +4,44 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TrackAnalyser.Models;
+using TrackAnalyser.Utilities;
 
 namespace TrackAnalyser.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManeger)
         {
-            this._userManager = userManager;
-            this._signInManager = signInManager;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _roleManager = roleManeger;
         }
         public async Task<IActionResult> Index()
         {
-            return View();
-        }
+            if (!await _roleManager.RoleExistsAsync(StaticDetails.ROLE_ADMIN))
+            { 
+                await _roleManager.CreateAsync(new IdentityRole(StaticDetails.ROLE_ADMIN));
 
-        public async Task<IActionResult> AddUser()
-        {
-            return View();
+                ApplicationUser admin = new ApplicationUser() {
+                    Email = "admin@gmail.com",
+                    UserName = "Admin"
+                };
+
+                await _userManager.CreateAsync(admin,"Admin123*");
+                await _userManager.AddToRoleAsync(admin, StaticDetails.ROLE_ADMIN);
+
+            }
+            if (!await _roleManager.RoleExistsAsync(StaticDetails.ROLE_USER))
+                await _roleManager.CreateAsync(new IdentityRole(StaticDetails.ROLE_USER));
+
+
+
+            return RedirectToAction("Index","Home");
         }
     }
 }

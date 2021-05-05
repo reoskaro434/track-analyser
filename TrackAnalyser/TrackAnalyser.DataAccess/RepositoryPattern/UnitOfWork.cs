@@ -25,6 +25,7 @@ namespace TrackAnalyser.DataAccess.RepositoryPattern
 
         public IDayStatisticRepository DayStatistics { get; private set; }
         public ICanalTrackRepository CanalTracks { get; private set; }
+        public IApplicationUserRepository ApplicationUsers { get; private set; }
 
         public UnitOfWork(ApplicationDbContext db)
         {
@@ -36,6 +37,7 @@ namespace TrackAnalyser.DataAccess.RepositoryPattern
             Artists = new ArtistRepository(db);
             DayStatistics = new DayStatisticRepository(db);
             CanalTracks = new CanalTrackRepository(db);
+            ApplicationUsers = new ApplicationUserRepository(db);
         }
         public int Save()
         {

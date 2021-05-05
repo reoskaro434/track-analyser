@@ -16,6 +16,7 @@ namespace TrackAnalyser.DataAccess.RepositoryPattern
         IArtistRepository Artists { get; }
         IDayStatisticRepository DayStatistics  { get; }
         ICanalTrackRepository CanalTracks { get; }
+        IApplicationUserRepository ApplicationUsers { get; }
         int Save();
     }
 }
