@@ -35,6 +35,7 @@ namespace TrackAnalyser.Controllers
                 await _userManager.CreateAsync(admin,"Admin123*");
                 await _userManager.AddToRoleAsync(admin, StaticDetails.ROLE_ADMIN);
 
+
             }
             if (!await _roleManager.RoleExistsAsync(StaticDetails.ROLE_USER))
                 await _roleManager.CreateAsync(new IdentityRole(StaticDetails.ROLE_USER));

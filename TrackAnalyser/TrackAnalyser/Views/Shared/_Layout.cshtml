@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using TrackAnalyser.Utilities;
+@using TrackAnalyser.Models;
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -20,18 +26,18 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        @*if user is logged*@
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Rank" asp-action="Index">Rank</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="BroadcastList" asp-action="Index">Broadcast List</a>
-                        </li>
-                        @*end if user is logged*@
-                    </ul>
+                        @if (User.IsInRole(StaticDetails.ROLE_USER) || User.IsInRole(StaticDetails.ROLE_ADMIN))
+                        {
+                            @*if user is logged*@
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Rank" asp-action="Index">Rank</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="BroadcastList" asp-action="Index">Broadcast List</a>
+                            </li>
+                            @*end if user is logged*@
+                        }
+                        </ul>
                 </div>
             </div>
         </nav>

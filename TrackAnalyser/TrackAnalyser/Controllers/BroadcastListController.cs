@@ -11,7 +11,7 @@ using TrackAnalyser.Utilities;
 
 namespace TrackAnalyser.Controllers
 {
-    public class BroadcastList : Controller
+    public class BroadcastListController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly SortStrategyContext _sortStrategyContext;
@@ -43,7 +43,7 @@ namespace TrackAnalyser.Controllers
             return new BroadcastListViewModel() {TrackEmissions = viewModelList};
         }
 
-        public BroadcastList(IUnitOfWork unitOfWork)
+        public BroadcastListController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
             _sortStrategyContext = new SortStrategyContext();
