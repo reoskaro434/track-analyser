@@ -827,6 +827,15 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "PasswordGenerator/2.0.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/PasswordGenerator.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/PasswordGenerator.dll": {}
+        }
+      },
       "runtime.native.System/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -3149,6 +3158,19 @@
         "newtonsoft.json.13.0.1.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "packageIcon.png"
+      ]
+    },
+    "PasswordGenerator/2.0.5": {
+      "sha512": "q27Jl0MYvu2Fywpe2lKFBn3rZqwmWBfMhO0JFoFq2GOsedYwBNOMcyz8z72+gH3241BhlziALTo2TgYlRKSZwg==",
+      "type": "package",
+      "path": "passwordgenerator/2.0.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/PasswordGenerator.dll",
+        "passwordgenerator.2.0.5.nupkg.sha512",
+        "passwordgenerator.nuspec",
+        "readme.txt"
       ]
     },
     "runtime.native.System/4.3.0": {
@@ -6560,6 +6582,7 @@
       "Microsoft.Extensions.Identity.Core >= 5.0.5",
       "Microsoft.VisualStudio.Web.BrowserLink >= 2.2.0",
       "Newtonsoft.Json >= 13.0.1",
+      "PasswordGenerator >= 2.0.5",
       "System.Collections >= 4.3.0",
       "System.Collections.NonGeneric >= 4.3.0",
       "TrackAnalyser.DataAccess >= 1.0.0",
@@ -6654,6 +6677,10 @@
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.1, )"
+          },
+          "PasswordGenerator": {
+            "target": "Package",
+            "version": "[2.0.5, )"
           },
           "System.Collections": {
             "target": "Package",

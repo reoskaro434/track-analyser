@@ -398,3 +398,7 @@ C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\Track
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\bin\Debug\net5.0\Humanizer.dll
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\obj\Debug\net5.0\Razor\Views\UserManagement\Index.cshtml.g.cs
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\bin\Debug\net5.0\PasswordGenerator.dll
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\bin\Debug\net5.0\MailKit.dll
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\bin\Debug\net5.0\MimeKit.dll
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\bin\Debug\net5.0\BouncyCastle.Crypto.dll

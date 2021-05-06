@@ -358,6 +358,10 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
+            "PasswordGenerator": {
+              "target": "Package",
+              "version": "[2.0.5, )"
+            },
             "System.Collections": {
               "target": "Package",
               "version": "[4.3.0, )"
