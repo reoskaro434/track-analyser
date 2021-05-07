@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using MailKit.Net.Smtp;
+using MailKit.Security;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using MimeKit;
+using MimeKit.Text;
 using PasswordGenerator;
 using System;
 using System.Collections.Generic;
@@ -59,6 +63,23 @@ namespace TrackAnalyser.Controllers
                 if(result.Succeeded)
                 {
                   await _userManager.AddToRoleAsync(user, StaticDetails.ROLE_USER);
+
+                    // create email message
+                    var email = new MimeMessage();
+                    email.From.Add(MailboxAddress.Parse("ostroznykupiec@gmail.com"));
+                    email.To.Add(MailboxAddress.Parse(newUser.NewUserEmail));
+                    email.Subject = "Track Analyser Password";
+                    email.Body = new TextPart(TextFormat.Plain) {
+                        Text = "Thank you for registering, here's your password: "+
+                        password
+                    };
+
+                    // send email
+                    using var smtp = new SmtpClient();
+                    smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
+                    smtp.Authenticate("ostroznykupiec@gmail.com", "olafopjg661");
+                    smtp.Send(email);
+                    smtp.Disconnect(true);
                 }
             }
 
