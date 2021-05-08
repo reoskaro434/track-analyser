@@ -41,14 +41,22 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="BroadcastList" asp-action="Index">Broadcast List</a>
                             </li>
-                        } 
+                        }
                         @if (User.IsInRole(StaticDetails.ROLE_ADMIN))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="UserManagement" asp-action="Index">User Management</a>
                             </li>
                         }
-                        </ul>
+                    </ul>
+                    <ul class="navbar-nav flex-grow-1">
+                        @if (User.IsInRole(StaticDetails.ROLE_USER) || User.IsInRole(StaticDetails.ROLE_ADMIN))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="UserManagement" asp-action="Logout">Logout</a>
+                            </li>
+                        }
+                    </ul>
                 </div>
             </div>
         </nav>

@@ -85,6 +85,7 @@ namespace TrackAnalyser.Controllers
 
             return View("Index",await GetUsers());
         }
+
         [HttpGet]
         public async Task<IActionResult> DeleteUser(string userEmail)
         {
@@ -92,10 +93,29 @@ namespace TrackAnalyser.Controllers
             await _userManager.DeleteAsync(tmpUser);
 
             return View("Index",await GetUsers());
-        }  
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditUser(string email, string newEmail)
+        {
+            var tmpUser = _unitOfWork.ApplicationUsers.Find(p => p.Email == email).FirstOrDefault();
+            tmpUser.Email = newEmail;
+
+            await _userManager.UpdateAsync(tmpUser);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+
+            return RedirectToAction("Index","Home");
+        }
         public async Task<IActionResult> Index()
         {
             return View(await GetUsers());
         }
+
     }
 }
