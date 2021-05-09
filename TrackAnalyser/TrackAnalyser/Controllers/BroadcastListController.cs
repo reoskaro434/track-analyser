@@ -95,7 +95,11 @@ namespace TrackAnalyser.Controllers
 
             var ws = package.Workbook.Worksheets.Add("Emissions");
 
-            var range = ws.Cells["A1"].LoadFromCollection(viewModel.TrackEmissions.Select(p => p.ArtistName), true);
+            var range = ws.Cells["A1"].LoadFromCollection(viewModel.TrackEmissions.Select(p => p.ArtistName),true);
+            ws.Cells["B1"].LoadFromCollection(viewModel.TrackEmissions.Select(p => p.CanalName), true);
+            ws.Cells["C1"].LoadFromCollection(viewModel.TrackEmissions.Select(p => p.EmissionDate), true);
+            ws.Cells["D1"].LoadFromCollection(viewModel.TrackEmissions.Select(p => p.EmissionTime), true);
+            ws.Cells["E1"].LoadFromCollection(viewModel.TrackEmissions.Select(p => p.TrackName), true);
             range.AutoFitColumns();
 
             await package.SaveAsync();

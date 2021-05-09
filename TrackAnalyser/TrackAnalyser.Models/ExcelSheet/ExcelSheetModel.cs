@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrackAnalyser.Models.ViewModels
+namespace TrackAnalyser.Models.ExcelSheet
 {
-    public class TrackEmissionViewModel
+    public class ExcelSheetModel
     {
-        public int TrackId { get; set; }
-        public string TrackPicturePath { get; set; }
         public string TrackDescription { get; set; }
         public string CanalName { get; set; }
         public string EmissionDate { get; set; }

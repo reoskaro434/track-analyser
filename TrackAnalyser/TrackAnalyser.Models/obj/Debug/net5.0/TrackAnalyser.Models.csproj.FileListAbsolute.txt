@@ -2,7 +2,6 @@ C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\Track
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\bin\Debug\net5.0\TrackAnalyser.Models.dll
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\bin\Debug\net5.0\ref\TrackAnalyser.Models.dll
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\bin\Debug\net5.0\TrackAnalyser.Models.pdb
-C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\obj\Debug\net5.0\TrackAnalyser.Models.csprojAssemblyReference.cache
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\obj\Debug\net5.0\TrackAnalyser.Models.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\obj\Debug\net5.0\TrackAnalyser.Models.AssemblyInfoInputs.cache
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\obj\Debug\net5.0\TrackAnalyser.Models.AssemblyInfo.cs
