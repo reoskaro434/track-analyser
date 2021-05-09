@@ -82,3 +82,9 @@ p {
     font-size: large;
     color:black;
 }
+
+.track-analyser-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
