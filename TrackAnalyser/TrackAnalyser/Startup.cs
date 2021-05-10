@@ -18,6 +18,7 @@ using TrackAnalyser.Models.ViewModels;
 using TrackAnalyser.Utilities.SortStrategy;
 using TrackAnalyser.Utilities.BroadcastFilter;
 using TrackAnalyser.Models.DBModels;
+using TrackAnalyser.Utilities.ExcelSheet;
 
 namespace TrackAnalyser
 {
@@ -45,6 +46,8 @@ namespace TrackAnalyser
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddTransient<ISortStrategyContext<BroadcastListViewModel>, SortStrategyContext>();
             services.AddTransient<IBroadcastFilter<BroadcastListViewModel, IUnitOfWork>, BroadcastFilter>();
+            services.AddTransient<IExcelSheetCreator<BroadcastListViewModel>, ExcelSheetCreator>();
+            services.AddTransient<IExcelSheetConverter, ExcelSheetConverter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -24,6 +24,9 @@ namespace TrackAnalyser.Utilities
 
         public const string ROLE_ADMIN = "Admin";
         public const string ROLE_USER = "User";
-        
+
+        public const string EXCEL_SHEET_CONTENT_TYPE = "application/vnd.ms-excel";
+        public const string EXCEL_SHEET_NAME = "TrackAnalyserEmission.xlsx";
+    
     }
 }

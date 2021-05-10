@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace TrackAnalyser.Utilities.ExcelSheet
 {
-    public interface IExcelSheetCreator<TModel> where TModel : class
+    public interface IExcelSheetConverter
     {
-        public void CreateExcelSheetAsync(TModel models, string path);
+        public FileStream ConvertToFileStream(string path);
     }
 }

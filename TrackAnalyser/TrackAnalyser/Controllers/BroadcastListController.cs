@@ -1,19 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TrackAnalyser.Models.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using TrackAnalyser.DataAccess.RepositoryPattern;
-using TrackAnalyser.Utilities.SortStrategy;
 using TrackAnalyser.Utilities;
 using System.IO;
-using OfficeOpenXml;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using TrackAnalyser.Utilities.SortStrategyPatternForEmission;
 using TrackAnalyser.Utilities.BroadcastFilter;
 using TrackAnalyser.Models.DBModels;
+using TrackAnalyser.Utilities.ExcelSheet;
 
 namespace TrackAnalyser.Controllers
 {
@@ -24,13 +20,17 @@ namespace TrackAnalyser.Controllers
         private readonly IWebHostEnvironment _environment;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IBroadcastFilter<BroadcastListViewModel, IUnitOfWork> _broadcastFilter;
+        private readonly IExcelSheetCreator<BroadcastListViewModel> _excelSheetCreator;
+        private readonly IExcelSheetConverter _excelSheetConverter;
 
         public BroadcastListController(
             IUnitOfWork unitOfWork,
             IWebHostEnvironment environment,
             SignInManager<ApplicationUser> signInManager,
             ISortStrategyContext<BroadcastListViewModel> sortStrategyContext,
-            IBroadcastFilter<BroadcastListViewModel,IUnitOfWork> broadcastFilter
+            IBroadcastFilter<BroadcastListViewModel,IUnitOfWork> broadcastFilter,
+            IExcelSheetCreator<BroadcastListViewModel> excelSheetCreator,
+            IExcelSheetConverter excelSheetConverter
             )
         {
             _unitOfWork = unitOfWork;
@@ -38,6 +38,8 @@ namespace TrackAnalyser.Controllers
             _environment = environment;
             _signInManager = signInManager;
             _broadcastFilter = broadcastFilter;
+            _excelSheetCreator = excelSheetCreator;
+            _excelSheetConverter = excelSheetConverter;
         }
 
         public async Task<IActionResult> Index()
@@ -60,47 +62,30 @@ namespace TrackAnalyser.Controllers
 
         [HttpGet]
         public async Task GetEmissionList(int sortNumber, int sortType, string text)
-        {
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-            var user = _signInManager.Context.User.Identity.Name;
-            var file = new FileInfo(_environment.WebRootPath + @"\excel\" + user + ".xlsx");
-
-            if (file.Exists)
-                file.Delete();
-
+        {  
             if (text == null)
                 text = "";
+            
+            var user = _signInManager.Context.User.Identity.Name;
 
             var rawModel = await _broadcastFilter.GetModelAsync(_unitOfWork, text);
 
             var viewModel = _sortStrategyContext.Sort(rawModel, sortNumber, sortType);
 
-            using var package = new ExcelPackage(file);
-
-            var ws = package.Workbook.Worksheets.Add("Emissions");
-
-            var range = ws.Cells["A1"].LoadFromCollection(viewModel.TrackEmissions.Select(p => p.ArtistName),true);
-            ws.Cells["B1"].LoadFromCollection(viewModel.TrackEmissions.Select(p => p.CanalName), true);
-            ws.Cells["C1"].LoadFromCollection(viewModel.TrackEmissions.Select(p => p.EmissionDate), true);
-            ws.Cells["D1"].LoadFromCollection(viewModel.TrackEmissions.Select(p => p.EmissionTime), true);
-            ws.Cells["E1"].LoadFromCollection(viewModel.TrackEmissions.Select(p => p.TrackName), true);
-            range.AutoFitColumns();
-
-            await package.SaveAsync();
+            _excelSheetCreator.CreateExcelSheetAsync(viewModel, _environment.WebRootPath + @"\excel\" + user + ".xlsx");
         }
 
+
         [HttpGet]
-        public async Task<IActionResult> DownloadEmissionList()
+        public IActionResult DownloadEmissionList()
         {
             var user = _signInManager.Context.User.Identity.Name;
-            var file = new FileInfo(_environment.WebRootPath + @"\excel\" + user + ".xlsx");
 
+            var fileStream = _excelSheetConverter.ConvertToFileStream(_environment.WebRootPath + @"\excel\" + user + ".xlsx");
 
-            if (file.Exists)
-            {
-                FileStream RptStream = new FileStream(file.FullName, FileMode.Open, FileAccess.Read);
-                return File(RptStream, "application/vnd.ms-excel", "excel.xlsx");
-            }
+            if (fileStream != null)
+                return File(fileStream, StaticDetails.EXCEL_SHEET_CONTENT_TYPE, StaticDetails.EXCEL_SHEET_NAME);
+
             return RedirectToAction("Index");
         }
     }
