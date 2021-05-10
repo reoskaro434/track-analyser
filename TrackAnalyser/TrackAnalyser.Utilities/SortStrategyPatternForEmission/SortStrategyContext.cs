@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using TrackAnalyser.Models.ViewModels;
 using TrackAnalyser.Utilities.SortStrategy.Strategy;
+using TrackAnalyser.Utilities.SortStrategyPatternForEmission;
 
 namespace TrackAnalyser.Utilities.SortStrategy
 {
-    public class SortStrategyContext
+    public class SortStrategyContext : ISortStrategyContext<BroadcastListViewModel>
     {
         private ISortStrategy _sortStrategy;
 
@@ -21,14 +22,14 @@ namespace TrackAnalyser.Utilities.SortStrategy
         {
         }
 
-        void SetStrategy(ISortStrategy sortStrategy)
+        public void SetStrategy(ISortStrategy sortStrategy)
         {
             _sortStrategy = sortStrategy;
         }
 
-        public BroadcastListViewModel Sort(BroadcastListViewModel broadcastListViewModels, int sortNumber,int sortType)
+        public BroadcastListViewModel Sort(BroadcastListViewModel model, int sortNumber, int sortType)
         {
-            switch(sortNumber)
+            switch (sortNumber)
             {
                 case StaticDetails.SORT_BY_CANAL:
                     SetStrategy(new SortByCanal());
@@ -49,10 +50,10 @@ namespace TrackAnalyser.Utilities.SortStrategy
 
             if (sortType == StaticDetails.SORT_DESCENDING)
             {
-                broadcastListViewModels.TrackEmissions =_sortStrategy.Sort(broadcastListViewModels).TrackEmissions.Reverse();
-                return broadcastListViewModels;
+                model.TrackEmissions = _sortStrategy.Sort(model).TrackEmissions.Reverse();
+                return model;
             }
-           return _sortStrategy.Sort(broadcastListViewModels);
+            return _sortStrategy.Sort(model);
 
         }
     }

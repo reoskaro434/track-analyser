@@ -12,58 +12,42 @@ using System.IO;
 using OfficeOpenXml;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using TrackAnalyser.Utilities.SortStrategyPatternForEmission;
+using TrackAnalyser.Utilities.BroadcastFilter;
 
 namespace TrackAnalyser.Controllers
 {
     public class BroadcastListController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly SortStrategyContext _sortStrategyContext;
-        private readonly IWebHostEnvironment _env;
+        private readonly ISortStrategyContext<BroadcastListViewModel> _sortStrategyContext;
+        private readonly IWebHostEnvironment _environment;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IBroadcastFilter<BroadcastListViewModel, IUnitOfWork> _broadcastFilter;
 
-        public BroadcastListController(IUnitOfWork unitOfWork, IWebHostEnvironment env, SignInManager<ApplicationUser> signInManager)
+        public BroadcastListController(
+            IUnitOfWork unitOfWork,
+            IWebHostEnvironment environment,
+            SignInManager<ApplicationUser> signInManager,
+            ISortStrategyContext<BroadcastListViewModel> sortStrategyContext,
+            IBroadcastFilter<BroadcastListViewModel,IUnitOfWork> broadcastFilter
+            )
         {
             _unitOfWork = unitOfWork;
-            _sortStrategyContext = new SortStrategyContext();
-            _env = env;
-            _signInManager=signInManager;
-        }
-        private async Task<BroadcastListViewModel> GetModelAsync(string text = "")
-        {
-            IEnumerable<TrackEmission> trackEmissions = _unitOfWork.
-                TrackEmissions.GetEagerAll().
-                Where(x => x.Track.Title.Contains(text, StringComparison.OrdinalIgnoreCase));
-
-            List<TrackEmissionViewModel> viewModelList = new List<TrackEmissionViewModel>();
-
-            foreach (var element in trackEmissions)
-            {
-
-                Track track = await _unitOfWork.Tracks.FindEagerAsync(element.TrackId);
-                viewModelList.Add(new TrackEmissionViewModel()
-                {
-                    CanalName = element.Canal.Name,
-                    TrackPicturePath = element.Track.CoverPicturePath,
-                    TrackDescription = element.Track.Description,
-                    EmissionDate = element.BeginDateTime.ToString(StaticDetails.DATE_TIME_FORMAT),
-                    EmissionTime = element.EmissionTime.ToString(StaticDetails.TIME_FORMAT),
-                    TrackId = element.Track.Id,
-                    ArtistName = track.Artist.Name,
-                    TrackName = track.Title
-                });
-            }
-
-            return new BroadcastListViewModel() { TrackEmissions = viewModelList };
+            _sortStrategyContext = sortStrategyContext;
+            _environment = environment;
+            _signInManager = signInManager;
+            _broadcastFilter = broadcastFilter;
         }
 
         public async Task<IActionResult> Index()
         {
             DataInitializer.SetDatabase(_unitOfWork);
 
-            return View(await GetModelAsync());
+            return View(await _broadcastFilter.GetModelAsync(_unitOfWork));
         }
 
+        [HttpGet]
         public async Task<IActionResult> UpdateEmissionList(int sortNumber, int sortType, string text)
         {
             if (text == null)
@@ -71,7 +55,7 @@ namespace TrackAnalyser.Controllers
 
             return PartialView(
                 "_ShowTracks",
-                _sortStrategyContext.Sort(await GetModelAsync(text), sortNumber, sortType));
+                _sortStrategyContext.Sort(await _broadcastFilter.GetModelAsync(_unitOfWork,text), sortNumber, sortType));
         }
 
         [HttpGet]
@@ -79,7 +63,7 @@ namespace TrackAnalyser.Controllers
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             var user = _signInManager.Context.User.Identity.Name;
-            var file = new FileInfo(_env.WebRootPath + @"\excel\" + user + ".xlsx");
+            var file = new FileInfo(_environment.WebRootPath + @"\excel\" + user + ".xlsx");
 
             if (file.Exists)
                 file.Delete();
@@ -87,7 +71,7 @@ namespace TrackAnalyser.Controllers
             if (text == null)
                 text = "";
 
-            var rawModel = await GetModelAsync(text);
+            var rawModel = await _broadcastFilter.GetModelAsync(_unitOfWork, text);
 
             var viewModel = _sortStrategyContext.Sort(rawModel, sortNumber, sortType);
 
@@ -109,7 +93,7 @@ namespace TrackAnalyser.Controllers
         public async Task<IActionResult> DownloadEmissionList()
         {
             var user = _signInManager.Context.User.Identity.Name;
-            var file = new FileInfo(_env.WebRootPath + @"\excel\" + user + ".xlsx");
+            var file = new FileInfo(_environment.WebRootPath + @"\excel\" + user + ".xlsx");
 
 
             if (file.Exists)

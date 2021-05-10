@@ -14,6 +14,10 @@ using TrackAnalyser.DataAccess.RepositoryPattern;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using TrackAnalyser.Models;
+using TrackAnalyser.Utilities.SortStrategyPatternForEmission;
+using TrackAnalyser.Models.ViewModels;
+using TrackAnalyser.Utilities.SortStrategy;
+using TrackAnalyser.Utilities.BroadcastFilter;
 
 namespace TrackAnalyser
 {
@@ -39,6 +43,8 @@ namespace TrackAnalyser
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddControllersWithViews();
             services.AddRazorPages().AddRazorRuntimeCompilation();
+            services.AddTransient<ISortStrategyContext<BroadcastListViewModel>, SortStrategyContext>();
+            services.AddTransient<IBroadcastFilter<BroadcastListViewModel, IUnitOfWork>, BroadcastFilter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
