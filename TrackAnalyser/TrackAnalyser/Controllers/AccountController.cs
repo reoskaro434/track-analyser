@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TrackAnalyser.Models;
+using TrackAnalyser.Models.DBModels;
 using TrackAnalyser.Utilities;
 
 namespace TrackAnalyser.Controllers

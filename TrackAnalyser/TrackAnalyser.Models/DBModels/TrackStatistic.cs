@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrackAnalyser.Models
+namespace TrackAnalyser.Models.DBModels
 {
     public class TrackStatistic
     {
@@ -15,7 +15,7 @@ namespace TrackAnalyser.Models
         public int TrackId { get; set; }
         public Track Track { get; set; }
         public IEnumerable<DayStatistic> DayStatistics { get; set; }
-        
+
         [ForeignKey("CanalId")]
         public int CanalId { get; set; }
         public Canal Canal { get; set; }

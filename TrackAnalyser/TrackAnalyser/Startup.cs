@@ -13,11 +13,11 @@ using Microsoft.EntityFrameworkCore;
 using TrackAnalyser.DataAccess.RepositoryPattern;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
-using TrackAnalyser.Models;
 using TrackAnalyser.Utilities.SortStrategyPatternForEmission;
 using TrackAnalyser.Models.ViewModels;
 using TrackAnalyser.Utilities.SortStrategy;
 using TrackAnalyser.Utilities.BroadcastFilter;
+using TrackAnalyser.Models.DBModels;
 
 namespace TrackAnalyser
 {

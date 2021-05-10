@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrackAnalyser.Models
+namespace TrackAnalyser.Models.DBModels
 {
     public class Track
     {

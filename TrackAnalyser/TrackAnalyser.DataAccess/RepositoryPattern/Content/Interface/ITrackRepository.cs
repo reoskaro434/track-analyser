@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using TrackAnalyser.Models;
+using TrackAnalyser.Models.DBModels;
 
 namespace TrackAnalyser.DataAccess.RepositoryPattern.Content.Interface
 {

@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TrackAnalyser.DataAccess.RepositoryPattern;
-using TrackAnalyser.Models;
+using TrackAnalyser.Models.DBModels;
 using TrackAnalyser.Models.ViewModels.UserManagementViewModel;
 using TrackAnalyser.Utilities;
 

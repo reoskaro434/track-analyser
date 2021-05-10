@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TrackAnalyser.Models;
 using TrackAnalyser.DataAccess.RepositoryPattern;
 using TrackAnalyser.Utilities.SortStrategy;
 using TrackAnalyser.Utilities;
@@ -14,6 +13,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using TrackAnalyser.Utilities.SortStrategyPatternForEmission;
 using TrackAnalyser.Utilities.BroadcastFilter;
+using TrackAnalyser.Models.DBModels;
 
 namespace TrackAnalyser.Controllers
 {

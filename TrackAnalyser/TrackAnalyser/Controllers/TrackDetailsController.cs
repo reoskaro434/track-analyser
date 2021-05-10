@@ -5,17 +5,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TrackAnalyser.Models.ViewModels;
-using TrackAnalyser.Models;
 using TrackAnalyser.Models.ChartModel;
 using Newtonsoft.Json;
 using TrackAnalyser.Models.ChartModel.BarModel;
 using TrackAnalyser.Models.ChartModel.PieModel;
 using TrackAnalyser.DataAccess.RepositoryPattern;
 using TrackAnalyser.Utilities;
+using TrackAnalyser.Models.DBModels;
 
 namespace TrackAnalyser.Controllers
 {
-   
+
     public class TrackDetailsController : Controller
     {
         IUnitOfWork _unitOfWork;
