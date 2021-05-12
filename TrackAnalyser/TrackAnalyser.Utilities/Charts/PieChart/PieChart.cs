@@ -14,18 +14,24 @@ namespace TrackAnalyser.Utilities.Charts.PieChart
 {
     public class PieChart : IPieChart<IUnitOfWork>
     {
-        public async Task<string> GetTrackDataAsync(int id, IUnitOfWork unitOfWork)
+        IUnitOfWork _unitOfWork;
+
+        public PieChart(IUnitOfWork unitOfWork)
         {
-            Track track = await unitOfWork.Tracks.FindEagerAsync(id);
+            _unitOfWork = unitOfWork;
+        }
+        public async Task<string> GetTrackDataAsync(int id)
+        {
+            Track track = await _unitOfWork.Tracks.FindEagerAsync(id);
             IEnumerable<CanalTrack> canalTracks = track.Canals;
-            IEnumerable<TrackStatistic> trackStatistics = unitOfWork.TrackStatistics.Find(p => p.TrackId == id);
+            IEnumerable<TrackStatistic> trackStatistics = _unitOfWork.TrackStatistics.Find(p => p.TrackId == id);
             List<PieNameCount> pieNameCountList = new List<PieNameCount>();
 
             foreach (var trackStatistic in trackStatistics)
             {
-                Canal canal = unitOfWork.Canals.Find(p => p.Id == trackStatistic.CanalId).FirstOrDefault();
+                Canal canal = _unitOfWork.Canals.Find(p => p.Id == trackStatistic.CanalId).FirstOrDefault();
                 IEnumerable<DayStatistic> dayStatistics = new List<DayStatistic>(
-                    unitOfWork.DayStatistics.Find(p1 => p1.TrackStatisticId == trackStatistic.Id));
+                    _unitOfWork.DayStatistics.Find(p1 => p1.TrackStatisticId == trackStatistic.Id));
 
                 int sum = 0;
                 foreach (var dayStat in dayStatistics)

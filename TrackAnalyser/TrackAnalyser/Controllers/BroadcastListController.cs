@@ -16,7 +16,6 @@ namespace TrackAnalyser.Controllers
 {
     public class BroadcastListController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
         private readonly ISortStrategyContext<BroadcastListViewModel> _sortStrategyContext;
         private readonly IWebHostEnvironment _environment;
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -25,7 +24,6 @@ namespace TrackAnalyser.Controllers
         private readonly IExcelSheetConverter _excelSheetConverter;
 
         public BroadcastListController(
-            IUnitOfWork unitOfWork,
             IWebHostEnvironment environment,
             SignInManager<ApplicationUser> signInManager,
             ISortStrategyContext<BroadcastListViewModel> sortStrategyContext,
@@ -34,7 +32,6 @@ namespace TrackAnalyser.Controllers
             IExcelSheetConverter excelSheetConverter
             )
         {
-            _unitOfWork = unitOfWork;
             _sortStrategyContext = sortStrategyContext;
             _environment = environment;
             _signInManager = signInManager;
@@ -45,7 +42,7 @@ namespace TrackAnalyser.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _broadcastFilter.GetModelAsync(_unitOfWork));
+            return View(await _broadcastFilter.GetModelAsync());
         }
 
         [HttpGet]
@@ -56,7 +53,7 @@ namespace TrackAnalyser.Controllers
 
             return PartialView(
                 "_ShowTracks",
-                _sortStrategyContext.Sort(await _broadcastFilter.GetModelAsync(_unitOfWork,text), sortNumber, sortType));
+                _sortStrategyContext.Sort(await _broadcastFilter.GetModelAsync(text), sortNumber, sortType));
         }
 
         [HttpGet]
@@ -67,7 +64,7 @@ namespace TrackAnalyser.Controllers
             
             var user = _signInManager.Context.User.Identity.Name;
 
-            var rawModel = await _broadcastFilter.GetModelAsync(_unitOfWork, text);
+            var rawModel = await _broadcastFilter.GetModelAsync( text);
 
             var viewModel = _sortStrategyContext.Sort(rawModel, sortNumber, sortType);
 

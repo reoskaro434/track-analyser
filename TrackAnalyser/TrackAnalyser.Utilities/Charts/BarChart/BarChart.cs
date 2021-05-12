@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TrackAnalyser.DataAccess.RepositoryPattern;
 using TrackAnalyser.Models.ChartModel;
 using TrackAnalyser.Models.ChartModel.BarModel;
@@ -13,16 +10,22 @@ namespace TrackAnalyser.Utilities.Charts.BarChart
 {
     public class BarChart : IBarChart<IUnitOfWork>
     {
-        public string GetTrackData(int id, IUnitOfWork unitOfWork)
+        private readonly IUnitOfWork _unitOfWork;
+
+        public BarChart(IUnitOfWork unitOfWork)
         {
-            IEnumerable<TrackStatistic> trackStatistics = unitOfWork.TrackStatistics.Find(p => p.TrackId == id);
+            _unitOfWork = unitOfWork;
+        }
+        public string GetTrackData(int id)
+        {
+            IEnumerable<TrackStatistic> trackStatistics = _unitOfWork.TrackStatistics.Find(p => p.TrackId == id);
 
             SortedList<string, BarDateCount> barDateCountList = new SortedList<string, BarDateCount>();
 
             foreach (var trackStat in trackStatistics)
             {
                 IEnumerable<DayStatistic> dayStatistics = new List<DayStatistic>(
-                   unitOfWork.DayStatistics.Find(p => p.TrackStatisticId == trackStat.Id));
+                   _unitOfWork.DayStatistics.Find(p => p.TrackStatisticId == trackStat.Id));
 
                 foreach (var dayStat in dayStatistics)
                 {

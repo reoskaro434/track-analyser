@@ -8,6 +8,6 @@ namespace TrackAnalyser.Utilities.Charts.PieChart
 {
     public interface IPieChart<TUnitOfWork> where TUnitOfWork : class
     {
-        public Task<string> GetTrackDataAsync(int id, TUnitOfWork unitOfWork);
+        public Task<string> GetTrackDataAsync(int id);
     }
 }

@@ -11,9 +11,14 @@ namespace TrackAnalyser.Utilities.BroadcastFilter
 {
     public class BroadcastFilter : IBroadcastFilter<BroadcastListViewModel, IUnitOfWork>
     {
-        public async Task<BroadcastListViewModel> GetModelAsync(IUnitOfWork unitOfWork, string text = "")
+        private readonly IUnitOfWork _unitOfWork;
+        public BroadcastFilter(IUnitOfWork unitOfWork)
         {
-            IEnumerable<TrackEmission> trackEmissions = unitOfWork.
+            _unitOfWork = unitOfWork;
+        }
+        public async Task<BroadcastListViewModel> GetModelAsync(string text = "")
+        {
+            IEnumerable<TrackEmission> trackEmissions = _unitOfWork.
                 TrackEmissions.GetEagerAll().
                 Where(x => x.Track.Title.Contains(text, StringComparison.OrdinalIgnoreCase));
 
@@ -22,7 +27,7 @@ namespace TrackAnalyser.Utilities.BroadcastFilter
             foreach (var element in trackEmissions)
             {
 
-                Track track = await unitOfWork.Tracks.FindEagerAsync(element.TrackId);
+                Track track = await _unitOfWork.Tracks.FindEagerAsync(element.TrackId);
                 viewModelList.Add(new TrackEmissionViewModel()
                 {
                     CanalName = element.Canal.Name,

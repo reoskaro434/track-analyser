@@ -10,6 +10,6 @@ namespace TrackAnalyser.Utilities.Rank
         where TModel : class
         where TUnitOfWork : class
     {
-        public TModel GetRank(TUnitOfWork unitOfWork,int maxSize);
+        public TModel GetRank(int maxSize);
     }
 }

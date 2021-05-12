@@ -42,8 +42,8 @@ namespace TrackAnalyser.Controllers
                 Author = track.Artist.Name,
                 Description = track.Description,
                 Version = track.Version,
-                LastPlayedWeek = _barChart.GetTrackData(trackId,_unitOfWork),
-                Canals = await _pieChart.GetTrackDataAsync(trackId, _unitOfWork),
+                LastPlayedWeek = _barChart.GetTrackData(trackId),
+                Canals = await _pieChart.GetTrackDataAsync(trackId),
                 Duration = track.Duration.ToString(StaticDetails.TIME_FORMAT)
            };
         }

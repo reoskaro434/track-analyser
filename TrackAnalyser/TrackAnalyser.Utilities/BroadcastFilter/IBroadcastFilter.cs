@@ -11,6 +11,6 @@ namespace TrackAnalyser.Utilities.BroadcastFilter
         where TUnitOfWork : class     
     {
 
-        public Task<TModel> GetModelAsync(TUnitOfWork unitOfWork, string text = "");
+        public Task<TModel> GetModelAsync(string text = "");
     }
 }

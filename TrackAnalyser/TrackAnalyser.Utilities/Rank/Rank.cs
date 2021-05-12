@@ -11,19 +11,25 @@ namespace TrackAnalyser.Utilities.Rank
 {
     public class Rank : IRank<RankViewModel, IUnitOfWork>
     {
-        public RankViewModel GetRank(IUnitOfWork unitOfWork,int maxSize)
+        private readonly IUnitOfWork _unitOfWork;
+
+        public Rank(IUnitOfWork unitOfWork)
         {
-            IEnumerable<Track> tracks = unitOfWork.Tracks.GetAll();
+           _unitOfWork = unitOfWork;
+        }
+        public RankViewModel GetRank(int maxSize)
+        {
+            IEnumerable<Track> tracks = _unitOfWork.Tracks.GetAll();
             List<RankElementViewModel> rankElements = new List<RankElementViewModel>();
 
             foreach (var track in tracks)
             {
-                IEnumerable<TrackStatistic> trackStatistics = unitOfWork.TrackStatistics.Find(p => p.TrackId == track.Id);
-                Artist artist = unitOfWork.Artists.Find(p => p.Id == track.ArtistId).FirstOrDefault();
+                IEnumerable<TrackStatistic> trackStatistics = _unitOfWork.TrackStatistics.Find(p => p.TrackId == track.Id);
+                Artist artist = _unitOfWork.Artists.Find(p => p.Id == track.ArtistId).FirstOrDefault();
                 int trackStatisticsSum = 0;
                 foreach (var trackStatistic in trackStatistics)
                 {
-                    IEnumerable<DayStatistic> dayStatistics = unitOfWork.DayStatistics.Find(p => p.TrackStatisticId == trackStatistic.Id);
+                    IEnumerable<DayStatistic> dayStatistics = _unitOfWork.DayStatistics.Find(p => p.TrackStatisticId == trackStatistic.Id);
                     int dayStatisticsSum = 0;
                     foreach (var day in dayStatistics)
                     {
