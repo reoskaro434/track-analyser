@@ -232,6 +232,10 @@
               "target": "Package",
               "version": "[5.6.3, )"
             },
+            "MailKit": {
+              "target": "Package",
+              "version": "[2.11.1, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.5, )"
@@ -253,6 +257,10 @@
             "Microsoft.Extensions.Identity.Core": {
               "target": "Package",
               "version": "[5.0.5, )"
+            },
+            "MimeKit": {
+              "target": "Package",
+              "version": "[2.11.0, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",

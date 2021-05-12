@@ -1936,10 +1936,12 @@
       "TrackAnalyser.Utilities/1.0.0": {
         "dependencies": {
           "EPPlus": "5.6.3",
+          "MailKit": "2.11.1",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.5",
           "Microsoft.EntityFrameworkCore": "5.0.5",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.5",
           "Microsoft.Extensions.Identity.Core": "5.0.5",
+          "MimeKit": "2.11.0",
           "Newtonsoft.Json": "13.0.1",
           "TrackAnalyser.DataAccess": "1.0.0"
         },

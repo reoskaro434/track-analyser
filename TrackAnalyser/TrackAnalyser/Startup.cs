@@ -23,6 +23,7 @@ using TrackAnalyser.Utilities.Rank;
 using TrackAnalyser.Utilities.Charts.BarChart;
 using TrackAnalyser.Utilities.Charts.PieChart;
 using TrackAnalyser.Utilities.DataInitializer;
+using TrackAnalyser.Utilities.EmailSender;
 
 namespace TrackAnalyser
 {
@@ -56,6 +57,7 @@ namespace TrackAnalyser
             services.AddTransient<IBarChart<IUnitOfWork>, BarChart>();
             services.AddTransient<IPieChart<IUnitOfWork>, PieChart>();
             services.AddTransient<IDataInitializer<IUnitOfWork>, DataInitializer>();
+            services.AddTransient<IEmailSender, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
