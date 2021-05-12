@@ -20,6 +20,8 @@ using TrackAnalyser.Utilities.BroadcastFilter;
 using TrackAnalyser.Models.DBModels;
 using TrackAnalyser.Utilities.ExcelSheet;
 using TrackAnalyser.Utilities.Rank;
+using TrackAnalyser.Utilities.Charts.BarChart;
+using TrackAnalyser.Utilities.Charts.PieChart;
 
 namespace TrackAnalyser
 {
@@ -50,6 +52,8 @@ namespace TrackAnalyser
             services.AddTransient<IExcelSheetCreator<BroadcastListViewModel>, ExcelSheetCreator>();
             services.AddTransient<IExcelSheetConverter, ExcelSheetConverter>();
             services.AddTransient<IRank<RankViewModel,IUnitOfWork>, Rank>();
+            services.AddTransient<IBarChart<IUnitOfWork>, BarChart>();
+            services.AddTransient<IPieChart<IUnitOfWork>, PieChart>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

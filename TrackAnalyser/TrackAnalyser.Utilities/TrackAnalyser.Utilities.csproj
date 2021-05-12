@@ -21,4 +21,8 @@
     <ProjectReference Include="..\TrackAnalyser.DataAccess\TrackAnalyser.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="TrackDetails\" />
+  </ItemGroup>
+
 </Project>
