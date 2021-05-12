@@ -1935,6 +1935,7 @@
       },
       "TrackAnalyser.Utilities/1.0.0": {
         "dependencies": {
+          "EPPlus": "5.6.3",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.5",
           "Microsoft.EntityFrameworkCore": "5.0.5",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.5",

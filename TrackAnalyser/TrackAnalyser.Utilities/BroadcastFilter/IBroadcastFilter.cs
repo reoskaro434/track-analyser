@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace TrackAnalyser.Utilities.BroadcastFilter
 {
-    public interface IBroadcastFilter<TModel,TDBContext>
+    public interface IBroadcastFilter<TModel,TUnitOfWork>
         where TModel : class 
-        where TDBContext : class     
+        where TUnitOfWork : class     
     {
 
-        public Task<TModel> GetModelAsync(TDBContext unitOfWork, string text = "");
+        public Task<TModel> GetModelAsync(TUnitOfWork unitOfWork, string text = "");
     }
 }

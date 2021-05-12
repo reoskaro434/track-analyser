@@ -19,6 +19,7 @@ using TrackAnalyser.Utilities.SortStrategy;
 using TrackAnalyser.Utilities.BroadcastFilter;
 using TrackAnalyser.Models.DBModels;
 using TrackAnalyser.Utilities.ExcelSheet;
+using TrackAnalyser.Utilities.Rank;
 
 namespace TrackAnalyser
 {
@@ -48,6 +49,7 @@ namespace TrackAnalyser
             services.AddTransient<IBroadcastFilter<BroadcastListViewModel, IUnitOfWork>, BroadcastFilter>();
             services.AddTransient<IExcelSheetCreator<BroadcastListViewModel>, ExcelSheetCreator>();
             services.AddTransient<IExcelSheetConverter, ExcelSheetConverter>();
+            services.AddTransient<IRank<RankViewModel,IUnitOfWork>, Rank>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
