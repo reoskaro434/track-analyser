@@ -10,6 +10,7 @@ using TrackAnalyser.Utilities.SortStrategyPatternForEmission;
 using TrackAnalyser.Utilities.BroadcastFilter;
 using TrackAnalyser.Models.DBModels;
 using TrackAnalyser.Utilities.ExcelSheet;
+using TrackAnalyser.Utilities.DataInitializer;
 
 namespace TrackAnalyser.Controllers
 {
@@ -44,8 +45,6 @@ namespace TrackAnalyser.Controllers
 
         public async Task<IActionResult> Index()
         {
-            DataInitializer.SetDatabase(_unitOfWork);
-
             return View(await _broadcastFilter.GetModelAsync(_unitOfWork));
         }
 

@@ -77,7 +77,7 @@ namespace TrackAnalyser.Controllers
                     // send email
                     using var smtp = new SmtpClient();
                     smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
-                    smtp.Authenticate("ostroznykupiec@gmail.com", "olafopjg661");
+                    smtp.Authenticate("trackanalyser21@gmail.com", "AAxwyz*hH");
                     smtp.Send(email);
                     smtp.Disconnect(true);
                 }

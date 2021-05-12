@@ -1,19 +1,54 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TrackAnalyser.DataAccess.RepositoryPattern;
 using TrackAnalyser.Models.DBModels;
 
-namespace TrackAnalyser.Utilities
+namespace TrackAnalyser.Utilities.DataInitializer
 {
-    public class DataInitializer
+    public class DataInitializer : IDataInitializer<IUnitOfWork>
     {
-        static public void SetDatabase(IUnitOfWork unitOfWork)
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IUnitOfWork unitOfWork;
+
+        public DataInitializer(UserManager<ApplicationUser> userManager,
+            RoleManager<IdentityRole> roleManeger,
+            IUnitOfWork sunitOfWork)
         {
+            _userManager = userManager;
+            _roleManager = roleManeger;
+            unitOfWork = sunitOfWork;
+        }
+        private async void SetRoleAndAdmin()
+        {
+            if (!await _roleManager.RoleExistsAsync(StaticDetails.ROLE_ADMIN))
+            {
+                await _roleManager.CreateAsync(new IdentityRole(StaticDetails.ROLE_ADMIN));
+
+                ApplicationUser admin = new ApplicationUser()
+                {
+                    Email = "admin@gmail.com",
+                    UserName = "Admin"
+                };
+
+                await _userManager.CreateAsync(admin, "Admin123*");
+                await _userManager.AddToRoleAsync(admin, StaticDetails.ROLE_ADMIN);
+
+
+            }
+            if (!await _roleManager.RoleExistsAsync(StaticDetails.ROLE_USER))
+                await _roleManager.CreateAsync(new IdentityRole(StaticDetails.ROLE_USER));
+        }
+        public void SetDatabase()
+        {
+
+
             if (unitOfWork.Tracks.GetAll().ToList().Count > 0)
                 return;
+
+            SetRoleAndAdmin();
 
             #region Names of Artists
             unitOfWork.Artists.AddAsync(new Artist()
@@ -34,10 +69,10 @@ namespace TrackAnalyser.Utilities
             });
 
             unitOfWork.Save();
-           
+
 
             Artist savant = unitOfWork.Artists.Find(predicate => predicate.Name == "Savant").FirstOrDefault();
-            Artist infectedMuschroom = unitOfWork.Artists.Find(predicate => predicate.Name == "Infected Mushroom").FirstOrDefault();    
+            Artist infectedMuschroom = unitOfWork.Artists.Find(predicate => predicate.Name == "Infected Mushroom").FirstOrDefault();
             Artist ironMaiden = unitOfWork.Artists.Find(predicate => predicate.Name == "Iron Maiden").FirstOrDefault();
             Artist blindGuardian = unitOfWork.Artists.Find(predicate => predicate.Name == "Blind Guardian").FirstOrDefault();
             #endregion
@@ -114,7 +149,7 @@ namespace TrackAnalyser.Utilities
             });
 
             unitOfWork.Save();
-       
+
 
             Track savantDesEag = unitOfWork.Tracks.Find(predicate => predicate.Title == "Desert Eagle").FirstOrDefault();
             Track savantApoc = unitOfWork.Tracks.Find(predicate => predicate.Title == "Apocalypse").FirstOrDefault();
@@ -127,11 +162,11 @@ namespace TrackAnalyser.Utilities
 
             #region Assigning Tracks to Artists
             savant = unitOfWork.Artists.Find(predicate => predicate.Name == "Savant").FirstOrDefault();
-            infectedMuschroom = unitOfWork.Artists.Find(predicate => predicate.Name == "Infected Mushroom").FirstOrDefault();      
+            infectedMuschroom = unitOfWork.Artists.Find(predicate => predicate.Name == "Infected Mushroom").FirstOrDefault();
             ironMaiden = unitOfWork.Artists.Find(predicate => predicate.Name == "Iron Maiden").FirstOrDefault();
             blindGuardian = unitOfWork.Artists.Find(predicate => predicate.Name == "Blind Guardian").FirstOrDefault();
 
-            savant.Tracks = new List<Track>() { savantDesEag , savantApoc , savantBegNear };
+            savant.Tracks = new List<Track>() { savantDesEag, savantApoc, savantBegNear };
             infectedMuschroom.Tracks = new List<Track>() { infectedmuschroomNevMind };
             ironMaiden.Tracks = new List<Track>() { ironmaidenAcesHigh };
             blindGuardian.Tracks = new List<Track>() { blindguardianNightfall };
@@ -303,7 +338,7 @@ namespace TrackAnalyser.Utilities
             savantDesEag.Canals = new List<CanalTrack>() {
                     new CanalTrack() { Canal = xyzMusic } ,
             };
-          
+
             savantApoc.Canals = new List<CanalTrack>() {
                     new CanalTrack() { Canal = antRadio} ,
                     new CanalTrack() { Canal = radioS} ,
@@ -312,7 +347,7 @@ namespace TrackAnalyser.Utilities
 
             savantBegNear.Canals = new List<CanalTrack>() {
                     new CanalTrack() { Canal = radioS } ,
-             
+
             };
 
             infectedmuschroomNevMind.Canals = new List<CanalTrack>()
@@ -330,9 +365,9 @@ namespace TrackAnalyser.Utilities
                 new CanalTrack() { Canal = radioS } ,
                 new CanalTrack() { Canal = antRadio } ,
             };
-            radioS.TrackStatistics = new List<TrackStatistic> { radioSSavApoc, radioSSavBegNear,radioSIronMaidAcesHigh };
-            antRadio.TrackStatistics = new List<TrackStatistic> { antRadioSavApoc,antRadioIronMaidAcesHigh,antRadioBlGuarNightfall };
-            xyzMusic.TrackStatistics = new List<TrackStatistic> { xyzMusicSavApoc,xyzMusicSavDesEag,xyzMusicIMNevMind};
+            radioS.TrackStatistics = new List<TrackStatistic> { radioSSavApoc, radioSSavBegNear, radioSIronMaidAcesHigh };
+            antRadio.TrackStatistics = new List<TrackStatistic> { antRadioSavApoc, antRadioIronMaidAcesHigh, antRadioBlGuarNightfall };
+            xyzMusic.TrackStatistics = new List<TrackStatistic> { xyzMusicSavApoc, xyzMusicSavDesEag, xyzMusicIMNevMind };
 
             unitOfWork.Canals.Update(radioS);
             unitOfWork.Canals.Update(antRadio);
@@ -343,7 +378,7 @@ namespace TrackAnalyser.Utilities
             {
                 Track = savantDesEag,
                 Canal = radioS,
-                BeginDateTime = new DateTime(2020, 7,1, 22, 13, 4),
+                BeginDateTime = new DateTime(2020, 7, 1, 22, 13, 4),
                 EmissionTime = savantDesEag.Duration
             });
             unitOfWork.TrackEmissions.AddAsync(new TrackEmission()
@@ -416,7 +451,7 @@ namespace TrackAnalyser.Utilities
                 BeginDateTime = new DateTime(2020, 7, 2, 22, 13, 4),
                 EmissionTime = savantDesEag.Duration
             });
-         
+
             unitOfWork.TrackEmissions.AddAsync(new TrackEmission()
             {
                 Track = ironmaidenAcesHigh,
@@ -424,7 +459,7 @@ namespace TrackAnalyser.Utilities
                 BeginDateTime = new DateTime(2020, 7, 19, 2, 20, 20),
                 EmissionTime = ironmaidenAcesHigh.Duration
             });
-          
+
             unitOfWork.TrackEmissions.AddAsync(new TrackEmission()
             {
                 Track = ironmaidenAcesHigh,
@@ -432,7 +467,7 @@ namespace TrackAnalyser.Utilities
                 BeginDateTime = new DateTime(2020, 7, 20, 2, 12, 30),
                 EmissionTime = ironmaidenAcesHigh.Duration
             });
-          
+
             unitOfWork.TrackEmissions.AddAsync(new TrackEmission()
             {
                 Track = blindguardianNightfall,
