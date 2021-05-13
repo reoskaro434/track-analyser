@@ -31,16 +31,16 @@
                                     <form method="post" asp-action="EditUser">
                                         <div class="modal-body">
                                             <div class="form-group col-md-8">
-                                                <label asp-for="NewEmail"></label>
-                                                <input asp-for="NewEmail" type="email" class="form-control" placeholder="Enter email">
-                                                <span asp-validation-for="NewEmail" class="text-danger"></span>
+                                                <label>Current Email</label>
+                                                <input value="@element.value" disabled class="form-control">
+                                                <input type="hidden" asp-for="@element.value" name="email" class="form-control" placeholder="Enter email">
                                             </div>
                                             <div class="form-group col-md-8">
-                                                <label asp-for="@element.value">@element.value</label>
-                                                <input asp-for="@element.value" name="email" type="email" class="form-control" placeholder="Enter email">
-                                                <span asp-validation-for="@element.value" class="text-danger"></span>
+                                                <label asp-for="NewEmail"></label>
+                                                <input asp-for="NewEmail" type="email" name="newEmail" class="form-control" placeholder="Enter email">
+                                                <span asp-validation-for="NewEmail" class="text-danger"></span>
                                             </div>
-                                        </div>
+                                       </div>
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

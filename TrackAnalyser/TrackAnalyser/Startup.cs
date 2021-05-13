@@ -49,11 +49,11 @@ namespace TrackAnalyser
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.ConfigureApplicationCookie(options =>
-            //options.LoginPath = "/Login/Index"
-             options.AccessDeniedPath = "/Authentication/AccessDenied"
-                
-            
-            ); 
+                 options.LoginPath = "/Login/Index"
+            );
+            services.ConfigureApplicationCookie(options =>
+                 options.AccessDeniedPath = "/Authentication/AccessDenied"
+            );
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddControllersWithViews();
