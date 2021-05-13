@@ -1,19 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TrackAnalyser.Models.ViewModels.UserManagementViewModel
 {
     public class UserManagementViewModel
     {
         public IEnumerable<string> UserEmails { get; set; }
-
-        public NewUserDetailsViewModel NewUser { get; set; }
-
+       
+        [Required]
         [DataType(DataType.EmailAddress)]
+        [DisplayName("New Email")]
         public string NewEmail { get; set; }
+
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        [DisplayName("New User's Email")]
+        public string NewUserEmail { get; set; }
     }
 }

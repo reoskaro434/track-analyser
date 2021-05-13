@@ -1,4 +1,5 @@
 ﻿@model TrackAnalyser.Models.ViewModels.TrackDetailsViewModel
+@using TrackAnalyser.Utilities
 <br />
 <br />
 <div class="col">
@@ -9,11 +10,17 @@
 </div>
 <br />
 <br />
+<div class="col text-center">
+    <h2>Play count from last @StaticDetails.AMOUNT_OF_DAY days</h2>
+</div>
 <div class="col-lg-6 offset-lg-3">
     <canvas id="barChart"></canvas>
 </div>
 <br />
 <br />
+<div class="col text-center">
+    <h2>Total play count from all canals</h2>
+</div>
 <div class="col-lg-6 offset-lg-3">
     <canvas id="pieChart"></canvas>
 </div>
@@ -21,11 +28,11 @@
 @* data for charts creating *@
 
 <p hidden id="barChartData">
-    @Model.LastPlayedWeek
+    @Model.LastPlayed
 </p>
 <p hidden id="pieChartData">
     @Model.Canals
 </p>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="~/js/chart.js"></script>
+<script src="~/js/TrackDetails/chart.js"></script>

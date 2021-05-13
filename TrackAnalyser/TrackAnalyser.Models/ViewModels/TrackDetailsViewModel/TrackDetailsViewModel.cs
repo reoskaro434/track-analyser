@@ -12,7 +12,7 @@ namespace TrackAnalyser.Models.ViewModels
         public string Author { get; set; }
         public string Duration { get; set; }
         public string Description { get; set; }
-        public string LastPlayedWeek { get; set; }
+        public string LastPlayed { get; set; }
         public string Canals { get; set; }
         public string Version { get; set; }
     }

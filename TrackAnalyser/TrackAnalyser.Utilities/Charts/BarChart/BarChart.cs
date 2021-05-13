@@ -16,7 +16,7 @@ namespace TrackAnalyser.Utilities.Charts.BarChart
         {
             _unitOfWork = unitOfWork;
         }
-        public string GetTrackData(int id)
+        public string GetTrackData(int id, int amount,string dateFormat)
         {
             IEnumerable<TrackStatistic> trackStatistics = _unitOfWork.TrackStatistics.Find(p => p.TrackId == id);
 
@@ -31,7 +31,7 @@ namespace TrackAnalyser.Utilities.Charts.BarChart
                 {
                     var newBarDateCount = new BarDateCount()
                     {
-                        Date = dayStat.Day.ToString(StaticDetails.DATE_FORMAT),
+                        Date = dayStat.Day.ToString(dateFormat),
                         Count = dayStat.PlayedTimes
                     };
 
@@ -44,8 +44,8 @@ namespace TrackAnalyser.Utilities.Charts.BarChart
                             oldBarDateCount.FirstOrDefault().Value.Count + newBarDateCount.Count;
                 }
             }
-
-            return JsonConvert.SerializeObject(new BarChartModel() { BarDateCounts = barDateCountList.Values.ToArray() });
+ 
+            return JsonConvert.SerializeObject(new BarChartModel() { BarDateCounts = barDateCountList.Values.Take(amount).ToArray() });
         }
     }
 }

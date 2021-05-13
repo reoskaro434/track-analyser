@@ -58,10 +58,18 @@ namespace TrackAnalyser.Controllers
             return View("Index");
         }
 
-      /*  [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpGet]
+        public async Task<IActionResult> Logout()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }*/
+            await _signInManager.SignOutAsync();
+
+            return RedirectToAction("Index");
+        }
+
+        /*  [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+          public IActionResult Error()
+          {
+              return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+          }*/
     }
 }

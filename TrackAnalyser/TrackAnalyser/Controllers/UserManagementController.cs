@@ -53,7 +53,7 @@ namespace TrackAnalyser.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddUser(NewUserDetailsViewModel newUser)
+        public async Task<IActionResult> AddUser(string newUserEmail)
         {
             if(ModelState.IsValid)
             {
@@ -63,18 +63,19 @@ namespace TrackAnalyser.Controllers
                     .IncludeUppercase()
                     .IncludeLowercase().Next();
 
-                var user = new ApplicationUser() {Email = newUser.NewUserEmail, UserName = newUser.NewUserEmail};
+                var user = new ApplicationUser() {Email = newUserEmail, UserName = newUserEmail};
 
                 var result =  await _userManager.CreateAsync(user, password);
 
                 if(result.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(user, StaticDetails.ROLE_USER);
-                    await _emailSender.SendEmailAsync(newUser.NewUserEmail, password);
+                    await _emailSender.SendEmailAsync(newUserEmail, password);
                 }
             }
 
-            return View("Index",await GetUsers());
+            return RedirectToAction("Index");
+
         }
 
         [HttpGet]
@@ -83,7 +84,8 @@ namespace TrackAnalyser.Controllers
             var tmpUser = _unitOfWork.ApplicationUsers.Find(p => p.Email == userEmail).FirstOrDefault();
             await _userManager.DeleteAsync(tmpUser);
 
-            return View("Index",await GetUsers());
+            return RedirectToAction("Index");
+
         }
         [HttpPost]
         public async Task<IActionResult> EditUser(string email, string newEmail)
@@ -94,15 +96,10 @@ namespace TrackAnalyser.Controllers
             await _userManager.UpdateAsync(tmpUser);
 
             return RedirectToAction("Index");
+
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Logout()
-        {
-            await _signInManager.SignOutAsync();
 
-            return RedirectToAction("Index","Login");
-        }
         public async Task<IActionResult> Index()
         {
             return View(await GetUsers());

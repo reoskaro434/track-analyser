@@ -8,6 +8,6 @@ namespace TrackAnalyser.Utilities.Charts.BarChart
 {
     public interface IBarChart<TUnitOfWork> where TUnitOfWork : class
     {
-        public string GetTrackData(int id);
+        public string GetTrackData(int id, int amoun, string dateFormat);
     }
 }

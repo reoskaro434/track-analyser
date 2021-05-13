@@ -1,84 +1,29 @@
 ﻿@model TrackAnalyser.Models.ViewModels.UserManagementViewModel.UserManagementViewModel
-@using TrackAnalyser.Utilities
 
 <div>
     <br />
     <br />
     <div>
-        <form method="post" asp-action="AddUser">
-          @*  <div asp-validation-summary="All" class="text-danger"></div>*@
+      <form method="post" asp-action="AddUser">
             <div class="form-group col-md-5">
-                <label asp-for="@Model.NewUser.NewUserEmail"></label>
-                <input asp-for="@Model.NewUser.NewUserEmail" type="email" class="form-control" placeholder="Enter email">
-                <span asp-validation-for="@Model.NewUser.NewUserEmail" class="text-danger"></span>
+                <label asp-for="NewUserEmail"></label>
+                <input asp-for="NewUserEmail" type="email" class="form-control" placeholder="Enter email">
+                <span asp-validation-for="NewUserEmail" class="text-danger"></span>
             </div>
             <div class="form-group col-md-5">
                 <button type="submit" class="btn btn-primary">Add User</button>
             </div>
         </form>
-
+          
     </div>
     <div class="text-center">
         <p style="font-size:xx-large">Users </p>
     </div>
     <br />
     <br />
-    <div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">No.</th>
-                    <th scope="col">User Email</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var element in Model.UserEmails.Select((value, index) => (value, index)))
-                {
-                    int no = element.index + 1;
-                    <tr>
-                        <th scope="row">@no</th>
-                        <td >@element.value</td>
-                        <td>
-                            <a class="btn btn-info mr-1" data-toggle="modal" data-target="#@("element"+no)">Edit</a>
-                            <a class="btn btn-danger" asp-action="DeleteUser" asp-route-userEmail="@element.value">Delete</a>
-                            
-                            <div class="modal fade" id="@("element"+no)" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Edit Email</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <form method="post" asp-action="EditUser">
-                                            <div class="modal-body">
-                                                <div class="form-group col-md-8">
-                                                    <label asp-for="@Model.NewEmail"></label>
-                                                    <input asp-for="@Model.NewEmail" type="email" class="form-control" placeholder="Enter email">
-                                                    <span asp-validation-for="@Model.NewEmail" class="text-danger"></span>
-                                                </div>
-                                                <div hi class="form-group col-md-8">
-                                                    <label asp-for="@element.value">@element.value</label>
-                                                    <input asp-for="@element.value" name="email" type="email" class="form-control" placeholder="Enter email">
-                                                    <span asp-validation-for="@element.value" class="text-danger"></span>
-                                                </div>
-                                            </div>
-                                          
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Save</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+
+    <div id="showUsers">
+        <partial name="_ShowUsers" model="Model" />
+    @*  //  @await Html.PartialAsync("_ShowUsers", Model)*@
     </div>
 </div>
-
-@*<script src="~/js/editEmail.js"></script>*@
