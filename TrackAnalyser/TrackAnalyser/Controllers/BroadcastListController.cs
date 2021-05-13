@@ -11,9 +11,11 @@ using TrackAnalyser.Utilities.BroadcastFilter;
 using TrackAnalyser.Models.DBModels;
 using TrackAnalyser.Utilities.ExcelSheet;
 using TrackAnalyser.Utilities.DataInitializer;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TrackAnalyser.Controllers
 {
+    [Authorize]
     public class BroadcastListController : Controller
     {
         private readonly ISortStrategyContext<BroadcastListViewModel> _sortStrategyContext;

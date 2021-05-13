@@ -1,23 +1,17 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using TrackAnalyser.Models.ViewModels;
-using TrackAnalyser.Models.ChartModel;
-using Newtonsoft.Json;
-using TrackAnalyser.Models.ChartModel.BarModel;
-using TrackAnalyser.Models.ChartModel.PieModel;
 using TrackAnalyser.DataAccess.RepositoryPattern;
 using TrackAnalyser.Utilities;
 using TrackAnalyser.Models.DBModels;
 using TrackAnalyser.Utilities.Charts.BarChart;
 using TrackAnalyser.Utilities.Charts.PieChart;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TrackAnalyser.Controllers
 {
-
+    [Authorize]
     public class TrackDetailsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

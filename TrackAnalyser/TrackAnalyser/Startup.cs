@@ -46,6 +46,13 @@ namespace TrackAnalyser
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.ConfigureApplicationCookie(options =>
+            //options.LoginPath = "/Home/Index"
+             options.AccessDeniedPath = "/"
+                
+            
+            ); 
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddControllersWithViews();
             services.AddRazorPages().AddRazorRuntimeCompilation();

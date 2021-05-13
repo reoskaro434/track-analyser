@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TrackAnalyser.DataAccess.RepositoryPattern;
 using TrackAnalyser.Models.ViewModels;
 using TrackAnalyser.Utilities;
@@ -6,6 +7,7 @@ using TrackAnalyser.Utilities.Rank;
 
 namespace TrackAnalyser.Controllers
 {
+    [Authorize]
     public class RankController : Controller
     {
         private readonly IRank<RankViewModel, IUnitOfWork> _rank;

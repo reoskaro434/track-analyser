@@ -1,5 +1,6 @@
 ﻿using MailKit.Net.Smtp;
 using MailKit.Security;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit;
@@ -17,6 +18,7 @@ using TrackAnalyser.Utilities.EmailSender;
 
 namespace TrackAnalyser.Controllers
 {
+    [Authorize(Roles = StaticDetails.ROLE_ADMIN)]
     public class UserManagementController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
