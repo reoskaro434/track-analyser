@@ -101,7 +101,7 @@ namespace TrackAnalyser.Controllers
         {
             await _signInManager.SignOutAsync();
 
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index","Login");
         }
         public async Task<IActionResult> Index()
         {

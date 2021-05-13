@@ -9,13 +9,13 @@ using TrackAnalyser.Utilities.DataInitializer;
 
 namespace TrackAnalyser.Controllers
 {
-    public class HomeController : Controller
+    public class LoginController : Controller
     {
    //     private readonly ILogger<HomeController> _logger;
         private readonly IUnitOfWork _unitOfWork;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IDataInitializer<IUnitOfWork> _dataInitializer;
-        public HomeController(//ILogger<HomeController> logger,
+        public LoginController(//ILogger<HomeController> logger,
             IUnitOfWork unitOfWork,
             SignInManager<ApplicationUser> signInManager,
             IDataInitializer<IUnitOfWork> dataInitializer)
@@ -31,6 +31,12 @@ namespace TrackAnalyser.Controllers
             _dataInitializer.SetDatabase();
             return View();
         }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
 
         [HttpPost]
         public async Task<IActionResult> SignIn(LoginViewModel model)
