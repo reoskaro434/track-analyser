@@ -18,12 +18,14 @@ using TrackAnalyser.Models.ViewModels;
 using TrackAnalyser.Utilities.SortStrategy;
 using TrackAnalyser.Utilities.BroadcastFilter;
 using TrackAnalyser.Models.DBModels;
-using TrackAnalyser.Utilities.ExcelSheet;
 using TrackAnalyser.Utilities.Rank;
 using TrackAnalyser.Utilities.Charts.BarChart;
 using TrackAnalyser.Utilities.Charts.PieChart;
 using TrackAnalyser.Utilities.DataInitializer;
 using TrackAnalyser.Utilities.EmailSender;
+using TrackAnalyser.Utilities.ExcelSheet.ExcelSheetCreator;
+using TrackAnalyser.Utilities.ExcelSheet.ExcelSheetConverter;
+using TrackAnalyser.Models.ExcelSheetModel;
 
 namespace TrackAnalyser
 {
@@ -58,7 +60,7 @@ namespace TrackAnalyser
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddTransient<ISortStrategyContext<BroadcastListViewModel>, SortStrategyContext>();
             services.AddTransient<IBroadcastFilter<BroadcastListViewModel, IUnitOfWork>, BroadcastFilter>();
-            services.AddTransient<IExcelSheetCreator<BroadcastListViewModel>, ExcelSheetCreator>();
+            services.AddTransient<IExcelSheetCreator<BroadcastListViewModel,ExcelSheetModel>, ExcelSheetCreator>();
             services.AddTransient<IExcelSheetConverter, ExcelSheetConverter>();
             services.AddTransient<IRank<RankViewModel,IUnitOfWork>, Rank>();
             services.AddTransient<IBarChart<IUnitOfWork>, BarChart>();

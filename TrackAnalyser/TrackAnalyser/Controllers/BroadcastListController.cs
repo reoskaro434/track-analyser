@@ -3,15 +3,15 @@ using TrackAnalyser.Models.ViewModels;
 using System.Threading.Tasks;
 using TrackAnalyser.DataAccess.RepositoryPattern;
 using TrackAnalyser.Utilities;
-using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using TrackAnalyser.Utilities.SortStrategyPatternForEmission;
 using TrackAnalyser.Utilities.BroadcastFilter;
 using TrackAnalyser.Models.DBModels;
-using TrackAnalyser.Utilities.ExcelSheet;
-using TrackAnalyser.Utilities.DataInitializer;
 using Microsoft.AspNetCore.Authorization;
+using TrackAnalyser.Utilities.ExcelSheet.ExcelSheetCreator;
+using TrackAnalyser.Utilities.ExcelSheet.ExcelSheetConverter;
+using TrackAnalyser.Models.ExcelSheetModel;
 
 namespace TrackAnalyser.Controllers
 {
@@ -22,7 +22,7 @@ namespace TrackAnalyser.Controllers
         private readonly IWebHostEnvironment _environment;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IBroadcastFilter<BroadcastListViewModel, IUnitOfWork> _broadcastFilter;
-        private readonly IExcelSheetCreator<BroadcastListViewModel> _excelSheetCreator;
+        private readonly IExcelSheetCreator<BroadcastListViewModel,ExcelSheetModel> _excelSheetCreator;
         private readonly IExcelSheetConverter _excelSheetConverter;
 
         public BroadcastListController(
@@ -30,7 +30,7 @@ namespace TrackAnalyser.Controllers
             SignInManager<ApplicationUser> signInManager,
             ISortStrategyContext<BroadcastListViewModel> sortStrategyContext,
             IBroadcastFilter<BroadcastListViewModel,IUnitOfWork> broadcastFilter,
-            IExcelSheetCreator<BroadcastListViewModel> excelSheetCreator,
+            IExcelSheetCreator<BroadcastListViewModel, ExcelSheetModel> excelSheetCreator,
             IExcelSheetConverter excelSheetConverter
             )
         {

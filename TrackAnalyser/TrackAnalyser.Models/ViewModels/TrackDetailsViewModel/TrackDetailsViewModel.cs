@@ -9,6 +9,7 @@ namespace TrackAnalyser.Models.ViewModels
 {
     public class TrackDetailsViewModel
     {
+        public string TrackName { get; set; }
         public string Author { get; set; }
         public string Duration { get; set; }
         public string Description { get; set; }

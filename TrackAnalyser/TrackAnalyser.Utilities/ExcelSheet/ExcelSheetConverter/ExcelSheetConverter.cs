@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrackAnalyser.Utilities.ExcelSheet
+namespace TrackAnalyser.Utilities.ExcelSheet.ExcelSheetConverter
 {
     public class ExcelSheetConverter : IExcelSheetConverter
     {

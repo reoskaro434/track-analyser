@@ -38,7 +38,8 @@ namespace TrackAnalyser.Controllers
                 Version = track.Version,
                 LastPlayed = _barChart.GetTrackData(trackId,StaticDetails.AMOUNT_OF_DAY, StaticDetails.DATE_FORMAT),
                 Canals = await _pieChart.GetTrackDataAsync(trackId),
-                Duration = track.Duration.ToString(StaticDetails.TIME_FORMAT)
+                Duration = track.Duration.ToString(StaticDetails.TIME_FORMAT),
+                TrackName = track.Title
            };
         }
         public async Task<IActionResult> Index(int? trackId)
