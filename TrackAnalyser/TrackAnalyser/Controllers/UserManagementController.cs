@@ -33,13 +33,10 @@ namespace TrackAnalyser.Controllers
         private async Task<UserManagementViewModel> GetUsers()
         {
             var users = await _userManager.GetUsersInRoleAsync(StaticDetails.ROLE_USER);
-            List<string> usersEmail = new List<string>();
-
-            foreach (var u in users)
-                usersEmail.Add(u.Email);
 
             return new UserManagementViewModel() {
-                UserEmails = usersEmail};
+                UserEmails = users.Select(p => p.Email).ToList()
+            };
         }
 
         [HttpPost]
@@ -84,6 +81,7 @@ namespace TrackAnalyser.Controllers
         {
             var tmpUser = _unitOfWork.ApplicationUsers.Find(p => p.Email == email).FirstOrDefault();
             tmpUser.Email = newEmail;
+            tmpUser.UserName = newEmail;
 
             await _userManager.UpdateAsync(tmpUser);
 

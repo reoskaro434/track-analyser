@@ -20,11 +20,11 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow ">
             <div class="container">
                 @if (User.IsInRole(StaticDetails.ROLE_USER) || User.IsInRole(StaticDetails.ROLE_ADMIN))
                 {
-                    <a class="navbar-brand" asp-area="" asp-controller="BroadcastList" asp-action="Index">Track Analyser</a>
+                    <a class="navbar-brand" asp-area="" asp-controller="BroadcastList" asp-action="Index">Track Analyser ~ @User.Identity.Name</a>
                 }
                 else
                 {
@@ -60,6 +60,7 @@
                             </li>
                         }
                     </ul>
+                
                 </div>
             </div>
         </nav>

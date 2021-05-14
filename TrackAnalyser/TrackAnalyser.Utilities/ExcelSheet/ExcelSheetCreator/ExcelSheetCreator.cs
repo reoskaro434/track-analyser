@@ -15,6 +15,7 @@ namespace TrackAnalyser.Utilities.ExcelSheet.ExcelSheetCreator
         private IEnumerable<ExcelSheetModel> CreateModel(BroadcastListViewModel broadcastListViewModel)
         {
             var trackEmissions = broadcastListViewModel.TrackEmissions;
+            int counter = 1;
 
             List<ExcelSheetModel> excelSheetList = new List<ExcelSheetModel>();
 
@@ -27,7 +28,9 @@ namespace TrackAnalyser.Utilities.ExcelSheet.ExcelSheetCreator
                     EmissionDuration = emission.EmissionTime,
                     TrackArtist = emission.ArtistName,
                     TrackName = emission.TrackName,
+                    Number = counter
                 });
+                counter++;
             }
 
             return excelSheetList;
@@ -36,7 +39,6 @@ namespace TrackAnalyser.Utilities.ExcelSheet.ExcelSheetCreator
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             var file = new FileInfo(path);
-            var emissionList = model.TrackEmissions;
 
             if (file.Exists)
                 file.Delete();
@@ -47,13 +49,7 @@ namespace TrackAnalyser.Utilities.ExcelSheet.ExcelSheetCreator
 
             var excelSheetList = CreateModel(model);
             var range = ws.Cells["A1"].LoadFromCollection(excelSheetList, true);
-            /*
-                        var range = ws.Cells["A1"].LoadFromCollection(emissionList.Select(p => p.ArtistName), true);
-                        ws.Cells["B1"].LoadFromCollection(emissionList.Select(p => p.CanalName), true);
-                        ws.Cells["C1"].LoadFromCollection(emissionList.Select(p => p.EmissionDate), true);
-                        ws.Cells["D1"].LoadFromCollection(emissionList.Select(p => p.EmissionTime), true);
-                        ws.Cells["E1"].LoadFromCollection(emissionList.Select(p => p.TrackName), true);
-            */         //   
+          
             range.AutoFitColumns();
             await package.SaveAsync();
         }

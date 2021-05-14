@@ -9,12 +9,12 @@ namespace TrackAnalyser.Models.ViewModels.UserManagementViewModel
         public IEnumerable<string> UserEmails { get; set; }
        
         [Required]
-        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         [DisplayName("New Email")]
         public string NewEmail { get; set; }
 
         [Required]
-        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         [DisplayName("New User's Email")]
         public string NewUserEmail { get; set; }
     }

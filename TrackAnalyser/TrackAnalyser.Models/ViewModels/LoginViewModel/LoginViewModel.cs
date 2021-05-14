@@ -10,7 +10,7 @@ namespace TrackAnalyser.Models.ViewModels.LoginViewModel
     public class LoginViewModel
     {
         [Required]
-        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         public string Email { get; set; }
 
         [Required]
