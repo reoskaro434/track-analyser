@@ -37,16 +37,14 @@ namespace TrackAnalyser.Controllers
             if (ModelState.IsValid)
             {
                ApplicationUser user = _unitOfWork.ApplicationUsers.Find(p => p.Email == model.Email).FirstOrDefault();
-               
-               var result =  await _signInManager.PasswordSignInAsync(user,model.Password, isPersistent: false,false);
-
-                if (result.Succeeded)
-                    return RedirectToAction("Index", "BroadcastList");
-                else
+                if (user != null)
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return View("Index");
+                    var result = await _signInManager.PasswordSignInAsync(user, model.Password, isPersistent: false, false);
+
+                    if (result.Succeeded)
+                        return RedirectToAction("Index", "BroadcastList");
                 }
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
             }
             return View("Index");
         }

@@ -23,14 +23,17 @@
                 @foreach (var element in Model.RankElements.Select((value, index) => (value, index)))
                 {
                     int no = element.index + 1;
+
                     <tr>
                         <th scope="row">@no</th>
                         <td>@element.value.TrackName</td>
                         <td>@element.value.TrackArtist</td>
                         <td>@element.value.TotalPlayback</td>
                     </tr>
+
                 }
             </tbody>
         </table>
     </div>
 </div>
+
