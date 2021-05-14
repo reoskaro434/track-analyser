@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 using TrackAnalyser.Utilities.ExcelSheet.ExcelSheetCreator;
 using TrackAnalyser.Utilities.ExcelSheet.ExcelSheetConverter;
 using TrackAnalyser.Models.ExcelSheetModel;
+using System.IO;
 
 namespace TrackAnalyser.Controllers
 {
@@ -79,11 +80,16 @@ namespace TrackAnalyser.Controllers
         {
             var user = _signInManager.Context.User.Identity.Name;
 
-            var fileStream = _excelSheetConverter.ConvertToFileStream(_environment.WebRootPath + @"\excel\" + user + ".xlsx");
+            var path = _environment.WebRootPath + @"\excel\" + user + ".xlsx";
 
-            if (fileStream != null)
-                return File(fileStream, StaticDetails.EXCEL_SHEET_CONTENT_TYPE, StaticDetails.EXCEL_SHEET_NAME);
+            var byteArray = _excelSheetConverter.ConvertToByteArray(path);
 
+            if (byteArray != null)
+            {
+                new FileInfo(path).Delete();
+
+                return File(byteArray, StaticDetails.EXCEL_SHEET_CONTENT_TYPE, StaticDetails.EXCEL_SHEET_NAME);
+            }
             return RedirectToAction("Index");
         }
     }

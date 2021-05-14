@@ -9,12 +9,12 @@ namespace TrackAnalyser.Utilities.ExcelSheet.ExcelSheetConverter
 {
     public class ExcelSheetConverter : IExcelSheetConverter
     {
-        public FileStream ConvertToFileStream(string path)
+        public byte[] ConvertToByteArray(string path)
         {
             var file = new FileInfo(path);
 
             if (file.Exists)
-                return new FileStream(file.FullName, FileMode.Open, FileAccess.Read);
+                return File.ReadAllBytes(path);
             else
                 return null;
         }

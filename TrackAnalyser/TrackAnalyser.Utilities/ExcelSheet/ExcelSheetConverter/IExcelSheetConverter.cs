@@ -9,6 +9,6 @@ namespace TrackAnalyser.Utilities.ExcelSheet.ExcelSheetConverter
 {
     public interface IExcelSheetConverter
     {
-        public FileStream ConvertToFileStream(string path);
+        public byte[] ConvertToByteArray(string path);
     }
 }
