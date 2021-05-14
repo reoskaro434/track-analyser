@@ -4,17 +4,18 @@
     <br />
     <br />
     <div>
-      <form method="post" asp-action="AddUser">
+        <form method="post" asp-action="AddUser">
             <div class="form-group col-md-5">
                 <label asp-for="NewUserEmail"></label>
                 <input asp-for="NewUserEmail" type="email" class="form-control" placeholder="Enter email">
                 <span asp-validation-for="NewUserEmail" class="text-danger"></span>
+                <span class="text-success">@TempData["Message"]</span>
             </div>
             <div class="form-group col-md-5">
                 <button type="submit" class="btn btn-primary">Add User</button>
             </div>
         </form>
-          
+
     </div>
     <div class="text-center">
         <p style="font-size:xx-large">Users </p>

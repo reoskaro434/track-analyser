@@ -74,7 +74,6 @@ namespace TrackAnalyser.Controllers
             _excelSheetCreator.CreateExcelSheetAsync(viewModel, _environment.WebRootPath + @"\excel\" + user + ".xlsx");
         }
 
-
         [HttpGet]
         public IActionResult DownloadEmissionList()
         {

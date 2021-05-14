@@ -1,12 +1,7 @@
-﻿using MailKit.Net.Smtp;
-using MailKit.Security;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using MimeKit;
-using MimeKit.Text;
 using PasswordGenerator;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,22 +17,16 @@ namespace TrackAnalyser.Controllers
     public class UserManagementController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IEmailSender _emailSender;
 
         public UserManagementController(
             UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager,
-            RoleManager<IdentityRole> roleManeger,
             IUnitOfWork unitOfWork,
             IEmailSender emailSender
             )
         {
             _userManager = userManager;
-            _signInManager = signInManager;
-            _roleManager = roleManeger;
             _unitOfWork = unitOfWork;
             _emailSender = emailSender;
         }
@@ -49,7 +38,8 @@ namespace TrackAnalyser.Controllers
             foreach (var u in users)
                 usersEmail.Add(u.Email);
 
-            return new UserManagementViewModel() { UserEmails = usersEmail };
+            return new UserManagementViewModel() {
+                UserEmails = usersEmail};
         }
 
         [HttpPost]
@@ -65,17 +55,19 @@ namespace TrackAnalyser.Controllers
 
                 var user = new ApplicationUser() {Email = newUserEmail, UserName = newUserEmail};
 
+                //user with fake email will also be created
                 var result =  await _userManager.CreateAsync(user, password);
 
                 if(result.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(user, StaticDetails.ROLE_USER);
                     await _emailSender.SendEmailAsync(newUserEmail, password);
+
+                    TempData["Message"] = StaticDetails.MESSAGE;
                 }
             }
 
             return RedirectToAction("Index");
-
         }
 
         [HttpGet]
@@ -96,12 +88,10 @@ namespace TrackAnalyser.Controllers
             await _userManager.UpdateAsync(tmpUser);
 
             return RedirectToAction("Index");
-
+           
         }
-
-
         public async Task<IActionResult> Index()
-        {
+        {   
             return View(await GetUsers());
         }
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,16 +12,14 @@ namespace TrackAnalyser.Controllers
 {
     public class LoginController : Controller
     {
-   //     private readonly ILogger<HomeController> _logger;
         private readonly IUnitOfWork _unitOfWork;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IDataInitializer<IUnitOfWork> _dataInitializer;
-        public LoginController(//ILogger<HomeController> logger,
+        public LoginController(
             IUnitOfWork unitOfWork,
             SignInManager<ApplicationUser> signInManager,
             IDataInitializer<IUnitOfWork> dataInitializer)
         {
-          //  _logger = logger;
             _unitOfWork = unitOfWork;
             _signInManager = signInManager;
             _dataInitializer = dataInitializer;
@@ -31,12 +30,6 @@ namespace TrackAnalyser.Controllers
             _dataInitializer.SetDatabase();
             return View();
         }
-
-        public IActionResult AccessDenied()
-        {
-            return View();
-        }
-
 
         [HttpPost]
         public async Task<IActionResult> SignIn(LoginViewModel model)
@@ -59,17 +52,12 @@ namespace TrackAnalyser.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
 
             return RedirectToAction("Index");
         }
-
-        /*  [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-          public IActionResult Error()
-          {
-              return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-          }*/
     }
 }

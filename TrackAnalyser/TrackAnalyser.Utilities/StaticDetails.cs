@@ -28,6 +28,8 @@ namespace TrackAnalyser.Utilities
 
         public const string EXCEL_SHEET_CONTENT_TYPE = "application/vnd.ms-excel";
         public const string EXCEL_SHEET_NAME = "TrackAnalyserEmission.xlsx";
+
+        public const string MESSAGE = "Password has been sent to a valid email.";
     
     }
 }
