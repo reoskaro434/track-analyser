@@ -55,12 +55,18 @@ namespace TrackAnalyser.Controllers
                 //user with fake email will also be created
                 var result =  await _userManager.CreateAsync(user, password);
 
-                if(result.Succeeded)
+                if (result.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(user, StaticDetails.ROLE_USER);
                     await _emailSender.SendEmailAsync(newUserEmail, password);
 
                     TempData["Message"] = StaticDetails.MESSAGE;
+
+                }
+                else
+                { 
+                    ModelState.AddModelError(string.Empty, "Cannot add user, try different email.");
+                    return View("Index",await GetUsers());
                 }
             }
 

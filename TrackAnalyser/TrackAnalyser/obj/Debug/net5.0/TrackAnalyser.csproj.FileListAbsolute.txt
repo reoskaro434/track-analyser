@@ -15,7 +15,6 @@ C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\Track
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\obj\Debug\net5.0\TrackAnalyser.RazorCoreGenerate.cache
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\obj\Debug\net5.0\Razor\Views\BroadcastList\Index.cshtml.g.cs
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\obj\Debug\net5.0\Razor\Views\Rank\Index.cshtml.g.cs
-C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\obj\Debug\net5.0\Razor\Views\TrackDetails\Index.cshtml.g.cs
@@ -407,3 +406,5 @@ C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\Track
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\obj\Debug\net5.0\Razor\Views\Login\Index.cshtml.g.cs
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\obj\Debug\net5.0\Razor\Views\BroadcastList\_ShowTracks.cshtml.g.cs
 C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\obj\Debug\net5.0\Razor\Views\UserManagement\_ShowUsers.cshtml.g.cs
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\obj\Debug\net5.0\Razor\Views\Error\Error.cshtml.g.cs
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser\obj\Debug\net5.0\Razor\Views\Error\ExceptionError.cshtml.g.cs

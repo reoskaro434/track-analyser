@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using TrackAnalyser.DataAccess.RepositoryPattern;
 using TrackAnalyser.Models.DBModels;
+using TrackAnalyser.Models.ViewModels;
 using TrackAnalyser.Models.ViewModels.LoginViewModel;
 using TrackAnalyser.Utilities.DataInitializer;
 
@@ -57,5 +59,7 @@ namespace TrackAnalyser.Controllers
 
             return RedirectToAction("Index");
         }
+
+     
     }
 }

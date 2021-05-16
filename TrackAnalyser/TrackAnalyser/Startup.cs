@@ -79,7 +79,8 @@ namespace TrackAnalyser
             }
             else
             {
-               //app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/ExceptionError");
+                app.UseStatusCodePagesWithRedirects("/Error/{0}");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
