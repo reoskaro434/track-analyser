@@ -30,6 +30,7 @@ namespace TrackAnalyser.Controllers
             _unitOfWork = unitOfWork;
             _emailSender = emailSender;
         }
+
         private async Task<UserManagementViewModel> GetUsers()
         {
             var users = await _userManager.GetUsersInRoleAsync(StaticDetails.ROLE_USER);

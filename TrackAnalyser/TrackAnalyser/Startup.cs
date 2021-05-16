@@ -58,15 +58,15 @@ namespace TrackAnalyser
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddControllersWithViews();
             services.AddRazorPages().AddRazorRuntimeCompilation();
-            services.AddTransient<ISortStrategyContext<BroadcastListViewModel>, SortStrategyContext>();
-            services.AddTransient<IBroadcastFilter<BroadcastListViewModel, IUnitOfWork>, BroadcastFilter>();
-            services.AddTransient<IExcelSheetCreator<BroadcastListViewModel,ExcelSheetModel>, ExcelSheetCreator>();
-            services.AddTransient<IExcelSheetConverter, ExcelSheetConverter>();
-            services.AddTransient<IRank<RankViewModel,IUnitOfWork>, Rank>();
-            services.AddTransient<IBarChart<IUnitOfWork>, BarChart>();
-            services.AddTransient<IPieChart<IUnitOfWork>, PieChart>();
-            services.AddTransient<IDataInitializer<IUnitOfWork>, DataInitializer>();
-            services.AddTransient<IEmailSender, EmailSender>();
+            services.AddScoped<ISortStrategyContext<BroadcastListViewModel>, SortStrategyContext>();
+            services.AddScoped<IBroadcastFilter<BroadcastListViewModel, IUnitOfWork>, BroadcastFilter>();
+            services.AddScoped<IExcelSheetCreator<BroadcastListViewModel,ExcelSheetModel>, ExcelSheetCreator>();
+            services.AddScoped<IExcelSheetConverter, ExcelSheetConverter>();
+            services.AddScoped<IRank<RankViewModel,IUnitOfWork>, Rank>();
+            services.AddScoped<IBarChart<IUnitOfWork>, BarChart>();
+            services.AddScoped<IPieChart<IUnitOfWork>, PieChart>();
+            services.AddScoped<IDataInitializer<IUnitOfWork>, DataInitializer>();
+            services.AddScoped<IEmailSender, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
