@@ -16,11 +16,17 @@ namespace TrackAnalyser.Utilities.BroadcastFilter
         {
             _unitOfWork = unitOfWork;
         }
-        public async Task<BroadcastListViewModel> GetModelAsync(string text = "")
+
+        private IEnumerable<TrackEmission> GetTrackEmissions(string text)
         {
-            IEnumerable<TrackEmission> trackEmissions = _unitOfWork.
+            return _unitOfWork.
                 TrackEmissions.GetEagerAll().
                 Where(x => x.Track.Title.Contains(text, StringComparison.OrdinalIgnoreCase));
+        }
+
+        public async Task<BroadcastListViewModel> GetModelAsync(string text = "")
+        {
+            IEnumerable<TrackEmission> trackEmissions = GetTrackEmissions(text);
 
             List<TrackEmissionViewModel> viewModelList = new List<TrackEmissionViewModel>();
 

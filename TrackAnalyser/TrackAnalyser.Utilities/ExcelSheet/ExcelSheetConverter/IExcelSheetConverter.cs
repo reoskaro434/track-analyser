@@ -9,6 +9,11 @@ namespace TrackAnalyser.Utilities.ExcelSheet.ExcelSheetConverter
 {
     public interface IExcelSheetConverter
     {
+        /// <summary>
+        /// Converts excel sheet to byte array.
+        /// </summary>
+        /// <param name="path">Location of excel sheet.</param>
+        /// <returns></returns>
         public byte[] ConvertToByteArray(string path);
     }
 }

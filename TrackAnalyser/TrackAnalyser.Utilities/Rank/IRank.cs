@@ -10,6 +10,11 @@ namespace TrackAnalyser.Utilities.Rank
         where TModel : class
         where TUnitOfWork : class
     {
+        /// <summary>
+        /// Returns top played songs.
+        /// </summary>
+        /// <param name="maxSize">Max size of rank.</param>
+        /// <returns></returns>
         public TModel GetRank(int maxSize);
     }
 }

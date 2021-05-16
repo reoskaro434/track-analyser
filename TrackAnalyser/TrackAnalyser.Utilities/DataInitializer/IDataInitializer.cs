@@ -8,6 +8,9 @@ namespace TrackAnalyser.Utilities.DataInitializer
 {
     public interface IDataInitializer<TUnitOfWork> where TUnitOfWork : class
     {
+        /// <summary>
+        /// Initialize DB for program presentation.
+        /// </summary>
         public void SetDatabase();
     }
 }
