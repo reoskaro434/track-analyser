@@ -21,34 +21,31 @@ namespace TrackAnalyser.Utilities.DataInitializer
             _roleManager = roleManeger;
             unitOfWork = sunitOfWork;
         }
-        private async void SetRoleAndAdmin()
+        private void SetRoleAndAdmin()
         {
-            if (!await _roleManager.RoleExistsAsync(StaticDetails.ROLE_ADMIN))
+            _roleManager.CreateAsync(new IdentityRole(StaticDetails.ROLE_ADMIN)).GetAwaiter().GetResult();
+            _roleManager.CreateAsync(new IdentityRole(StaticDetails.ROLE_USER)).GetAwaiter().GetResult();
+            ApplicationUser admin = new ApplicationUser()
             {
-                await _roleManager.CreateAsync(new IdentityRole(StaticDetails.ROLE_ADMIN));
+                Email = "admin@gmail.com",
+                UserName = "Admin"
+            };
 
-                ApplicationUser admin = new ApplicationUser()
-                {
-                    Email = "admin@gmail.com",
-                    UserName = "Admin"
-                };
+            _userManager.CreateAsync(admin, "Admin123*").GetAwaiter().GetResult(); 
+            _userManager.AddToRoleAsync(admin, StaticDetails.ROLE_ADMIN).GetAwaiter().GetResult(); 
 
-                await _userManager.CreateAsync(admin, "Admin123*");
-                await _userManager.AddToRoleAsync(admin, StaticDetails.ROLE_ADMIN);
-
-
-            }
-            if (!await _roleManager.RoleExistsAsync(StaticDetails.ROLE_USER))
-                await _roleManager.CreateAsync(new IdentityRole(StaticDetails.ROLE_USER));
         }
         public void SetDatabase()
         {
+            unitOfWork.Migrate();
 
-
+            unitOfWork.Save();
             if (unitOfWork.Tracks.GetAll().ToList().Count > 0)
                 return;
 
             SetRoleAndAdmin();
+
+            unitOfWork.Save();
 
             #region Names of Artists
             unitOfWork.Artists.AddAsync(new Artist()

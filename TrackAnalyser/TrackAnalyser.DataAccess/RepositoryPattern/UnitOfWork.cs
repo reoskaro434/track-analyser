@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TrackAnalyser.DataAccess.RepositoryPattern.Content.Interface;
 using TrackAnalyser.DataAccess.RepositoryPattern.Content.Class;
+using Microsoft.EntityFrameworkCore;
 
 namespace TrackAnalyser.DataAccess.RepositoryPattern
 {
@@ -47,6 +48,16 @@ namespace TrackAnalyser.DataAccess.RepositoryPattern
         public void Dispose()
         {
             _db.Dispose();
+        }
+
+        public void Migrate()
+        {
+            try
+            {
+                if (_db.Database.GetPendingMigrations().Count() > 0)
+                    _db.Database.Migrate();
+            }
+            catch (Exception e) { }
         }
     }
 }

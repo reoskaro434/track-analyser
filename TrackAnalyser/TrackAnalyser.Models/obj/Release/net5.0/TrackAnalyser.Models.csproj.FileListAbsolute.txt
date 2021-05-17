@@ -1,0 +1,15 @@
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\bin\Release\net5.0\TrackAnalyser.Models.deps.json
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\bin\Release\net5.0\TrackAnalyser.Models.runtimeconfig.json
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\bin\Release\net5.0\TrackAnalyser.Models.runtimeconfig.dev.json
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\bin\Release\net5.0\TrackAnalyser.Models.dll
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\bin\Release\net5.0\ref\TrackAnalyser.Models.dll
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\bin\Release\net5.0\TrackAnalyser.Models.pdb
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\obj\Release\net5.0\TrackAnalyser.Models.csprojAssemblyReference.cache
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\obj\Release\net5.0\TrackAnalyser.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\obj\Release\net5.0\TrackAnalyser.Models.AssemblyInfoInputs.cache
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\obj\Release\net5.0\TrackAnalyser.Models.AssemblyInfo.cs
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\obj\Release\net5.0\TrackAnalyser.Models.csproj.CoreCompileInputs.cache
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\obj\Release\net5.0\TrackAnalyser.Models.dll
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\obj\Release\net5.0\ref\TrackAnalyser.Models.dll
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\obj\Release\net5.0\TrackAnalyser.Models.pdb
+C:\Users\reosk\Documents\GitHub\web-app-for-data-recognizing-and-analysing\TrackAnalyser\TrackAnalyser.Models\obj\Release\net5.0\TrackAnalyser.Models.genruntimeconfig.cache

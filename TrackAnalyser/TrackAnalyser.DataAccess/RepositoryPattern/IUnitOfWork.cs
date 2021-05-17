@@ -18,5 +18,6 @@ namespace TrackAnalyser.DataAccess.RepositoryPattern
         ICanalTrackRepository CanalTracks { get; }
         IApplicationUserRepository ApplicationUsers { get; }
         int Save();
+        public void Migrate();
     }
 }
