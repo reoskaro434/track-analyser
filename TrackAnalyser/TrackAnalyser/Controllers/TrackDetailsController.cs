@@ -8,6 +8,7 @@ using TrackAnalyser.Models.DBModels;
 using TrackAnalyser.Utilities.Charts.BarChart;
 using TrackAnalyser.Utilities.Charts.PieChart;
 using Microsoft.AspNetCore.Authorization;
+using System;
 
 namespace TrackAnalyser.Controllers
 {
@@ -42,12 +43,9 @@ namespace TrackAnalyser.Controllers
                 TrackName = track.Title
            };
         }
-        public async Task<IActionResult> Index(int? trackId)
+        public async Task<IActionResult> Index(int trackId)
         {
-            if (trackId != null)
-                return View(await GetModel((int)trackId));
-            else
-                return View(new ErrorViewModel());
+            return View(await GetModel((int)trackId));
         }
     }
 }

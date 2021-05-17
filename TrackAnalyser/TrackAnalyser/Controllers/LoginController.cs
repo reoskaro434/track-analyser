@@ -8,6 +8,7 @@ using TrackAnalyser.DataAccess.RepositoryPattern;
 using TrackAnalyser.Models.DBModels;
 using TrackAnalyser.Models.ViewModels;
 using TrackAnalyser.Models.ViewModels.LoginViewModel;
+using TrackAnalyser.Utilities;
 using TrackAnalyser.Utilities.DataInitializer;
 
 namespace TrackAnalyser.Controllers
@@ -29,6 +30,9 @@ namespace TrackAnalyser.Controllers
 
         public IActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "BroadcastList");
+
             _dataInitializer.SetDatabase();
             return View();
         }
@@ -36,6 +40,9 @@ namespace TrackAnalyser.Controllers
         [HttpPost]
         public async Task<IActionResult> SignIn(LoginViewModel model)
         {
+            if (User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "BroadcastList");
+
             if (ModelState.IsValid)
             {
                ApplicationUser user = _unitOfWork.ApplicationUsers.Find(p => p.Email == model.Email).FirstOrDefault();
@@ -56,7 +63,6 @@ namespace TrackAnalyser.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-
             return RedirectToAction("Index");
         }
 

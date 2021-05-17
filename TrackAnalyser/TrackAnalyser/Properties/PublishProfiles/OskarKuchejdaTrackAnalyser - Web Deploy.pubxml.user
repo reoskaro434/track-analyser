@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAARav4F+6GXEyCa55pv/qS6AAAAAACAAAAAAAQZgAAAAEAACAAAABegQVCIfblfwychAemwFJ5YNhF68jFvZcZRMQC8m/7+wAAAAAOgAAAAAIAACAAAAA9/GY6iC6dFteYK9H/8qqAKEqGBGAQjBbhB5y5QrAIY4AAAABsi6xnYaSusNlw3ABOIX+yQPpOc+EOmoMaTN9qZrLYVc52HLmNcE3MxjYgafEFAB5xmEdSKugQJNrnqy0M0bn0VczACqxJ4dblsNse+0YMg+VOr+2HQPyZBz4hW2LNAnWXn6+OBzj6mw1PYHBovELTFnfR9TNfJVSdw+2WuBlSAEAAAACZhxUtyMYVieDsnYyd7V8Kc4kIDqV7KpYXkDMtlqVyRr3dm7wWXIQmSytsX1ppq0viDJhOO2lLKRwAppkySxdk</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=tcp:trackanalyserdbdbserver.database.windows.net,1433%3bInitial Catalog=TrackAnalyserDB%3bUser Id=reoskaro434%40trackanalyserdbdbserver%3bPassword=XYZZ%2awim%3bMultipleActiveResultSets=True</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>
