@@ -85,12 +85,14 @@ namespace TrackAnalyser.Controllers
         [HttpPost]
         public async Task<IActionResult> EditUser(string email, string newEmail)
         {
-            var tmpUser = _unitOfWork.ApplicationUsers.Find(p => p.Email == email).FirstOrDefault();
-            tmpUser.Email = newEmail;
-            tmpUser.UserName = newEmail;
+            if (ModelState.IsValid)
+            {
+                var tmpUser = _unitOfWork.ApplicationUsers.Find(p => p.Email == email).FirstOrDefault();
+                tmpUser.Email = newEmail;
+                tmpUser.UserName = newEmail;
 
-            await _userManager.UpdateAsync(tmpUser);
-
+                await _userManager.UpdateAsync(tmpUser);
+            }
             return RedirectToAction("Index");
            
         }
