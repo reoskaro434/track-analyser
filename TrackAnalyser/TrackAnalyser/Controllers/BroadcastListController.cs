@@ -10,9 +10,9 @@ using TrackAnalyser.Utilities.BroadcastFilter;
 using TrackAnalyser.Models.DBModels;
 using Microsoft.AspNetCore.Authorization;
 using TrackAnalyser.Utilities.ExcelSheet.ExcelSheetCreator;
-using TrackAnalyser.Utilities.ExcelSheet.ExcelSheetConverter;
 using TrackAnalyser.Models.ExcelSheetModel;
 using System.IO;
+using Microsoft.Net.Http.Headers;
 
 namespace TrackAnalyser.Controllers
 {
@@ -24,15 +24,13 @@ namespace TrackAnalyser.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IBroadcastFilter<BroadcastListViewModel, IUnitOfWork> _broadcastFilter;
         private readonly IExcelSheetCreator<BroadcastListViewModel,ExcelSheetModel> _excelSheetCreator;
-        private readonly IExcelSheetConverter _excelSheetConverter;
 
         public BroadcastListController(
             IWebHostEnvironment environment,
             SignInManager<ApplicationUser> signInManager,
             ISortStrategyContext<BroadcastListViewModel> sortStrategyContext,
             IBroadcastFilter<BroadcastListViewModel,IUnitOfWork> broadcastFilter,
-            IExcelSheetCreator<BroadcastListViewModel, ExcelSheetModel> excelSheetCreator,
-            IExcelSheetConverter excelSheetConverter
+            IExcelSheetCreator<BroadcastListViewModel, ExcelSheetModel> excelSheetCreator
             )
         {
             _sortStrategyContext = sortStrategyContext;
@@ -40,7 +38,6 @@ namespace TrackAnalyser.Controllers
             _signInManager = signInManager;
             _broadcastFilter = broadcastFilter;
             _excelSheetCreator = excelSheetCreator;
-            _excelSheetConverter = excelSheetConverter;
         }
 
         public async Task<IActionResult> Index()
@@ -60,36 +57,27 @@ namespace TrackAnalyser.Controllers
         }
 
         [HttpGet]
-        public async Task GetEmissionList(int sortNumber, int sortType, string text)
+        public void InitializeDownload()
         {  
+        }
+        [HttpGet]
+        public async  Task<IActionResult> DownloadExcel(int sortNumber, int sortType, string text)
+        {
+
             if (text == null)
                 text = "";
-            
-            var user = _signInManager.Context.User.Identity.Name;
 
-            var rawModel = await _broadcastFilter.GetModelAsync( text);
+            var rawModel = await _broadcastFilter.GetModelAsync(text);
 
             var viewModel = _sortStrategyContext.Sort(rawModel, sortNumber, sortType);
 
-            _excelSheetCreator.CreateExcelSheetAsync(viewModel, _environment.WebRootPath + @"\excel\" + user + ".xlsx");
-        }
-
-        [HttpGet]
-        public IActionResult DownloadEmissionList()
-        {
-            var user = _signInManager.Context.User.Identity.Name;
-
-            var path = _environment.WebRootPath + @"\excel\" + user + ".xlsx";
-
-            var byteArray = _excelSheetConverter.ConvertToByteArray(path);
-
-            if (byteArray != null)
+       /*     var cd = new ContentDispositionHeaderValue("attachment")
             {
-                new FileInfo(path).Delete();
-
-                return File(byteArray, StaticDetails.EXCEL_SHEET_CONTENT_TYPE, StaticDetails.EXCEL_SHEET_NAME);
-            }
-            return RedirectToAction("Index");
+                FileName = StaticDetails.EXCEL_SHEET_NAME,
+            };*/
+  //          Response.Headers.Add(HeaderNames.ContentDisposition, cd.ToString());
+            return File(await _excelSheetCreator.CreateExcelSheetByteArrayAsync(viewModel),
+                StaticDetails.EXCEL_SHEET_CONTENT_TYPE, StaticDetails.EXCEL_SHEET_NAME);
         }
     }
 }

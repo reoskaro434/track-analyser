@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>173259fc-e989-4506-aa10-9d0b0282de60</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +18,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="5.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="PasswordGenerator" Version="2.0.5" />
@@ -28,10 +30,6 @@
     <ProjectReference Include="..\TrackAnalyser.DataAccess\TrackAnalyser.DataAccess.csproj" />
     <ProjectReference Include="..\TrackAnalyser.Models\TrackAnalyser.Models.csproj" />
     <ProjectReference Include="..\TrackAnalyser.Utilities\TrackAnalyser.Utilities.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\excel\" />
   </ItemGroup>
 
 </Project>

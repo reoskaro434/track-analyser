@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OxQIa2YQXJwV8gnAitlODRcF+TETiw/+s6s+GJshehgrm2Y8uit+kMVqf45J7Lg/VPzJ39Y4h+Jn9++lnUMoYA==",
+  "dgSpecHash": "f0IWBbgJ01HVCiRiXangPj46F2GGzKEY4yhusHdvePLaox9hJydwvUoqJdzSS18tt23ugSS1x6cYkcxemM+ozw==",
   "success": true,
   "projectFilePath": "C:\\Users\\reosk\\Documents\\GitHub\\web-app-for-data-recognizing-and-analysing\\TrackAnalyser\\TrackAnalyser\\TrackAnalyser.csproj",
   "expectedPackageFiles": [
@@ -61,6 +61,7 @@
     "C:\\Users\\reosk\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "C:\\Users\\reosk\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\reosk\\.nuget\\packages\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",
+    "C:\\Users\\reosk\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512",
     "C:\\Users\\reosk\\.nuget\\packages\\microsoft.visualstudio.web.browserlink\\2.2.0\\microsoft.visualstudio.web.browserlink.2.2.0.nupkg.sha512",
     "C:\\Users\\reosk\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\reosk\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",

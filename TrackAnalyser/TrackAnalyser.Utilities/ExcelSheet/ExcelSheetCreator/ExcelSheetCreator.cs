@@ -35,15 +35,11 @@ namespace TrackAnalyser.Utilities.ExcelSheet.ExcelSheetCreator
 
             return excelSheetList;
         }
-        public async void CreateExcelSheetAsync(BroadcastListViewModel model, string path)
+        public async Task<byte[]> CreateExcelSheetByteArrayAsync(BroadcastListViewModel model)
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-            var file = new FileInfo(path);
-
-            if (file.Exists)
-                file.Delete();
-
-            var package = new ExcelPackage(file);
+         
+            var package = new ExcelPackage();
 
             var ws = package.Workbook.Worksheets.Add("Emissions");
 
@@ -51,7 +47,8 @@ namespace TrackAnalyser.Utilities.ExcelSheet.ExcelSheetCreator
             var range = ws.Cells["A1"].LoadFromCollection(excelSheetList, true);
           
             range.AutoFitColumns();
-            await package.SaveAsync();
+
+            return await package.GetAsByteArrayAsync();
         }
     }
 }

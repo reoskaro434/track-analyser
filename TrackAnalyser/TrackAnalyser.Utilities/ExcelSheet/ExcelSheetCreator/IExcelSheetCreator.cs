@@ -14,6 +14,6 @@ namespace TrackAnalyser.Utilities.ExcelSheet.ExcelSheetCreator
         /// </summary>
         /// <param name="models">Models whose create sheet.</param>
         /// <param name="path">Location where sheet will be saved.</param>
-        public void CreateExcelSheetAsync(TModel models, string path);
+        public Task<byte[]> CreateExcelSheetByteArrayAsync(TModel models);
     }
 }

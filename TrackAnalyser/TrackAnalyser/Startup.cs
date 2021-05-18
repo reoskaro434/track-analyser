@@ -24,7 +24,6 @@ using TrackAnalyser.Utilities.Charts.PieChart;
 using TrackAnalyser.Utilities.DataInitializer;
 using TrackAnalyser.Utilities.EmailSender;
 using TrackAnalyser.Utilities.ExcelSheet.ExcelSheetCreator;
-using TrackAnalyser.Utilities.ExcelSheet.ExcelSheetConverter;
 using TrackAnalyser.Models.ExcelSheetModel;
 
 namespace TrackAnalyser
@@ -61,7 +60,6 @@ namespace TrackAnalyser
             services.AddScoped<ISortStrategyContext<BroadcastListViewModel>, SortStrategyContext>();
             services.AddScoped<IBroadcastFilter<BroadcastListViewModel, IUnitOfWork>, BroadcastFilter>();
             services.AddScoped<IExcelSheetCreator<BroadcastListViewModel,ExcelSheetModel>, ExcelSheetCreator>();
-            services.AddScoped<IExcelSheetConverter, ExcelSheetConverter>();
             services.AddScoped<IRank<RankViewModel,IUnitOfWork>, Rank>();
             services.AddScoped<IBarChart<IUnitOfWork>, BarChart>();
             services.AddScoped<IPieChart<IUnitOfWork>, PieChart>();

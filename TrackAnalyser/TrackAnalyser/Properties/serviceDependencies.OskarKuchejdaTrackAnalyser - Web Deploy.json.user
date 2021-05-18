@@ -9,12 +9,12 @@
     "mssql1.subscriptionId": {
       "Name": "mssql1.subscriptionId",
       "Type": "subscription",
-      "Value": "0376048a-e180-479c-83e5-2c2f9f0e1d4b"
+      "Value": "24edda66-ca9f-4c87-9e1e-e9f5cca7544c"
     },
     "mssql1.resourceGroupName": {
       "Name": "mssql1.resourceGroupName",
       "Type": "resourceGroup",
-      "Value": "TrackAnalyser_dbResourceGroup"
+      "Value": "TrackAnalyser20210517215808ResourceGroup"
     }
   }
 }

@@ -6,11 +6,6 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAARav4F+6GXEyCa55pv/qS6AAAAAACAAAAAAAQZgAAAAEAACAAAABegQVCIfblfwychAemwFJ5YNhF68jFvZcZRMQC8m/7+wAAAAAOgAAAAAIAACAAAAA9/GY6iC6dFteYK9H/8qqAKEqGBGAQjBbhB5y5QrAIY4AAAABsi6xnYaSusNlw3ABOIX+yQPpOc+EOmoMaTN9qZrLYVc52HLmNcE3MxjYgafEFAB5xmEdSKugQJNrnqy0M0bn0VczACqxJ4dblsNse+0YMg+VOr+2HQPyZBz4hW2LNAnWXn6+OBzj6mw1PYHBovELTFnfR9TNfJVSdw+2WuBlSAEAAAACZhxUtyMYVieDsnYyd7V8Kc4kIDqV7KpYXkDMtlqVyRr3dm7wWXIQmSytsX1ppq0viDJhOO2lLKRwAppkySxdk</EncryptedPassword>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAARav4F+6GXEyCa55pv/qS6AAAAAACAAAAAAAQZgAAAAEAACAAAADnYJkgyVG99O/EJZjm7PahHmzF9iMjYtaEjsMfiseLewAAAAAOgAAAAAIAACAAAACIT2juxKiMid9o9QfG5LxNSPEzpNTGUv86uovb7pJml4AAAAD6QQTB3UDja0+UmhlgiSuzjT6+dpkbKpwD+KkIdB4ozNwfrMZnCPhDoLMmO/npB7WSHic3wa9BNibbmA+TRgxPQyeGqTh63E/ZdzP6WC+5kNKPLJ1Hq/UMSeTAhCj9oxhSZHwFKNpgvcPC79XuAXAXuAAmtdIbs52k/fPAYM487EAAAACUGX7qUo9rn1TU99AofMkpmu9P6yXumlVXwFvsDxAOCz2B/3eLs58V50EqfXa0RQBnOfVQuPZqYsKsbxfViwWe</EncryptedPassword>
   </PropertyGroup>
-  <ItemGroup>
-    <DestinationConnectionStrings Include="DefaultConnection">
-      <Value>Data Source=tcp:trackanalyserdbdbserver.database.windows.net,1433%3bInitial Catalog=TrackAnalyserDB%3bUser Id=reoskaro434%40trackanalyserdbdbserver%3bPassword=XYZZ%2awim%3bMultipleActiveResultSets=True</Value>
-    </DestinationConnectionStrings>
-  </ItemGroup>
 </Project>
