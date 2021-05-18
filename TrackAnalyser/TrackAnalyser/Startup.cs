@@ -20,6 +20,7 @@ using TrackAnalyser.Utilities.EmailSender;
 using TrackAnalyser.Utilities.ExcelSheet.ExcelSheetCreator;
 using TrackAnalyser.Models.ExcelSheetModel;
 using TrackAnalyser.Utilities.ExcelSheetCreator;
+using System;
 
 namespace TrackAnalyser
 {
@@ -43,12 +44,14 @@ namespace TrackAnalyser
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.ConfigureApplicationCookie(options =>
-                 options.LoginPath = "/Login/Index"
-            );
-            services.ConfigureApplicationCookie(options =>
-                 options.AccessDeniedPath = "/Authentication/AccessDenied"
-            );
-
+           {
+               options.LoginPath = "/Login/Index";
+               options.AccessDeniedPath = "/Authentication/AccessDenied";
+               options.Cookie.HttpOnly = true;
+               options.ExpireTimeSpan = TimeSpan.FromMinutes(8);
+               options.SlidingExpiration = true;
+           });
+            
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddControllersWithViews();
             services.AddRazorPages().AddRazorRuntimeCompilation();
