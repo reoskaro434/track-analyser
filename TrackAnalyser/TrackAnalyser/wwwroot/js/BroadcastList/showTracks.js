@@ -12,6 +12,6 @@
                 $("#showTracks").html(result)
             }
         })
-        return false;
+      
     });
 });

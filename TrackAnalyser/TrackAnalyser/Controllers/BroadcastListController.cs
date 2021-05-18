@@ -20,22 +20,16 @@ namespace TrackAnalyser.Controllers
     public class BroadcastListController : Controller
     {
         private readonly ISortStrategyContext<BroadcastListViewModel> _sortStrategyContext;
-        private readonly IWebHostEnvironment _environment;
-        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IBroadcastFilter<BroadcastListViewModel, IUnitOfWork> _broadcastFilter;
         private readonly IExcelSheetCreator<BroadcastListViewModel,ExcelSheetModel> _excelSheetCreator;
 
         public BroadcastListController(
-            IWebHostEnvironment environment,
-            SignInManager<ApplicationUser> signInManager,
             ISortStrategyContext<BroadcastListViewModel> sortStrategyContext,
             IBroadcastFilter<BroadcastListViewModel,IUnitOfWork> broadcastFilter,
             IExcelSheetCreator<BroadcastListViewModel, ExcelSheetModel> excelSheetCreator
             )
         {
             _sortStrategyContext = sortStrategyContext;
-            _environment = environment;
-            _signInManager = signInManager;
             _broadcastFilter = broadcastFilter;
             _excelSheetCreator = excelSheetCreator;
         }
@@ -57,10 +51,6 @@ namespace TrackAnalyser.Controllers
         }
 
         [HttpGet]
-        public void InitializeDownload()
-        {  
-        }
-        [HttpGet]
         public async  Task<IActionResult> DownloadExcel(int sortNumber, int sortType, string text)
         {
 
@@ -71,11 +61,7 @@ namespace TrackAnalyser.Controllers
 
             var viewModel = _sortStrategyContext.Sort(rawModel, sortNumber, sortType);
 
-       /*     var cd = new ContentDispositionHeaderValue("attachment")
-            {
-                FileName = StaticDetails.EXCEL_SHEET_NAME,
-            };*/
-  //          Response.Headers.Add(HeaderNames.ContentDisposition, cd.ToString());
+
             return File(await _excelSheetCreator.CreateExcelSheetByteArrayAsync(viewModel),
                 StaticDetails.EXCEL_SHEET_CONTENT_TYPE, StaticDetails.EXCEL_SHEET_NAME);
         }

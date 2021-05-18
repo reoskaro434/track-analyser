@@ -9,11 +9,9 @@ namespace TrackAnalyser.Utilities.ExcelSheet.ExcelSheetCreator
     public interface IExcelSheetCreator<TModel,TExcelSheetModel> where TModel : class
     {
         /// <summary>
-        /// Creates excel sheet using models and 
-        /// puts it in location given by user.
+        /// Creates excel sheet using models.
         /// </summary>
         /// <param name="models">Models whose create sheet.</param>
-        /// <param name="path">Location where sheet will be saved.</param>
         public Task<byte[]> CreateExcelSheetByteArrayAsync(TModel models);
     }
 }

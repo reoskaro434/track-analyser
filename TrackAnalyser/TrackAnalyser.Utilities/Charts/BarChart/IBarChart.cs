@@ -15,7 +15,7 @@ namespace TrackAnalyser.Utilities.Charts.BarChart
         /// <param name="id">Track id.</param>
         /// <param name="amoun">Amount of returning days.</param>
         /// <param name="dateFormat">Determines date format.</param>
-        /// <returns></returns>
+        /// <returns>JSON data for chart creation.</returns>
         public string GetTrackData(int id, int amoun, string dateFormat);
     }
 }

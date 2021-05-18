@@ -13,7 +13,7 @@ namespace TrackAnalyser.Utilities.EmailSender
         /// </summary>
         /// <param name="email">Email where password will be sent.</param>
         /// <param name="password">User's password</param>
-        /// <returns></returns>
+        /// <returns>False if an exception was thrown.</returns>
         public Task<bool> SendEmailAsync(string email, string password);
     }
 }

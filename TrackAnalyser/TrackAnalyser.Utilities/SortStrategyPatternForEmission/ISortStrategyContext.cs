@@ -14,6 +14,13 @@ namespace TrackAnalyser.Utilities.SortStrategyPatternForEmission
         /// </summary>
         /// <param name="sortStrategy">New strategy/</param>
         public void SetStrategy(ISortStrategy sortStrategy);
+        /// <summary>
+        /// Sorts model using parameters given by user.
+        /// </summary>
+        /// <param name="model">Model.</param>
+        /// <param name="sortNumber">Determines parameter which model is sorting by.</param>
+        /// <param name="sortType">Determines which kind of sort it is, ascending or descending.</param>
+        /// <returns></returns>
         public TModel Sort(TModel model, int sortNumber, int sortType);
     }
 }

@@ -7,10 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using TrackAnalyser.Models.ExcelSheetModel;
 using TrackAnalyser.Models.ViewModels;
+using TrackAnalyser.Utilities.ExcelSheet.ExcelSheetCreator;
 
-namespace TrackAnalyser.Utilities.ExcelSheet.ExcelSheetCreator
+namespace TrackAnalyser.Utilities.ExcelSheetCreator
 {
-    public class ExcelSheetCreator : IExcelSheetCreator<BroadcastListViewModel,ExcelSheetModel>
+    public class ExcelSheetCreator : IExcelSheetCreator<BroadcastListViewModel, ExcelSheetModel>
     {
         private IEnumerable<ExcelSheetModel> CreateModel(BroadcastListViewModel broadcastListViewModel)
         {
@@ -38,14 +39,14 @@ namespace TrackAnalyser.Utilities.ExcelSheet.ExcelSheetCreator
         public async Task<byte[]> CreateExcelSheetByteArrayAsync(BroadcastListViewModel model)
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-         
+
             var package = new ExcelPackage();
 
             var ws = package.Workbook.Worksheets.Add("Emissions");
 
             var excelSheetList = CreateModel(model);
             var range = ws.Cells["A1"].LoadFromCollection(excelSheetList, true);
-          
+
             range.AutoFitColumns();
 
             return await package.GetAsByteArrayAsync();

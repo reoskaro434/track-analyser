@@ -23,7 +23,6 @@ namespace TrackAnalyser.Utilities.EmailSender
                     password
                 };
 
-                // send email
                 using var smtp = new SmtpClient();
                 await smtp.ConnectAsync("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
                 await smtp.AuthenticateAsync("trackanalyser21@gmail.com", "AAxwyz*hH");

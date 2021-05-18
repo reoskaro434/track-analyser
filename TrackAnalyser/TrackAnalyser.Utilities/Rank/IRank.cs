@@ -14,7 +14,7 @@ namespace TrackAnalyser.Utilities.Rank
         /// Returns top played songs.
         /// </summary>
         /// <param name="maxSize">Max size of rank.</param>
-        /// <returns></returns>
+        /// <returns>RankViewModel</returns>
         public TModel GetRank(int maxSize);
     }
 }
