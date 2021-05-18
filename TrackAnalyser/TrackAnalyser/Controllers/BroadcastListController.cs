@@ -46,6 +46,12 @@ namespace TrackAnalyser.Controllers
         }
 
         [HttpGet]
+        public void InitializeDownload()
+        {
+            //necessary for proper excel sheet download
+        }
+
+        [HttpGet]
         public async  Task<IActionResult> DownloadExcel(int sortNumber, int sortType, string text)
         {
 
@@ -60,5 +66,6 @@ namespace TrackAnalyser.Controllers
             return File(await _excelSheetCreator.CreateExcelSheetByteArrayAsync(viewModel),
                 StaticDetails.EXCEL_SHEET_CONTENT_TYPE, StaticDetails.EXCEL_SHEET_NAME);
         }
+
     }
 }
