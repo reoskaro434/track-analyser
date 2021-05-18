@@ -3,16 +3,11 @@ using TrackAnalyser.Models.ViewModels;
 using System.Threading.Tasks;
 using TrackAnalyser.DataAccess.RepositoryPattern;
 using TrackAnalyser.Utilities;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using TrackAnalyser.Utilities.SortStrategyPatternForEmission;
 using TrackAnalyser.Utilities.BroadcastFilter;
-using TrackAnalyser.Models.DBModels;
 using Microsoft.AspNetCore.Authorization;
 using TrackAnalyser.Utilities.ExcelSheet.ExcelSheetCreator;
 using TrackAnalyser.Models.ExcelSheetModel;
-using System.IO;
-using Microsoft.Net.Http.Headers;
 
 namespace TrackAnalyser.Controllers
 {

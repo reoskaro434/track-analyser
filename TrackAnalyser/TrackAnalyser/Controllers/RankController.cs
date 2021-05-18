@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 using TrackAnalyser.DataAccess.RepositoryPattern;
 using TrackAnalyser.Models.ViewModels;
 using TrackAnalyser.Utilities;

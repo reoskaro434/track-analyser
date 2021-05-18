@@ -1,9 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 using TrackAnalyser.DataAccess.Data;
 using TrackAnalyser.DataAccess.RepositoryPattern.Content.Interface;
@@ -22,9 +17,5 @@ namespace TrackAnalyser.DataAccess.RepositoryPattern.Content.Class
         {
             return await _db.Tracks.Include(p => p.Artist).Include(p => p.Canals).FirstOrDefaultAsync(p=>p.Id == trackId);
         }
-/*        public Track FindEager(int trackId)
-        {
-            return  _db.Tracks.Include(p => p.Artist).Include(p => p.Canals).FirstOrDefault(p => p.Id == trackId);
-        }*/
     }
 }

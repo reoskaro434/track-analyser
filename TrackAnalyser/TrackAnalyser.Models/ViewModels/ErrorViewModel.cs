@@ -1,5 +1,3 @@
-using System;
-
 namespace TrackAnalyser.Models.ViewModels
 {
     public class ErrorViewModel

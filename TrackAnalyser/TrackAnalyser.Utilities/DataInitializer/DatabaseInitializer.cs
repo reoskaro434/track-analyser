@@ -7,13 +7,13 @@ using TrackAnalyser.Models.DBModels;
 
 namespace TrackAnalyser.Utilities.DataInitializer
 {
-    public class DataInitializer : IDataInitializer<IUnitOfWork>
+    public class DatabaseInitializer : IDatabaseInitializer<IUnitOfWork>
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IUnitOfWork _unitOfWork;
 
-        public DataInitializer(UserManager<ApplicationUser> userManager,
+        public DatabaseInitializer(UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManeger,
             IUnitOfWork unitOfWork)
         {

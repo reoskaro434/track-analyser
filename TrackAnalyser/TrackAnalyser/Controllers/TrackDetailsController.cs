@@ -8,7 +8,6 @@ using TrackAnalyser.Models.DBModels;
 using TrackAnalyser.Utilities.Charts.BarChart;
 using TrackAnalyser.Utilities.Charts.PieChart;
 using Microsoft.AspNetCore.Authorization;
-using System;
 
 namespace TrackAnalyser.Controllers
 {

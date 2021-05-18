@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TrackAnalyser.Utilities.SortStrategy;
+﻿using TrackAnalyser.Utilities.SortStrategy;
 
 namespace TrackAnalyser.Utilities.SortStrategyPatternForEmission
 {

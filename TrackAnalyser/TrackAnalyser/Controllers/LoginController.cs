@@ -1,14 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using TrackAnalyser.DataAccess.RepositoryPattern;
 using TrackAnalyser.Models.DBModels;
-using TrackAnalyser.Models.ViewModels;
 using TrackAnalyser.Models.ViewModels.LoginViewModel;
-using TrackAnalyser.Utilities;
 using TrackAnalyser.Utilities.DataInitializer;
 
 namespace TrackAnalyser.Controllers
@@ -17,11 +14,11 @@ namespace TrackAnalyser.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly IDataInitializer<IUnitOfWork> _dataInitializer;
+        private readonly IDatabaseInitializer<IUnitOfWork> _dataInitializer;
         public LoginController(
             IUnitOfWork unitOfWork,
             SignInManager<ApplicationUser> signInManager,
-            IDataInitializer<IUnitOfWork> dataInitializer)
+            IDatabaseInitializer<IUnitOfWork> dataInitializer)
         {
             _unitOfWork = unitOfWork;
             _signInManager = signInManager;

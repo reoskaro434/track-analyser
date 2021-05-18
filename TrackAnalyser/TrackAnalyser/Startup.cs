@@ -1,17 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TrackAnalyser.DataAccess.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TrackAnalyser.DataAccess.RepositoryPattern;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using TrackAnalyser.Utilities.SortStrategyPatternForEmission;
 using TrackAnalyser.Models.ViewModels;
@@ -64,7 +58,7 @@ namespace TrackAnalyser
             services.AddScoped<IRank<RankViewModel,IUnitOfWork>, Rank>();
             services.AddScoped<IBarChart<IUnitOfWork>, BarChart>();
             services.AddScoped<IPieChart<IUnitOfWork>, PieChart>();
-            services.AddScoped<IDataInitializer<IUnitOfWork>, DataInitializer>();
+            services.AddScoped<IDatabaseInitializer<IUnitOfWork>, DatabaseInitializer>();
             services.AddScoped<IEmailSender, EmailSender>();
         }
 
